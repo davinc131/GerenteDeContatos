@@ -1,0 +1,88 @@
+﻿<Window x:Class="ClassUi.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClassUi"
+        mc:Ignorable="d"
+        Title="Contato" Height="450" Width="800" WindowState="Maximized">
+    <Window.Background>
+        <ImageBrush Opacity="1" ImageSource="Imagens/background4.png"></ImageBrush>
+    </Window.Background>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Grid Name="ImgContatoJuridico" Grid.ColumnSpan="2" Margin="75,25">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="45"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="btnJuridico" ToolTip="Contato pessoa jurídica" Margin="15,50" Width="150" Grid.ColumnSpan="2" FontFamily="Comic Sans MS" Click="BtnJuridico_Click">
+                <Image Source="Imagens/pessoaJuridica3.png"></Image>
+            </Button>
+            <Label Content="Contato Jurídico" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Margin="0" Grid.Row="1" FontSize="18" FontWeight="Bold" FontFamily="Comic Sans MS"/>
+
+        </Grid>
+
+        <Grid Name="ImgContatoFisico" Grid.ColumnSpan="2" Margin="75,25" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="45"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="btnFisico" ToolTip="Contato pessoa física" Margin="15,50" Width="150" Grid.ColumnSpan="2" Click="BtnFisico_Click">
+                <Image Source="Imagens/pessoaFisica.png"></Image>
+            </Button>
+            <Label Content="Contato Físico" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Margin="0" Grid.Row="1" FontSize="18" FontWeight="Bold" FontFamily="Comic Sans MS"/>
+
+        </Grid>
+
+        <Grid Name="ImgEmail" Grid.ColumnSpan="2" Margin="75,25" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="45"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="btnEmail" ToolTip="Envio de email para contatos" Margin="15,50" Width="150" Grid.ColumnSpan="2" Click="BtnEmail_Click">
+                <Image Source="Imagens/email1.png"></Image>
+            </Button>
+            <Label Content="Email" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Margin="0" Grid.Row="1" FontSize="18" FontWeight="Bold" FontFamily="Comic Sans MS"/>
+
+        </Grid>
+
+        <Grid Name="ImgWhatsapp" Grid.ColumnSpan="2" Margin="75,25" Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="45"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="btnWhatsapp" ToolTip="Envio de mensagens via Whatsapp" Margin="15,50" Width="150" Grid.ColumnSpan="2" Click="BtnWhatsapp_Click">
+                <Image Source="Imagens/Whatsapp1.png"></Image>
+            </Button>
+            <Label Content="Whatsapp" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Margin="0" Grid.Row="1" FontSize="18" FontWeight="Bold" FontFamily="Comic Sans MS"/>
+
+        </Grid>
+
+    </Grid>
+</Window>
