@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace ClassModel
 {
-    public class Contato:Base
+    public enum Departamento
     {
-        public Departamento Departamento { get; set; }
+        Administrativo,
+        Financeiro,
+        Contábil,
+        Jurídico,
+        Recursos_Humanos,
+        Comercial
     }
 }

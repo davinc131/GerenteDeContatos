@@ -10,6 +10,7 @@ namespace ClassModel
     {
         public int Id { get; set; }
         public string NumTelefone { get; set; }
+        public Departamento Departamento { get; set; }
         public bool Celular { get; set; }
         public bool Whatsapp { get; set; }
 

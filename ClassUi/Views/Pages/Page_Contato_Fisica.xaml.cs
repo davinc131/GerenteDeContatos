@@ -33,6 +33,7 @@ namespace ClassUi.Views.Pages
         public Page_Contato_Fisica()
         {
             InitializeComponent();
+            cbDepartamento.ItemsSource = Enum.GetValues(typeof(Departamento)).Cast<Departamento>();
         }
 
         private void BtnAddEmail_Click(object sender, RoutedEventArgs e)
@@ -53,7 +54,7 @@ namespace ClassUi.Views.Pages
                 }
                 else
                 {
-                    MessageBox.Show("Um ou mais caracteres inválidos para telefone!", "Email Inválido");
+                    MessageBox.Show("Um ou mais caracteres inválidos para email!", "Email Inválido");
                 }
             }
             catch (Exception ex)

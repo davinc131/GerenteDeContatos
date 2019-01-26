@@ -92,9 +92,6 @@
     <Compile Include="Views\Pages\Page_Listar_Contato_Juridico.xaml.cs">
       <DependentUpon>Page_Listar_Contato_Juridico.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ViewCadastroCategoria.xaml.cs">
-      <DependentUpon>ViewCadastroCategoria.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ViewContatoFisico.xaml.cs">
       <DependentUpon>ViewContatoFisico.xaml</DependentUpon>
     </Compile>
@@ -132,10 +129,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\Page_Listar_Contato_Juridico.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ViewCadastroCategoria.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -229,6 +222,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagens\Botão Sinal de Mais.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="RecursosImagens\backgroundRecurso1.jpg" />
+    <Resource Include="RecursosImagens\backgroundRecurso2.jpg" />
+    <Resource Include="RecursosImagens\backgroundRecurso3.jpg" />
+    <Resource Include="RecursosImagens\backgroundRecurso4.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

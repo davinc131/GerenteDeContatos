@@ -49,21 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContatoDbContext.cs" />
-    <Compile Include="Migrations\201901180248172_DbContato.cs" />
-    <Compile Include="Migrations\201901180248172_DbContato.Designer.cs">
-      <DependentUpon>201901180248172_DbContato.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901191837389_MigrationTelefone.cs" />
-    <Compile Include="Migrations\201901191837389_MigrationTelefone.Designer.cs">
-      <DependentUpon>201901191837389_MigrationTelefone.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901191922102_DropWhatsapp.cs" />
-    <Compile Include="Migrations\201901191922102_DropWhatsapp.Designer.cs">
-      <DependentUpon>201901191922102_DropWhatsapp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901250116283_DropTable.cs" />
-    <Compile Include="Migrations\201901250116283_DropTable.Designer.cs">
-      <DependentUpon>201901250116283_DropTable.cs</DependentUpon>
+    <Compile Include="Migrations\201901260257110_CreateDataBase.cs" />
+    <Compile Include="Migrations\201901260257110_CreateDataBase.Designer.cs">
+      <DependentUpon>201901260257110_CreateDataBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PersistContato.cs" />
@@ -81,17 +69,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901180248172_DbContato.resx">
-      <DependentUpon>201901180248172_DbContato.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901191837389_MigrationTelefone.resx">
-      <DependentUpon>201901191837389_MigrationTelefone.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901191922102_DropWhatsapp.resx">
-      <DependentUpon>201901191922102_DropWhatsapp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901250116283_DropTable.resx">
-      <DependentUpon>201901250116283_DropTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901260257110_CreateDataBase.resx">
+      <DependentUpon>201901260257110_CreateDataBase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

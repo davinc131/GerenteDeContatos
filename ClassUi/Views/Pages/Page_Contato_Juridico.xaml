@@ -11,7 +11,8 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -41,7 +42,7 @@
         <!--#region Categoria
  -->
         <Label Content="Categoria:" Margin="50,0,0,0" Grid.Row="1" FontSize="16" FontFamily="Comic Sans MS" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <ComboBox x:Name="cbCategoria" Grid.Column="1" Margin="10,20,55,20" Grid.Row="1" FontSize="14" VerticalAlignment="Center" Grid.ColumnSpan="7"/>
+        <ComboBox x:Name="cbCategoria" Grid.Column="1" Margin="10,20,55,20" Grid.Row="1" FontSize="14" VerticalAlignment="Center" Grid.ColumnSpan="7" MinHeight="35"/>
         <!--#endregion-->
 
         <!--#region Nome-->
@@ -61,28 +62,61 @@
 
         <!--#region Email-->
         <Label Content="Email:" Margin="50,0,0,0" Grid.Row="6" FontSize="16" FontFamily="Comic Sans MS" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Departamento:" Margin="50,0,0,0" Grid.Row="7" FontSize="16" FontFamily="Comic Sans MS" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <TextBox x:Name="txtEmail" Grid.Column="1" Margin="0,12,55,11" Grid.Row="6" TextWrapping="NoWrap" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Grid.ColumnSpan="2"/>
         <Button x:Name="btnAddEmail" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,4" Grid.Row="6" Width="35" Background="{x:Null}" Height="35" Click="BtnAddEmail_Click">
             <Image Source="/Imagens/Botão Sinal de Mais.png"></Image>
         </Button>
-        <DataGrid x:Name="DGEmail" Grid.Column="1" Margin="0,5" Grid.Row="7" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="cbDepEmail" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5" Grid.Row="7" VerticalAlignment="Center" MaxDropDownHeight="255" MinWidth="220"/>
+        <DataGrid x:Name="DGEmail" AutoGenerateColumns="False" Grid.Column="1" Margin="0,5" Grid.Row="8" Grid.RowSpan="2" Grid.ColumnSpan="2"  AlternationCount="2" RowBackground="Beige" AlternatingRowBackground="LightBlue">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="email" Header="Email" Binding="{Binding Path=EndEmail}" Width="*"/>
+
+                <DataGridTemplateColumn Header="Excluir">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnExcluirEmail" Content="Excluir" Click="BtnExcluirEmail_Click" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
         <!--#endregion-->
 
         <!--#region Telefone-->
         <Label Content="Telefone:" Margin="50,0,0,0" Grid.Row="6" FontSize="16" FontFamily="Comic Sans MS" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="3"/>
+        <Label Content="Departamento:" Margin="50,0,0,0" Grid.Row="7" FontSize="16" FontFamily="Comic Sans MS" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="3"/>
         <wpfx:MaskedTextBox Mask="(00) 0000-0000" x:Name="txtTelefone" Grid.Column="4" Margin="0,12,0,11" Grid.Row="6" TextWrapping="NoWrap" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14"/>
         <CheckBox x:Name="chCelular" Content="Celular" Grid.Column="5" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="6" VerticalAlignment="Top"/>
         <CheckBox x:Name="chWhatsapp" Content="Whatsapp" Grid.Column="5" HorizontalAlignment="Left" Margin="10,29,0,0" Grid.Row="6"/>
         <Button x:Name="btnAddTelefone" Grid.Column="6" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,4,0,4" Grid.Row="6" Width="35" Background="{x:Null}" Height="35" Click="BtnAddTelefone_Click">
             <Image Source="/Imagens/Botão Sinal de Mais.png"></Image>
         </Button>
-        <DataGrid x:Name="DGTelefone" Grid.Column="4" Margin="0,5" Grid.Row="7" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+        <ComboBox x:Name="cbDepTelefone" Grid.ColumnSpan="3" Grid.Column="4" HorizontalAlignment="Left" Margin="0,5" Grid.Row="7" VerticalAlignment="Center" MinWidth="280"/>
+        <DataGrid x:Name="DGTelefone" AutoGenerateColumns="False" Grid.Column="4" Margin="0,5" Grid.Row="8" Grid.RowSpan="2" Grid.ColumnSpan="3" RowBackground="Beige" AlternatingRowBackground="LightBlue">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="telefone" Header="Telefone" Binding="{Binding Path=NumTelefone}" Width="*"/>
+
+                <DataGridTemplateColumn Header="Excluir">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnExcluirTel" Content="Excluir" Click="BtnExcluirTel_Click" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
         <!--#endregion-->
 
         <!--#region Botões Rodapé-->
-        <Button x:Name="btnGravar" Content="Gravar" Grid.Column="3" Margin="12,10" Grid.Row="9" Width="75" FontWeight="Bold" Click="BtnGravar_Click"/>
+        <Button x:Name="btnGravar" Content="Gravar" Grid.Column="2" Margin="12,10" Grid.Row="10" Width="75" FontWeight="Bold" Click="BtnGravar_Click"/>
+        <Button x:Name="btnEditar" Content="Editar" Grid.Column="4" Margin="12,10" Grid.Row="10" Width="75" FontWeight="Bold" Click="BtnEditar_Click"/>
         <!--#endregion-->
 
-        <Label Content="" Margin="0" Grid.ColumnSpan="9" FontSize="24" FontFamily="Comic Sans MS" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="DarkKhaki" Grid.Row="10"/>
+        <Label Content="" Margin="0" Grid.ColumnSpan="9" FontSize="24" FontFamily="Comic Sans MS" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="DarkKhaki" Grid.Row="11"/>
+        
+        
     </Grid>
 </Page>
