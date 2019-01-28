@@ -22,6 +22,8 @@ namespace ClassUi.Views
         public ViewContatoFisico()
         {
             InitializeComponent();
+            Pages.PageSlideContatoPFisica pageSlide = new Pages.PageSlideContatoPFisica();
+            FrameContatoFisico.Content = pageSlide;
         }
 
         private void BtnListar_Click(object sender, RoutedEventArgs e)
@@ -41,7 +43,7 @@ namespace ClassUi.Views
         {
             try
             {
-                Pages.Page_Contato_Fisica PaginaContatoFisico = new Pages.Page_Contato_Fisica();
+                Pages.Page_Contato_Fisica PaginaContatoFisico = new Pages.Page_Contato_Fisica(false);
                 FrameContatoFisico.Content = PaginaContatoFisico;
             }
             catch (Exception ex)

@@ -27,7 +27,17 @@ namespace ClassControle
 
         public void salvarContato(Contato c)
         {
-            
+            contato.SalvarContato(c);
+        }
+
+        public List<Contato> ListarContatos()
+        {
+            return contato.ListarContatos();
+        }
+
+        public void Excluir(int id)
+        {
+            contato.Excluir(id);
         }
     }
 }

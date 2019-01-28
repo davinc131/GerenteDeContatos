@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,17 @@ namespace ClassControle
 
         public void salvarContatoJuridico(ContatoJuridico c)
         {
+            contato.SalvarContatoJuridico(c);
+        }
 
+        public List<ContatoJuridico> ListarContatoJuridico()
+        {
+            return contato.ListarContatos();
+        }
+
+        public void Excluir(int id)
+        {
+            contato.Excluir(id);
         }
 
         public bool ValidarTelefone(string f)

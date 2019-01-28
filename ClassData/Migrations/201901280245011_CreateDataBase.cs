@@ -8,7 +8,7 @@ namespace ClassData.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.ContatoJuridicoes",
+                "dbo.ContatoJuridico",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -16,14 +16,14 @@ namespace ClassData.Migrations
                         Nome = c.String(),
                         Descricao = c.String(),
                         Tipo = c.Int(nullable: false),
-                        ContatoJuridico_Id = c.Int(),
+                        ContatoJur_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.ContatoJuridicoes", t => t.ContatoJuridico_Id)
-                .Index(t => t.ContatoJuridico_Id);
+                .ForeignKey("dbo.ContatoJuridico", t => t.ContatoJur_Id)
+                .Index(t => t.ContatoJur_Id);
             
             CreateTable(
-                "dbo.Contatoes",
+                "dbo.Contato",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -34,11 +34,11 @@ namespace ClassData.Migrations
                         ContatoJuridico_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.ContatoJuridicoes", t => t.ContatoJuridico_Id)
+                .ForeignKey("dbo.ContatoJuridico", t => t.ContatoJuridico_Id)
                 .Index(t => t.ContatoJuridico_Id);
             
             CreateTable(
-                "dbo.Emails",
+                "dbo.Email",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -48,13 +48,13 @@ namespace ClassData.Migrations
                         ContatoJuridico_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Contatoes", t => t.Contato_Id)
-                .ForeignKey("dbo.ContatoJuridicoes", t => t.ContatoJuridico_Id)
+                .ForeignKey("dbo.Contato", t => t.Contato_Id)
+                .ForeignKey("dbo.ContatoJuridico", t => t.ContatoJuridico_Id)
                 .Index(t => t.Contato_Id)
                 .Index(t => t.ContatoJuridico_Id);
             
             CreateTable(
-                "dbo.Telefones",
+                "dbo.Telefone",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -66,8 +66,8 @@ namespace ClassData.Migrations
                         ContatoJuridico_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Contatoes", t => t.Contato_Id)
-                .ForeignKey("dbo.ContatoJuridicoes", t => t.ContatoJuridico_Id)
+                .ForeignKey("dbo.Contato", t => t.Contato_Id)
+                .ForeignKey("dbo.ContatoJuridico", t => t.ContatoJuridico_Id)
                 .Index(t => t.Contato_Id)
                 .Index(t => t.ContatoJuridico_Id);
             
@@ -75,22 +75,22 @@ namespace ClassData.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.ContatoJuridicoes", "ContatoJuridico_Id", "dbo.ContatoJuridicoes");
-            DropForeignKey("dbo.Telefones", "ContatoJuridico_Id", "dbo.ContatoJuridicoes");
-            DropForeignKey("dbo.Emails", "ContatoJuridico_Id", "dbo.ContatoJuridicoes");
-            DropForeignKey("dbo.Contatoes", "ContatoJuridico_Id", "dbo.ContatoJuridicoes");
-            DropForeignKey("dbo.Telefones", "Contato_Id", "dbo.Contatoes");
-            DropForeignKey("dbo.Emails", "Contato_Id", "dbo.Contatoes");
-            DropIndex("dbo.Telefones", new[] { "ContatoJuridico_Id" });
-            DropIndex("dbo.Telefones", new[] { "Contato_Id" });
-            DropIndex("dbo.Emails", new[] { "ContatoJuridico_Id" });
-            DropIndex("dbo.Emails", new[] { "Contato_Id" });
-            DropIndex("dbo.Contatoes", new[] { "ContatoJuridico_Id" });
-            DropIndex("dbo.ContatoJuridicoes", new[] { "ContatoJuridico_Id" });
-            DropTable("dbo.Telefones");
-            DropTable("dbo.Emails");
-            DropTable("dbo.Contatoes");
-            DropTable("dbo.ContatoJuridicoes");
+            DropForeignKey("dbo.Telefone", "ContatoJuridico_Id", "dbo.ContatoJuridico");
+            DropForeignKey("dbo.Email", "ContatoJuridico_Id", "dbo.ContatoJuridico");
+            DropForeignKey("dbo.Telefone", "Contato_Id", "dbo.Contato");
+            DropForeignKey("dbo.Email", "Contato_Id", "dbo.Contato");
+            DropForeignKey("dbo.Contato", "ContatoJuridico_Id", "dbo.ContatoJuridico");
+            DropForeignKey("dbo.ContatoJuridico", "ContatoJur_Id", "dbo.ContatoJuridico");
+            DropIndex("dbo.Telefone", new[] { "ContatoJuridico_Id" });
+            DropIndex("dbo.Telefone", new[] { "Contato_Id" });
+            DropIndex("dbo.Email", new[] { "ContatoJuridico_Id" });
+            DropIndex("dbo.Email", new[] { "Contato_Id" });
+            DropIndex("dbo.Contato", new[] { "ContatoJuridico_Id" });
+            DropIndex("dbo.ContatoJuridico", new[] { "ContatoJur_Id" });
+            DropTable("dbo.Telefone");
+            DropTable("dbo.Email");
+            DropTable("dbo.Contato");
+            DropTable("dbo.ContatoJuridico");
         }
     }
 }

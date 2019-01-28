@@ -26,16 +26,32 @@ namespace ClassUi.Views.Pages
         private ControleContatoJuridico controleContato = new ControleContatoJuridico();
         private List<Telefone> listTelefone = new List<Telefone>();
         private List<Email> listEmail = new List<Email>();
-        private ContatoJuridico contato = new ContatoJuridico();
+
         #endregion
 
-        public Page_Contato_Juridico()
+        public Page_Contato_Juridico(bool editar)
         {
             InitializeComponent();
+            ControlePagina(editar);
 
             cbCategoria.ItemsSource = Enum.GetValues(typeof(Categoria)).Cast<Categoria>();
             cbDepEmail.ItemsSource = Enum.GetValues(typeof(Departamento)).Cast<Departamento>();
             cbDepTelefone.ItemsSource = Enum.GetValues(typeof(Departamento)).Cast<Departamento>();
+            cbVinculado.ItemsSource = controleContato.ListarContatoJuridico();
+        }
+
+        private void ControlePagina(bool editar)
+        {
+            if (editar.Equals(true))
+            {
+                btnGravar.IsEnabled = false;
+                btnEditar.IsEnabled = true;
+            }
+            else
+            {
+                btnGravar.IsEnabled = true;
+                btnEditar.IsEnabled = false;
+            }
         }
 
         private void BtnAddEmail_Click(object sender, RoutedEventArgs e)
@@ -44,13 +60,20 @@ namespace ClassUi.Views.Pages
             {
                 if (controleContato.validaEmail(txtEmail.Text))
                 {
-                    Email email = new Email();
-                    email.EndEmail = txtEmail.Text;
-                    listEmail.Add(email);
-                    DGEmail.ItemsSource = null;
+                    if(cbDepEmail.SelectedItem != null || cbDepEmail.SelectedItem.ToString() != "")
+                    {
+                        Email email = new Email();
+                        email.EndEmail = txtEmail.Text;
+                        listEmail.Add(email);
+                        DGEmail.ItemsSource = null;
 
-                    DGEmail.ItemsSource = listEmail;
-                    limparCampos();
+                        DGEmail.ItemsSource = listEmail;
+                        limparCampos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Selecione um departamento para o email");
+                    }
                 }
                 else
                 {
@@ -69,14 +92,25 @@ namespace ClassUi.Views.Pages
             {
                 if (controleContato.ValidarTelefone(txtTelefone.Text))
                 {
-                    Telefone telefone = new Telefone();
-                    telefone.NumTelefone = txtTelefone.Text;
-                    listTelefone.Add(telefone);
-                    DGTelefone.ItemsSource = null;
+                    if(cbDepTelefone.SelectedItem != null || cbDepTelefone.SelectedItem.ToString() != "")
+                    {
+                        Telefone telefone = new Telefone();
+                        telefone.NumTelefone = txtTelefone.Text;
+                        telefone.Departamento = (Departamento)cbDepTelefone.SelectedItem;
+                        telefone.Celular = chCelular.IsChecked.Value;
+                        telefone.Whatsapp = chWhatsapp.IsChecked.Value;
 
-                    DGTelefone.ItemsSource = listTelefone;
+                        listTelefone.Add(telefone);
+                        DGTelefone.ItemsSource = null;
 
-                    limparCampos();
+                        DGTelefone.ItemsSource = listTelefone;
+
+                        limparCampos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Selecione uma departamento");
+                    }
                 }
                 else
                 {
@@ -93,7 +127,19 @@ namespace ClassUi.Views.Pages
         {
             try
             {
+                ContatoJuridico contatoJuridico = new ContatoJuridico();
 
+                contatoJuridico.Nome = txtNome.Text;
+                contatoJuridico.Descricao = txtDescricao.Text;
+                contatoJuridico.Categoria = (Categoria)cbCategoria.SelectedItem;
+                contatoJuridico.Tipo = Tipo.Juridica;
+                contatoJuridico.Emails = listEmail;
+                contatoJuridico.Telefones = listTelefone;
+                contatoJuridico.ContatoJur = (ContatoJuridico)cbVinculado.SelectedItem;
+
+                controleContato.salvarContatoJuridico(contatoJuridico);
+
+                MessageBox.Show("Novo contato jurídico gravado com sucesso!", "Sucesso");
             }
             catch (Exception ex)
             {
@@ -110,6 +156,10 @@ namespace ClassUi.Views.Pages
         {
             txtEmail.Text = "";
             txtTelefone.Text = "";
+            cbDepEmail.SelectedItem = null;
+            cbDepTelefone.SelectedItem = null;
+            chCelular.IsChecked = false;
+            chWhatsapp.IsChecked = false;
         }
 
         private void BtnExcluirEmail_Click(object sender, RoutedEventArgs e)

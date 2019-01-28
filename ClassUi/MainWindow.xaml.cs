@@ -61,6 +61,9 @@ namespace ClassUi
             {
                 Views.ViewWhatsapp viewWhatsapp = new Views.ViewWhatsapp();
                 viewWhatsapp.ShowDialog();
+
+                //Views.WindowTeste teste = new Views.WindowTeste();
+                //teste.Show();
             }
             catch (Exception ex)
             {

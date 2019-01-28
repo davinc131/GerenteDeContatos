@@ -8,11 +8,11 @@ namespace ClassModel
 {
     public enum Departamento
     {
-        Administrativo,
-        Financeiro,
-        Contábil,
-        Jurídico,
-        Recursos_Humanos,
-        Comercial
+        Administrativo = 1,
+        Financeiro = 2,
+        Contábil = 3,
+        Jurídico = 4,
+        Recursos_Humanos = 5,
+        Comercial = 6
     }
 }

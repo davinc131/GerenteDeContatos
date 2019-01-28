@@ -8,19 +8,10 @@ namespace ClassModel
 {
     public enum Categoria
     {
-        Auditoria,
-        Organização_Social,
-        Unidade_de_Saúde,
-        Fornecedor_de_Serviços,
-        Fornecedor_Comercial
-        //public int Id { get; set; }
-        //public string Nome { get; set; }
-        //public string Descricao { get; set; }
-
-        //override
-        //public string ToString()
-        //{
-        //    return Nome;
-        //}
+        Auditoria = 1,
+        Organização_Social = 2,
+        Unidade_de_Saúde = 3,
+        Fornecedor_de_Serviços = 4,
+        Fornecedor_Comercial = 5
     }
 }

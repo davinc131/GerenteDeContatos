@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClassControle;
+using ClassModel;
 
 namespace ClassUi.Views.Pages
 {
@@ -20,9 +22,49 @@ namespace ClassUi.Views.Pages
     /// </summary>
     public partial class Page_Listar_Contato_Juridico : Page
     {
+        ControleContatoJuridico controleContato = new ControleContatoJuridico();
+
         public Page_Listar_Contato_Juridico()
         {
             InitializeComponent();
+            DgContato.ItemsSource = controleContato.ListarContatoJuridico();
+        }
+
+        private void BtnEditarContato_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BtnExcluirContato_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MessageBoxResult result = MessageBox.Show("Tem certeza que deseja deletar este registro.", "Excluir", MessageBoxButton.YesNoCancel);
+
+                if (result.Equals(MessageBoxResult.Yes))
+                {
+                    ContatoJuridico c = new ContatoJuridico();
+                    c = (ContatoJuridico)DgContato.SelectedItem;
+                    controleContato.Excluir(c.Id);
+
+                    MessageBox.Show("Registro Deletado com sucesso!");
+
+                    DgContato.ItemsSource = null;
+                    DgContato.ItemsSource = controleContato.ListarContatoJuridico();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

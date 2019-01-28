@@ -13,7 +13,7 @@ namespace ClassData.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201901260257110_CreateDataBase"; }
+            get { return "201901280245011_CreateDataBase"; }
         }
         
         string IMigrationMetadata.Source

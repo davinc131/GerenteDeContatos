@@ -41,7 +41,7 @@ namespace ClassUi.Views
         {
             try
             {
-                Pages.Page_Contato_Juridico PaginaContatoFisico = new Pages.Page_Contato_Juridico();
+                Pages.Page_Contato_Juridico PaginaContatoFisico = new Pages.Page_Contato_Juridico(false);
                 FrameContatoFisico.Content = PaginaContatoFisico;
             }
             catch (Exception ex)

@@ -106,7 +106,7 @@
 
         <!--#region Botões Rodapé-->
         <Button x:Name="btnGravar" Content="Gravar" Grid.Column="2" Margin="12,10" Grid.Row="9" Width="75" FontWeight="Bold" Click="BtnGravar_Click"/>
-        <Button x:Name="btnEditar" Content="Editar" Grid.Column="4" Margin="12,10" Grid.Row="9" Width="75" FontWeight="Bold" />
+        <Button x:Name="btnEditar" Content="Editar" Grid.Column="4" Margin="12,10" Grid.Row="9" Width="75" FontWeight="Bold" Click="BtnEditar_Click"/>
         <!--#endregion-->
 
         <Label Content="" Margin="0" Grid.ColumnSpan="9" FontSize="24" FontFamily="Comic Sans MS" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="Aquamarine" Grid.Row="10"/>

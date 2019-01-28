@@ -9,6 +9,45 @@
       Title="Page_Listar_Contato_Fisico">
 
     <Grid>
-        <DataGrid Margin="0"/>
+        <DataGrid x:Name="DgContato" Margin="0" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="Id" Header="Id" Binding="{Binding Path=Id}" Width="5"/>
+                <DataGridTextColumn x:Name="Nome" Header="Nome" Binding="{Binding Path=Nome}" Width="*"/>
+                <DataGridTextColumn x:Name="Descricao" Header="Descrição" Binding="{Binding Path=Descricao}" Width="*"/>
+                
+                <DataGridComboBoxColumn x:Name="Telefone" Header="Telefone" Width="*">
+                    <DataGridComboBoxColumn.EditingElementStyle>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="ItemsSource" Value="{Binding Path=Telefones}" />
+                        </Style>
+                    </DataGridComboBoxColumn.EditingElementStyle>
+                </DataGridComboBoxColumn>
+
+                <DataGridComboBoxColumn x:Name="Email" Header="Email" Width="*">
+                    <DataGridComboBoxColumn.EditingElementStyle>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="ItemsSource" Value="{Binding Path=Emails}" />
+                        </Style>
+                    </DataGridComboBoxColumn.EditingElementStyle>
+                </DataGridComboBoxColumn>
+
+                <DataGridTemplateColumn Header="Editar">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnEditarContato" Content="Editar" Click="BtnEditarContato_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Excluir">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnExcluirContato" Content="Excluir" Click="BtnExcluirContato_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

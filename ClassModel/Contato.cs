@@ -8,6 +8,7 @@ namespace ClassModel
 {
     public class Contato:Base
     {
+        public virtual ContatoJuridico ContatoJuridico { get; set; }
         public Departamento Departamento { get; set; }
     }
 }

@@ -9,7 +9,8 @@ namespace ClassModel
     public class ContatoJuridico:Base
     {
         public Categoria Categoria { get; set; }
-        public virtual List<ContatoJuridico> Vinculado { get; set; }
-        public virtual List<Contato> Contatos { get; set; }
+        public virtual ContatoJuridico ContatoJur { get; set; }
+        public List<Contato> Contatos { get; set; }
+        public List<ContatoJuridico> Juridicos { get; set; }
     }
 }
