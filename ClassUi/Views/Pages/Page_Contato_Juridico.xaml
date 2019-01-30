@@ -42,7 +42,7 @@
         <!--#region Categoria
  -->
         <Label Content="Categoria:" Margin="50,0,0,0" Grid.Row="1" FontSize="16" FontFamily="Comic Sans MS" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <ComboBox x:Name="cbCategoria" Grid.Column="1" Margin="10,20,55,20" Grid.Row="1" FontSize="14" VerticalAlignment="Center" Grid.ColumnSpan="7" MinHeight="35"/>
+        <ComboBox x:Name="cbCategoria" Grid.Column="1" Margin="10,15,0,15" Grid.Row="1" FontSize="14" VerticalAlignment="Bottom" Grid.ColumnSpan="6" MinHeight="35" SelectionChanged="CbCategoria_SelectionChanged"/>
         <!--#endregion-->
 
         <!--#region Nome-->
@@ -56,8 +56,10 @@
         <!--#endregion-->
 
         <!--#region Vinculado-->
-        <Label Content="Vinculado a:" Margin="50,0,0,0" Grid.Row="5" FontSize="16" FontFamily="Comic Sans MS" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <ComboBox x:Name="cbVinculado" Grid.Column="1" Margin="10,20,0,20" Grid.Row="5" FontSize="14" VerticalAlignment="Center" Grid.ColumnSpan="6"/>
+        <Label Content="Auditoria:" Margin="50,0,0,0" Grid.Row="5" FontSize="16" FontFamily="Comic Sans MS" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Organização Social:" Margin="50,0,0,0" Grid.Row="5" FontSize="16" FontFamily="Comic Sans MS" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="3"/>
+        <ComboBox x:Name="cbVinculado" ToolTip="Válido apenas para contatos categoria Unidade_de_Saude" Grid.Column="1" Margin="10,15,0,15" Grid.Row="5" FontSize="14" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="cbOrganizacaoSocial" ToolTip="Válido apenas para contatos categoria Unidade_de_Saude" Grid.Column="4" Margin="10,15,0,15" Grid.Row="5" FontSize="14" Grid.ColumnSpan="2"/>
         <!--#endregion-->
 
         <!--#region Email-->
@@ -116,7 +118,7 @@
         <!--#endregion-->
 
         <Label Content="" Margin="0" Grid.ColumnSpan="9" FontSize="24" FontFamily="Comic Sans MS" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="DarkKhaki" Grid.Row="11"/>
-        
-        
+
+
     </Grid>
 </Page>

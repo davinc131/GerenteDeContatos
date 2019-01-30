@@ -32,20 +32,39 @@ namespace ClassUi.Views.Pages
         
         #endregion
 
-        public Page_Contato_Fisica(bool editar)
+        public Page_Contato_Fisica(bool editar, Contato c)
         {
             InitializeComponent();
-            ControlePagina(editar);
+            
             cbDepartamento.ItemsSource = Enum.GetValues(typeof(Departamento)).Cast<Departamento>();
             cbVinculado.ItemsSource = controleJuridico.ListarContatoJuridico();
+
+            ControlePagina(editar, c);
         }
 
-        private void ControlePagina(bool editar)
+        private void ControlePagina(bool editar, Contato c)
         {
             if (editar.Equals(true))
             {
                 btnGravar.IsEnabled = false;
                 btnEditar.IsEnabled = true;
+
+                txtNome.Text = c.Nome;
+                txtDescricao.Text = c.Descricao;
+                DGEmail.ItemsSource = c.Emails;
+                DGTelefone.ItemsSource = c.Telefones;
+                cbDepartamento.SelectedItem = c.Departamento;
+
+                for (int i = 0; i < cbVinculado.Items.Count; i++)
+                {
+                    if (c.ContatoJuridico.ToString().Equals(cbVinculado.Items[i].ToString()))
+                    {
+                        cbVinculado.SelectedIndex = i;
+                    }
+                }
+
+                //cbVinculado.SelectedItem = c.ContatoJuridico.ToString();
+                //cbVinculado.SelectedValue = c.ContatoJuridico;
             }
             else
             {

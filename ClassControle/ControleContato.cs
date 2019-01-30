@@ -35,6 +35,11 @@ namespace ClassControle
             return contato.ListarContatos();
         }
 
+        public void Modificar(Contato c)
+        {
+            contato.Modificar(c);
+        }
+
         public void Excluir(int id)
         {
             contato.Excluir(id);

@@ -60,7 +60,15 @@ namespace ClassUi.Views.Pages
         {
             try
             {
+                Contato c = new Contato();
+                c = (Contato)DgContato.SelectedItem;
 
+                Page_Contato_Fisica p = new Page_Contato_Fisica(true, c);
+
+                ViewContatoFisico v = new ViewContatoFisico();
+
+                v.AbrirDeUmaPagina(p);
+                v.Show();
             }
             catch (Exception ex)
             {

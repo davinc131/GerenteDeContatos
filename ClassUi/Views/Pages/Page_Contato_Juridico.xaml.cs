@@ -26,31 +26,60 @@ namespace ClassUi.Views.Pages
         private ControleContatoJuridico controleContato = new ControleContatoJuridico();
         private List<Telefone> listTelefone = new List<Telefone>();
         private List<Email> listEmail = new List<Email>();
+        private List<ContatoJuridico> auditoria = new List<ContatoJuridico>();
+        private List<ContatoJuridico> organizacaoSocial = new List<ContatoJuridico>();
 
         #endregion
 
-        public Page_Contato_Juridico(bool editar)
+        public Page_Contato_Juridico(bool editar, ContatoJuridico c)
         {
             InitializeComponent();
-            ControlePagina(editar);
 
             cbCategoria.ItemsSource = Enum.GetValues(typeof(Categoria)).Cast<Categoria>();
             cbDepEmail.ItemsSource = Enum.GetValues(typeof(Departamento)).Cast<Departamento>();
             cbDepTelefone.ItemsSource = Enum.GetValues(typeof(Departamento)).Cast<Departamento>();
-            cbVinculado.ItemsSource = controleContato.ListarContatoJuridico();
+            auditoria = controleContato.ListarContatoJuridico();
+
+            ControlePagina(editar, c);
         }
 
-        private void ControlePagina(bool editar)
+        private void ControlePagina(bool editar, ContatoJuridico c)
         {
+            cbVinculado.IsEnabled = false;
+            cbOrganizacaoSocial.IsEnabled = false;
+
             if (editar.Equals(true))
             {
                 btnGravar.IsEnabled = false;
                 btnEditar.IsEnabled = true;
+
+                foreach(ContatoJuridico cj in auditoria)
+                {
+                    if (cj.Categoria.Equals(Categoria.Auditoria))
+                    {
+                        cbVinculado.Items.Add(cj);
+                    }else if (cj.Categoria.Equals(Categoria.Organização_Social))
+                    {
+                        cbOrganizacaoSocial.Items.Add(cj);
+                    }
+                }
             }
             else
             {
                 btnGravar.IsEnabled = true;
                 btnEditar.IsEnabled = false;
+
+                foreach (ContatoJuridico cj in auditoria)
+                {
+                    if (cj.Categoria.Equals(Categoria.Auditoria))
+                    {
+                        cbVinculado.Items.Add(cj);
+                    }
+                    else if (cj.Categoria.Equals(Categoria.Organização_Social))
+                    {
+                        cbOrganizacaoSocial.Items.Add(cj);
+                    }
+                }
             }
         }
 
@@ -135,7 +164,7 @@ namespace ClassUi.Views.Pages
                 contatoJuridico.Tipo = Tipo.Juridica;
                 contatoJuridico.Emails = listEmail;
                 contatoJuridico.Telefones = listTelefone;
-                contatoJuridico.ContatoJur = (ContatoJuridico)cbVinculado.SelectedItem;
+                contatoJuridico.Auditoria = (ContatoJuridico)cbVinculado.SelectedItem;
 
                 controleContato.salvarContatoJuridico(contatoJuridico);
 
@@ -196,6 +225,22 @@ namespace ClassUi.Views.Pages
                     DGTelefone.ItemsSource = null;
 
                     DGTelefone.ItemsSource = listTelefone;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void CbCategoria_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (cbCategoria.SelectedItem.Equals(Categoria.Unidade_de_Saúde))
+                {
+                    cbVinculado.IsEnabled = true;
+                    cbOrganizacaoSocial.IsEnabled = true;
                 }
             }
             catch (Exception ex)

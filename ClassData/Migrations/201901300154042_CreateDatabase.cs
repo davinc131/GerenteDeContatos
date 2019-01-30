@@ -3,7 +3,7 @@ namespace ClassData.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreateDataBase : DbMigration
+    public partial class CreateDatabase : DbMigration
     {
         public override void Up()
         {
@@ -16,11 +16,17 @@ namespace ClassData.Migrations
                         Nome = c.String(),
                         Descricao = c.String(),
                         Tipo = c.Int(nullable: false),
-                        ContatoJur_Id = c.Int(),
+                        Auditoria_Id = c.Int(),
+                        ContatoJuridico_Id = c.Int(),
+                        OrganizacaoSocial_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.ContatoJuridico", t => t.ContatoJur_Id)
-                .Index(t => t.ContatoJur_Id);
+                .ForeignKey("dbo.ContatoJuridico", t => t.Auditoria_Id)
+                .ForeignKey("dbo.ContatoJuridico", t => t.ContatoJuridico_Id)
+                .ForeignKey("dbo.ContatoJuridico", t => t.OrganizacaoSocial_Id)
+                .Index(t => t.Auditoria_Id)
+                .Index(t => t.ContatoJuridico_Id)
+                .Index(t => t.OrganizacaoSocial_Id);
             
             CreateTable(
                 "dbo.Contato",
@@ -76,17 +82,21 @@ namespace ClassData.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.Telefone", "ContatoJuridico_Id", "dbo.ContatoJuridico");
+            DropForeignKey("dbo.ContatoJuridico", "OrganizacaoSocial_Id", "dbo.ContatoJuridico");
+            DropForeignKey("dbo.ContatoJuridico", "ContatoJuridico_Id", "dbo.ContatoJuridico");
             DropForeignKey("dbo.Email", "ContatoJuridico_Id", "dbo.ContatoJuridico");
             DropForeignKey("dbo.Telefone", "Contato_Id", "dbo.Contato");
             DropForeignKey("dbo.Email", "Contato_Id", "dbo.Contato");
             DropForeignKey("dbo.Contato", "ContatoJuridico_Id", "dbo.ContatoJuridico");
-            DropForeignKey("dbo.ContatoJuridico", "ContatoJur_Id", "dbo.ContatoJuridico");
+            DropForeignKey("dbo.ContatoJuridico", "Auditoria_Id", "dbo.ContatoJuridico");
             DropIndex("dbo.Telefone", new[] { "ContatoJuridico_Id" });
             DropIndex("dbo.Telefone", new[] { "Contato_Id" });
             DropIndex("dbo.Email", new[] { "ContatoJuridico_Id" });
             DropIndex("dbo.Email", new[] { "Contato_Id" });
             DropIndex("dbo.Contato", new[] { "ContatoJuridico_Id" });
-            DropIndex("dbo.ContatoJuridico", new[] { "ContatoJur_Id" });
+            DropIndex("dbo.ContatoJuridico", new[] { "OrganizacaoSocial_Id" });
+            DropIndex("dbo.ContatoJuridico", new[] { "ContatoJuridico_Id" });
+            DropIndex("dbo.ContatoJuridico", new[] { "Auditoria_Id" });
             DropTable("dbo.Telefone");
             DropTable("dbo.Email");
             DropTable("dbo.Contato");

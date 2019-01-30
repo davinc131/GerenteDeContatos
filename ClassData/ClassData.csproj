@@ -113,9 +113,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContatoDbContext.cs" />
-    <Compile Include="Migrations\201901280245011_CreateDataBase.cs" />
-    <Compile Include="Migrations\201901280245011_CreateDataBase.Designer.cs">
-      <DependentUpon>201901280245011_CreateDataBase.cs</DependentUpon>
+    <Compile Include="Migrations\201901300154042_CreateDatabase.cs" />
+    <Compile Include="Migrations\201901300154042_CreateDatabase.Designer.cs">
+      <DependentUpon>201901300154042_CreateDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PersistContato.cs" />
@@ -133,8 +133,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901280245011_CreateDataBase.resx">
-      <DependentUpon>201901280245011_CreateDataBase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901300154042_CreateDatabase.resx">
+      <DependentUpon>201901300154042_CreateDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

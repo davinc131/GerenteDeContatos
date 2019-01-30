@@ -14,11 +14,11 @@ namespace ClassData
         {
             using (ContatoDbContext con = new ContatoDbContext())
             {
-                if (contatoJuridico.ContatoJur != null)
+                if (contatoJuridico.Auditoria != null)
                 {
-                    int i = contatoJuridico.ContatoJur.Id;
-                    contatoJuridico.ContatoJur = null;
-                    contatoJuridico.ContatoJur = con.ContatoJuridicos.Find(i);
+                    int i = contatoJuridico.Auditoria.Id;
+                    contatoJuridico.Auditoria = null;
+                    contatoJuridico.Auditoria = con.ContatoJuridicos.Find(i);
                     con.ContatoJuridicos.Add(contatoJuridico);
                     con.SaveChanges();
                 }
@@ -39,6 +39,20 @@ namespace ClassData
                 List<ContatoJuridico> listaContatos = Contatos.ToList<ContatoJuridico>();
 
                 return listaContatos;
+            }
+        }
+
+        public void Modificar(ContatoJuridico contatoJuridico)
+        {
+            using (var db = new ContatoDbContext())
+            {
+                var result = db.ContatoJuridicos.SingleOrDefault(b => b.Id == contatoJuridico.Id);
+
+                if (result != null)
+                {
+                    result = contatoJuridico;
+                    db.SaveChanges();
+                }
             }
         }
 

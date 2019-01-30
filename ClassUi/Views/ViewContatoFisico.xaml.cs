@@ -43,8 +43,22 @@ namespace ClassUi.Views
         {
             try
             {
-                Pages.Page_Contato_Fisica PaginaContatoFisico = new Pages.Page_Contato_Fisica(false);
-                FrameContatoFisico.Content = PaginaContatoFisico;
+                ClassModel.Contato c = new ClassModel.Contato();
+                c = null;
+                Pages.Page_Contato_Fisica PaginaContatoFisico = new Pages.Page_Contato_Fisica(false, c);
+                AbrirDeUmaPagina(PaginaContatoFisico);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void AbrirDeUmaPagina(Page p)
+        {
+            try
+            {
+                this.FrameContatoFisico.Content = p;
             }
             catch (Exception ex)
             {

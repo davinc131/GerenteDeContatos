@@ -31,6 +31,11 @@ namespace ClassControle
             contato.Excluir(id);
         }
 
+        public void Modificar(ContatoJuridico c)
+        {
+            contato.Modificar(c);
+        }
+
         public bool ValidarTelefone(string f)
         {
             return validarTelefone.validarTelefone(f);

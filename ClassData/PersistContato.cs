@@ -35,10 +35,24 @@ namespace ClassData
         {
             using (var context = new ContatoDbContext())
             {
-                var Contatos = context.Contatos.Include(e => e.Emails).Include(t => t.Telefones).ToList();
+                var Contatos = context.Contatos.Include(e => e.Emails).Include(t => t.Telefones).Include(j => j.ContatoJuridico).ToList();
                 List<Contato> listaContatos = Contatos.ToList<Contato>();
 
                 return listaContatos;
+            }
+        }
+
+        public void Modificar(Contato contato)
+        {
+            using (var db = new ContatoDbContext())
+            {
+                var result = db.Contatos.SingleOrDefault(b => b.Id == contato.Id);
+
+                if (result != null)
+                {
+                    result = contato;
+                    db.SaveChanges();
+                }
             }
         }
 
