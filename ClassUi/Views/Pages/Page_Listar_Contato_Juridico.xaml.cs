@@ -34,7 +34,15 @@ namespace ClassUi.Views.Pages
         {
             try
             {
+                ContatoJuridico c = new ContatoJuridico();
+                c = (ContatoJuridico)DgContato.SelectedItem;
 
+                Page_Contato_Juridico p = new Page_Contato_Juridico(true, c);
+
+                ViewContatoJuridico v = new ViewContatoJuridico();
+
+                v.AbrirDeUmaPagina(p);
+                v.Show();
             }
             catch (Exception ex)
             {

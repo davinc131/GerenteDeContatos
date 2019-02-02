@@ -12,6 +12,9 @@ namespace ClassModel
         public string EndEmail { get; set; }
         public Departamento Departamento { get; set; }
 
+        public virtual Contato Contato { get; set; }
+        public virtual ContatoJuridico ContatoJuridico { get; set; }
+
         override
         public string ToString()
         {

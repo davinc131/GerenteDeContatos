@@ -14,6 +14,9 @@ namespace ClassModel
         public bool Celular { get; set; }
         public bool Whatsapp { get; set; }
 
+        public virtual Contato Contato { get; set; }
+        public virtual ContatoJuridico ContatoJuridico { get; set; }
+
         override
         public string ToString()
         {

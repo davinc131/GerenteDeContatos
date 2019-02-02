@@ -15,7 +15,13 @@ namespace ClassModel
         public Categoria Categoria { get; set; }
         public virtual ContatoJuridico Auditoria { get; set; }
         public virtual ContatoJuridico OrganizacaoSocial { get; set; }
-        public List<Contato> Contatos { get; set; }
-        public List<ContatoJuridico> Juridicos { get; set; }
+        public ICollection<Contato> Contatos { get; set; }
+        public ICollection<ContatoJuridico> Juridicos { get; set; }
+
+        public ContatoJuridico()
+        {
+            Contatos = new List<Contato>();
+            Juridicos = new List<ContatoJuridico>();
+        }
     }
 }

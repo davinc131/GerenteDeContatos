@@ -3,7 +3,7 @@ namespace ClassData.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreateDatabase : DbMigration
+    public partial class CreateDataBase : DbMigration
     {
         public override void Up()
         {
@@ -81,11 +81,11 @@ namespace ClassData.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Telefone", "ContatoJuridico_Id", "dbo.ContatoJuridico");
             DropForeignKey("dbo.ContatoJuridico", "OrganizacaoSocial_Id", "dbo.ContatoJuridico");
             DropForeignKey("dbo.ContatoJuridico", "ContatoJuridico_Id", "dbo.ContatoJuridico");
-            DropForeignKey("dbo.Email", "ContatoJuridico_Id", "dbo.ContatoJuridico");
+            DropForeignKey("dbo.Telefone", "ContatoJuridico_Id", "dbo.ContatoJuridico");
             DropForeignKey("dbo.Telefone", "Contato_Id", "dbo.Contato");
+            DropForeignKey("dbo.Email", "ContatoJuridico_Id", "dbo.ContatoJuridico");
             DropForeignKey("dbo.Email", "Contato_Id", "dbo.Contato");
             DropForeignKey("dbo.Contato", "ContatoJuridico_Id", "dbo.ContatoJuridico");
             DropForeignKey("dbo.ContatoJuridico", "Auditoria_Id", "dbo.ContatoJuridico");

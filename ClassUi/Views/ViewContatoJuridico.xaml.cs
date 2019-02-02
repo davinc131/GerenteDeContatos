@@ -29,7 +29,7 @@ namespace ClassUi.Views
             try
             {
                 Pages.Page_Listar_Contato_Juridico PaginaListarContatoFisico = new Pages.Page_Listar_Contato_Juridico();
-                FrameContatoFisico.Content = PaginaListarContatoFisico;
+                AbrirDeUmaPagina(PaginaListarContatoFisico);
             }
             catch (Exception ex)
             {
@@ -43,8 +43,20 @@ namespace ClassUi.Views
             {
                 ClassModel.ContatoJuridico c = new ClassModel.ContatoJuridico();
                 c = null;
-                Pages.Page_Contato_Juridico PaginaContatoFisico = new Pages.Page_Contato_Juridico(false, c);
-                FrameContatoFisico.Content = PaginaContatoFisico;
+                Pages.Page_Contato_Juridico PaginaContatoJuridico = new Pages.Page_Contato_Juridico(false, c);
+                AbrirDeUmaPagina(PaginaContatoJuridico);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void AbrirDeUmaPagina(Page p)
+        {
+            try
+            {
+                this.FrameContatoFisico.Content = p;
             }
             catch (Exception ex)
             {

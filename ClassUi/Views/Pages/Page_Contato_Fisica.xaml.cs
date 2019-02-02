@@ -27,8 +27,9 @@ namespace ClassUi.Views.Pages
 
         private ControleContato controleContato = new ControleContato();
         private ControleContatoJuridico controleJuridico = new ControleContatoJuridico();
-        private List<Telefone> listTelefone = new List<Telefone>();
-        private List<Email> listEmail = new List<Email>();
+        private ICollection<Telefone> listTelefone = new List<Telefone>();
+        private ICollection<Email> listEmail = new List<Email>();
+        private Contato contato = new Contato();
         
         #endregion
 
@@ -39,7 +40,9 @@ namespace ClassUi.Views.Pages
             cbDepartamento.ItemsSource = Enum.GetValues(typeof(Departamento)).Cast<Departamento>();
             cbVinculado.ItemsSource = controleJuridico.ListarContatoJuridico();
 
-            ControlePagina(editar, c);
+            this.contato = c;
+
+            ControlePagina(editar, contato);
         }
 
         private void ControlePagina(bool editar, Contato c)
@@ -49,10 +52,13 @@ namespace ClassUi.Views.Pages
                 btnGravar.IsEnabled = false;
                 btnEditar.IsEnabled = true;
 
+                listEmail = c.Emails;
+                listTelefone = c.Telefones;
+
                 txtNome.Text = c.Nome;
                 txtDescricao.Text = c.Descricao;
-                DGEmail.ItemsSource = c.Emails;
-                DGTelefone.ItemsSource = c.Telefones;
+                DGEmail.ItemsSource = listEmail;
+                DGTelefone.ItemsSource = listTelefone;
                 cbDepartamento.SelectedItem = c.Departamento;
 
                 for (int i = 0; i < cbVinculado.Items.Count; i++)
@@ -62,9 +68,6 @@ namespace ClassUi.Views.Pages
                         cbVinculado.SelectedIndex = i;
                     }
                 }
-
-                //cbVinculado.SelectedItem = c.ContatoJuridico.ToString();
-                //cbVinculado.SelectedValue = c.ContatoJuridico;
             }
             else
             {
@@ -77,8 +80,6 @@ namespace ClassUi.Views.Pages
         {
             try
             {
-                Contato contato = new Contato();
-
                 contato.Nome = txtNome.Text;
                 contato.Descricao = txtDescricao.Text;
                 contato.Departamento = (Departamento)cbDepartamento.SelectedItem;
@@ -101,7 +102,17 @@ namespace ClassUi.Views.Pages
         {
             try
             {
+                contato.Nome = txtNome.Text;
+                contato.Descricao = txtDescricao.Text;
+                contato.Departamento = (Departamento)cbDepartamento.SelectedItem;
+                contato.Tipo = Tipo.Fisica;
+                contato.Emails = listEmail;
+                contato.Telefones = listTelefone;
+                contato.ContatoJuridico = (ContatoJuridico)cbVinculado.SelectedItem;
 
+                controleContato.Modificar(contato);
+
+                MessageBox.Show("Novo contato pessoa fisica cadasatrado com sucesso!", "Sucesso");
             }
             catch (Exception ex)
             {

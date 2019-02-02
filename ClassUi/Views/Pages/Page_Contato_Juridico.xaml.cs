@@ -24,10 +24,15 @@ namespace ClassUi.Views.Pages
     {
         #region Variaveis
         private ControleContatoJuridico controleContato = new ControleContatoJuridico();
-        private List<Telefone> listTelefone = new List<Telefone>();
-        private List<Email> listEmail = new List<Email>();
-        private List<ContatoJuridico> auditoria = new List<ContatoJuridico>();
-        private List<ContatoJuridico> organizacaoSocial = new List<ContatoJuridico>();
+        private ICollection<Telefone> listTelefone = new List<Telefone>();
+        private ICollection<Email> listEmail = new List<Email>();
+        private ICollection<ContatoJuridico> auditoria = new List<ContatoJuridico>();
+        private ICollection<ContatoJuridico> organizacaoSocial = new List<ContatoJuridico>();
+
+        private List<ContatoJuridico> listAuditoria = new List<ContatoJuridico>();
+        private List<ContatoJuridico> listOrganizacaoSocial = new List<ContatoJuridico>();
+
+        private ContatoJuridico contatoJuridico = new ContatoJuridico();
 
         #endregion
 
@@ -40,7 +45,9 @@ namespace ClassUi.Views.Pages
             cbDepTelefone.ItemsSource = Enum.GetValues(typeof(Departamento)).Cast<Departamento>();
             auditoria = controleContato.ListarContatoJuridico();
 
-            ControlePagina(editar, c);
+            contatoJuridico = c;
+
+            ControlePagina(editar, contatoJuridico);
         }
 
         private void ControlePagina(bool editar, ContatoJuridico c)
@@ -58,11 +65,44 @@ namespace ClassUi.Views.Pages
                     if (cj.Categoria.Equals(Categoria.Auditoria))
                     {
                         cbVinculado.Items.Add(cj);
-                    }else if (cj.Categoria.Equals(Categoria.Organização_Social))
+                    }
+                    else if (cj.Categoria.Equals(Categoria.Organização_Social))
                     {
                         cbOrganizacaoSocial.Items.Add(cj);
                     }
                 }
+
+                cbCategoria.SelectedItem = c.Categoria;
+                txtNome.Text = c.Nome;
+                txtDescricao.Text = c.Descricao;
+
+                if (c.Categoria.Equals(Categoria.Unidade_de_Saúde))
+                {
+                    cbVinculado.IsEnabled = true;
+                    cbOrganizacaoSocial.IsEnabled = true;
+
+                    for (int i = 0; i < auditoria.Count; i++)
+                    {
+                        if (auditoria.ToList()[i].ToString().Equals(c.Auditoria.ToString()))
+                        {
+                            cbVinculado.SelectedIndex = i;
+                        }
+                    }
+
+                    for (int i = 0; i < organizacaoSocial.Count; i++)
+                    {
+                        if (organizacaoSocial.ToList()[i].ToString().Equals(c.OrganizacaoSocial.ToString()))
+                        {
+                            cbOrganizacaoSocial.SelectedIndex = i;
+                        }
+                    }
+                }
+
+                listEmail = c.Emails;
+                listTelefone = c.Telefones;
+
+                DGEmail.ItemsSource = listEmail;
+                DGTelefone.ItemsSource = listTelefone;
             }
             else
             {
@@ -156,8 +196,6 @@ namespace ClassUi.Views.Pages
         {
             try
             {
-                ContatoJuridico contatoJuridico = new ContatoJuridico();
-
                 contatoJuridico.Nome = txtNome.Text;
                 contatoJuridico.Descricao = txtDescricao.Text;
                 contatoJuridico.Categoria = (Categoria)cbCategoria.SelectedItem;
@@ -178,7 +216,24 @@ namespace ClassUi.Views.Pages
 
         private void BtnEditar_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                contatoJuridico.Nome = txtNome.Text;
+                contatoJuridico.Descricao = txtDescricao.Text;
+                contatoJuridico.Categoria = (Categoria)cbCategoria.SelectedItem;
+                contatoJuridico.Tipo = Tipo.Juridica;
+                contatoJuridico.Emails = listEmail;
+                contatoJuridico.Telefones = listTelefone;
+                contatoJuridico.Auditoria = (ContatoJuridico)cbVinculado.SelectedItem;
 
+                controleContato.Modificar(contatoJuridico);
+
+                MessageBox.Show("Novo contato jurídico gravado com sucesso!", "Sucesso");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void limparCampos()
