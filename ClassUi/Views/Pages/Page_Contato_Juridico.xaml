@@ -70,7 +70,7 @@
             <Image Source="/Imagens/Botão Sinal de Mais.png"></Image>
         </Button>
         <ComboBox x:Name="cbDepEmail" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5" Grid.Row="7" VerticalAlignment="Center" MaxDropDownHeight="255" MinWidth="220"/>
-        <DataGrid x:Name="DGEmail" AutoGenerateColumns="False" Grid.Column="1" Margin="0,5" Grid.Row="8" Grid.RowSpan="2" Grid.ColumnSpan="2"  AlternationCount="2" RowBackground="Beige" AlternatingRowBackground="LightBlue">
+        <DataGrid x:Name="DGEmail" AutoGenerateColumns="False" Grid.Column="1" Margin="0,5" Grid.Row="8" Grid.RowSpan="2" Grid.ColumnSpan="2"  AlternationCount="2" RowBackground="Silver" AlternatingRowBackground="WhiteSmoke">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="email" Header="Email" Binding="{Binding Path=EndEmail}" Width="*"/>
 
@@ -83,6 +83,27 @@
                 </DataGridTemplateColumn>
 
             </DataGrid.Columns>
+
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DockPanel Background="GhostWhite">
+                        <Grid Margin="0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Email: " FontWeight="Bold" />
+                            <TextBlock Text="{Binding EndEmail}" Grid.Column="1" />
+                            <TextBlock Text="Departamento: " FontWeight="Bold" Grid.Row="1" />
+                            <TextBlock Text="{Binding Departamento}" Grid.Column="1" Grid.Row="1" />
+                        </Grid>
+                    </DockPanel>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
         </DataGrid>
         <!--#endregion-->
 
@@ -96,7 +117,7 @@
             <Image Source="/Imagens/Botão Sinal de Mais.png"></Image>
         </Button>
         <ComboBox x:Name="cbDepTelefone" Grid.ColumnSpan="3" Grid.Column="4" HorizontalAlignment="Left" Margin="0,5" Grid.Row="7" VerticalAlignment="Center" MinWidth="280"/>
-        <DataGrid x:Name="DGTelefone" AutoGenerateColumns="False" Grid.Column="4" Margin="0,5" Grid.Row="8" Grid.RowSpan="2" Grid.ColumnSpan="3" RowBackground="Beige" AlternatingRowBackground="LightBlue">
+        <DataGrid x:Name="DGTelefone" AutoGenerateColumns="False" Grid.Column="4" Margin="0,5" Grid.Row="8" Grid.RowSpan="2" Grid.ColumnSpan="3" RowBackground="Silver" AlternatingRowBackground="WhiteSmoke">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="telefone" Header="Telefone" Binding="{Binding Path=NumTelefone}" Width="*"/>
 
@@ -109,6 +130,27 @@
                 </DataGridTemplateColumn>
 
             </DataGrid.Columns>
+
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DockPanel Background="GhostWhite">
+                        <Grid Margin="0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Número: " FontWeight="Bold" />
+                            <TextBlock Text="{Binding NumTelefone}" Grid.Column="1" />
+                            <TextBlock Text="Departamento: " FontWeight="Bold" Grid.Row="1" />
+                            <TextBlock Text="{Binding Departamento}" Grid.Column="1" Grid.Row="1" />
+                        </Grid>
+                    </DockPanel>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
         </DataGrid>
         <!--#endregion-->
 

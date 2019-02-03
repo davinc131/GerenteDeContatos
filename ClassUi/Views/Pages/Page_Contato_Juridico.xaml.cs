@@ -133,6 +133,7 @@ namespace ClassUi.Views.Pages
                     {
                         Email email = new Email();
                         email.EndEmail = txtEmail.Text;
+                        email.Departamento = (Departamento)cbDepEmail.SelectedItem;
                         listEmail.Add(email);
                         DGEmail.ItemsSource = null;
 

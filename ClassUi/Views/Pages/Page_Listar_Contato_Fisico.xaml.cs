@@ -75,5 +75,17 @@ namespace ClassUi.Views.Pages
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void BtnCriarDemo_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

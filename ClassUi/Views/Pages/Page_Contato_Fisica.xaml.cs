@@ -36,7 +36,7 @@ namespace ClassUi.Views.Pages
         public Page_Contato_Fisica(bool editar, Contato c)
         {
             InitializeComponent();
-            
+
             cbDepartamento.ItemsSource = Enum.GetValues(typeof(Departamento)).Cast<Departamento>();
             cbVinculado.ItemsSource = controleJuridico.ListarContatoJuridico();
 

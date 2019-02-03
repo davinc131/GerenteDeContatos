@@ -9,7 +9,7 @@
       Title="Page_Listar_Contato_Fisico">
 
     <Grid>
-        <DataGrid x:Name="DgContato" Margin="0" AutoGenerateColumns="False">
+        <DataGrid x:Name="DgContato" Margin="0" AutoGenerateColumns="False" RowBackground="Silver" AlternatingRowBackground="WhiteSmoke">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="Id" Header="Id" Binding="{Binding Path=Id}" Width="5"/>
                 <DataGridTextColumn x:Name="Nome" Header="Nome" Binding="{Binding Path=Nome}" Width="*"/>
@@ -31,6 +31,14 @@
                     </DataGridComboBoxColumn.EditingElementStyle>
                 </DataGridComboBoxColumn>
 
+                <DataGridTemplateColumn Header="PDF">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnCriarDemo" Content="PDF" Click="BtnCriarDemo_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
                 <DataGridTemplateColumn Header="Editar">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -48,6 +56,38 @@
                 </DataGridTemplateColumn>
 
             </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DockPanel Background="GhostWhite">
+                        <Grid Margin="0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Nome: " FontWeight="Bold" />
+                            <TextBlock Text="{Binding Nome}" Grid.Column="1" />
+                            <TextBlock Text="Descrição: " FontWeight="Bold" Grid.Row="1" />
+                            <TextBlock Text="{Binding Descricao}" Grid.Column="1" Grid.Row="1" />
+                            <TextBlock Text="Vinculado: " FontWeight="Bold" Grid.Row="2" />
+                            <TextBlock Text="{Binding ContatoJuridico}" Grid.Column="1" Grid.Row="2" />
+                            <TextBlock Text="Departamento: " FontWeight="Bold" Grid.Row="3" />
+                            <TextBlock Text="{Binding Departamento}" Grid.Column="1" Grid.Row="3" />
+                            <TextBlock Text="Emails: " FontWeight="Bold" Grid.Row="4" />
+                            <ComboBox  ItemsSource="{Binding Path=Emails}" Grid.Column="1" Grid.Row="4" />
+                            <TextBlock Text="Telefones: " FontWeight="Bold" Grid.Row="5" />
+                            <ComboBox  ItemsSource="{Binding Path=Telefones}" Grid.Column="1" Grid.Row="5" />
+                        </Grid>
+                    </DockPanel>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
         </DataGrid>
     </Grid>
 </Page>

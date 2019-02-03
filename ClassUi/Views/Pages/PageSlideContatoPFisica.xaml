@@ -11,10 +11,12 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
+            <RowDefinition Height="15"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Image x:Name="Image1" MinWidth="500" MinHeight="300" Margin="5"/>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+        <ProgressBar x:Name="proStatus" Grid.Row="1" Grid.Column="1" Background="Transparent" Foreground="#FF03ACAC" IsIndeterminate="False"></ProgressBar>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="btnRetroceder" Content="Retroceder" Width="70" Height="35" Margin="5" Click="BtnRetroceder_Click"></Button>
             <Button x:Name="btnAvancar" Content="Avançar" Width="70" Height="35" Margin="5" Click="BtnAvancar_Click"></Button>
         </StackPanel>

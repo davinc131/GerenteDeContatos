@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -38,6 +39,7 @@ namespace ClassUi.Views.Pages
             timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.IsEnabled = true;
+
             timer.Tick += new EventHandler(timer_Tick);
         }
 
@@ -62,6 +64,7 @@ namespace ClassUi.Views.Pages
                     timer.Interval = new TimeSpan(0, 0, 5);
                 }
 
+                controleProgressBar();
                 cont++;
             }
             catch (Exception ex)
@@ -74,6 +77,7 @@ namespace ClassUi.Views.Pages
         {
             try
             {
+                controleProgressBar();
                 cont++;
 
                 if (cont > 3)
@@ -97,6 +101,7 @@ namespace ClassUi.Views.Pages
         {
             try
             {
+                controleProgressBar();
                 cont--;
 
                 if (cont > 3)
@@ -114,6 +119,17 @@ namespace ClassUi.Views.Pages
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        public void controleProgressBar()
+        {
+            proStatus.Maximum = timer.Interval.TotalSeconds;
+            proStatus.Minimum = 0;
+            proStatus.BeginAnimation(ProgressBar.ValueProperty, null);
+
+            Duration dur = new Duration(TimeSpan.FromSeconds(timer.Interval.TotalSeconds));
+            DoubleAnimation dblAnim = new DoubleAnimation(5.0, dur);
+            proStatus.BeginAnimation(ProgressBar.ValueProperty, dblAnim);
         }
     }
 }

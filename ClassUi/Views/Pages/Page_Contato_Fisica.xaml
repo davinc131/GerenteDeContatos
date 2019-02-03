@@ -64,7 +64,7 @@
         <Button x:Name="btnAddEmail" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,4" Grid.Row="6" Width="35" Background="{x:Null}" Height="35" Click="BtnAddEmail_Click">
             <Image Source="/Imagens/Botão Sinal de Mais.png"></Image>
         </Button>
-        <DataGrid x:Name="DGEmail" AutoGenerateColumns="False" Grid.Column="1" Margin="0,5" Grid.Row="7" Grid.RowSpan="2" Grid.ColumnSpan="2"  AlternationCount="2" RowBackground="Beige" AlternatingRowBackground="LightBlue">
+        <DataGrid x:Name="DGEmail" AutoGenerateColumns="False" Grid.Column="1" Margin="0,5" Grid.Row="7" Grid.RowSpan="2" Grid.ColumnSpan="2"  AlternationCount="2" RowBackground="Silver" AlternatingRowBackground="WhiteSmoke">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="email" Header="Email" Binding="{Binding Path=EndEmail}" Width="*"/>
 
@@ -75,7 +75,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                
+
             </DataGrid.Columns>
         </DataGrid>
         <!--#endregion-->
@@ -88,7 +88,7 @@
         <Button x:Name="btnAddTelefone" Grid.Column="6" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,4,0,4" Grid.Row="6" Width="35" Background="{x:Null}" Height="35" Click="BtnAddTelefone_Click">
             <Image Source="/Imagens/Botão Sinal de Mais.png"></Image>
         </Button>
-        <DataGrid x:Name="DGTelefone" AutoGenerateColumns="False" Grid.Column="4" Margin="0,5" Grid.Row="7" Grid.RowSpan="2" Grid.ColumnSpan="3" RowBackground="Beige" AlternatingRowBackground="LightBlue">
+        <DataGrid x:Name="DGTelefone" AutoGenerateColumns="False" Grid.Column="4" Margin="0,5" Grid.Row="7" Grid.RowSpan="2" Grid.ColumnSpan="3" RowBackground="Silver" AlternatingRowBackground="WhiteSmoke">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="telefone" Header="Telefone" Binding="{Binding Path=NumTelefone}" Width="*"/>
 
@@ -99,7 +99,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                
+
             </DataGrid.Columns>
         </DataGrid>
         <!--#endregion-->

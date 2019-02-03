@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,14 @@ namespace ClassUi.Views.Pages
         {
             InitializeComponent();
             DgContato.ItemsSource = controleContato.ListarContatoJuridico();
+
+            ICollectionView view = CollectionViewSource.GetDefaultView(DgContato.ItemsSource);
+
+            view.SortDescriptions.Add(new SortDescription("Categoria", ListSortDirection.Ascending));
+
+            view.SortDescriptions.Add(new SortDescription("Categoria", ListSortDirection.Ascending));
+
+            view.GroupDescriptions.Add(new PropertyGroupDescription("Categoria"));
         }
 
         private void BtnEditarContato_Click(object sender, RoutedEventArgs e)
@@ -67,6 +76,18 @@ namespace ClassUi.Views.Pages
                     DgContato.ItemsSource = null;
                     DgContato.ItemsSource = controleContato.ListarContatoJuridico();
                 }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BtnCriarDemo_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
 
             }
             catch (Exception ex)
