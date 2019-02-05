@@ -197,15 +197,74 @@ namespace ClassUi.Views.Pages
         {
             try
             {
-                contatoJuridico.Nome = txtNome.Text;
-                contatoJuridico.Descricao = txtDescricao.Text;
-                contatoJuridico.Categoria = (Categoria)cbCategoria.SelectedItem;
-                contatoJuridico.Tipo = Tipo.Juridica;
-                contatoJuridico.Emails = listEmail;
-                contatoJuridico.Telefones = listTelefone;
-                contatoJuridico.Auditoria = (ContatoJuridico)cbVinculado.SelectedItem;
+                bool bnome = false;
+                bool bcategoria = false;
+                bool bemail = false;
+                bool btelefone = false;
 
-                controleContato.salvarContatoJuridico(contatoJuridico);
+                if(txtNome.Text != null|| txtNome.Text != "")
+                {
+                    bnome = true;
+                    contatoJuridico.Nome = txtNome.Text;
+                }
+                else
+                {
+                    MessageBox.Show("Informe um nome!");
+                }
+                
+                if(txtDescricao.Text != null || txtDescricao.Text != "")
+                {
+                    contatoJuridico.Descricao = txtDescricao.Text;
+                }
+                else
+                {
+                    MessageBox.Show("Informe uma descrição!");
+                }
+
+                if (cbCategoria.SelectedItem != null)
+                {
+                    bcategoria = true;
+                    contatoJuridico.Categoria = (Categoria)cbCategoria.SelectedItem;
+                }
+                else
+                {
+                    contatoJuridico.Categoria = 0;
+                }
+                
+                contatoJuridico.Tipo = Tipo.Juridica;
+
+                if(listEmail.Count == 0 && listTelefone.Count == 0)
+                {
+                    MessageBox.Show("Informe um endereço de email ou um número de telefone para continuar com o processo de cadastro");
+                }
+
+                if(listEmail.Count != 0)
+                {
+                    bemail = true;
+                    contatoJuridico.Emails = listEmail;
+                }
+
+                if(listTelefone.Count != 0)
+                {
+                    btelefone = true;
+                    contatoJuridico.Telefones = listTelefone;
+                }
+                
+                if(cbVinculado.SelectedItem != null)
+                {
+                    contatoJuridico.Auditoria = (ContatoJuridico)cbVinculado.SelectedItem;
+                }
+                
+
+                if(bnome.Equals(false)|| bcategoria.Equals(false) || bemail.Equals(false) && btelefone.Equals(false))
+                {
+                    MessageBox.Show("Um ou mais dados obrigatórios estão ausentes (Nome, Categoria, Email ou Telefone).");
+                }
+                else
+                {
+                    controleContato.salvarContatoJuridico(contatoJuridico);
+                }
+                
 
                 MessageBox.Show("Novo contato jurídico gravado com sucesso!", "Sucesso");
             }
@@ -297,6 +356,13 @@ namespace ClassUi.Views.Pages
                 {
                     cbVinculado.IsEnabled = true;
                     cbOrganizacaoSocial.IsEnabled = true;
+                }
+                else
+                {
+                    cbVinculado.SelectedItem = null;
+                    cbOrganizacaoSocial.SelectedItem = null;
+                    cbVinculado.IsEnabled = false;
+                    cbOrganizacaoSocial.IsEnabled = false;
                 }
             }
             catch (Exception ex)

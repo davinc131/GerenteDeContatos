@@ -22,5 +22,10 @@ namespace ClassModel
         {
             return NumTelefone;
         }
+
+        public string ToDetalhes()
+        {
+            return NumTelefone + " - " + Departamento;
+        }
     }
 }

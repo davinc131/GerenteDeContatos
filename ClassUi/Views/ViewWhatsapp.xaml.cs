@@ -22,6 +22,33 @@ namespace ClassUi.Views
         public ViewWhatsapp()
         {
             InitializeComponent();
+
+            Pages.PageSlideWhatsapp pageSlideWhatsapp = new Pages.PageSlideWhatsapp();
+            AbrirDeUmaPagina(pageSlideWhatsapp);
+        }
+
+        private void BtnNovo_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void AbrirDeUmaPagina(Page p)
+        {
+            try
+            {
+                this.FrameContatoFisico.Content = p;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

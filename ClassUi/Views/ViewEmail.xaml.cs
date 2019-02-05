@@ -22,6 +22,33 @@ namespace ClassUi.Views
         public ViewEmail()
         {
             InitializeComponent();
+
+            Pages.PageSlideEmail PageSlideEmail = new Pages.PageSlideEmail();
+            AbrirDeUmaPagina(PageSlideEmail);
+        }
+
+        private void BtnNovo_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void AbrirDeUmaPagina(Page p)
+        {
+            try
+            {
+                this.FrameContatoFisico.Content = p;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

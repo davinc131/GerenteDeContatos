@@ -80,14 +80,28 @@ namespace ClassUi.Views.Pages
         {
             try
             {
+                contato = new Contato();
                 contato.Nome = txtNome.Text;
                 contato.Descricao = txtDescricao.Text;
-                contato.Departamento = (Departamento)cbDepartamento.SelectedItem;
+
+                if(cbDepartamento.SelectedItem != null)
+                {
+                    contato.Departamento = (Departamento)cbDepartamento.SelectedItem;
+                }
+                else
+                {
+                    contato.Departamento = 0;
+                }
+                
                 contato.Tipo = Tipo.Fisica;
                 contato.Emails = listEmail;
                 contato.Telefones = listTelefone;
-                contato.ContatoJuridico = (ContatoJuridico)cbVinculado.SelectedItem;
 
+                if(cbVinculado.SelectedItem != null)
+                {
+                    contato.ContatoJuridico = (ContatoJuridico)cbVinculado.SelectedItem;
+                }
+                
                 controleContato.salvarContato(contato);
 
                 MessageBox.Show("Novo contato pessoa fisica cadasatrado com sucesso!", "Sucesso");

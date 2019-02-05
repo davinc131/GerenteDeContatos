@@ -18,16 +18,15 @@ using System.Windows.Threading;
 namespace ClassUi.Views.Pages
 {
     /// <summary>
-    /// Interação lógica para PageContatoPFisica.xam
+    /// Interação lógica para PageSlideEmail.xam
     /// </summary>
-    public partial class PageSlideContatoPFisica : Page
+    public partial class PageSlideEmail : Page
     {
-
         List<Uri> uris = new List<Uri>();
         DispatcherTimer timer;
         int cont = 0;
 
-        public PageSlideContatoPFisica()
+        public PageSlideEmail()
         {
             InitializeComponent();
 

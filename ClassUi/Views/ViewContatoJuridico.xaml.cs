@@ -22,6 +22,9 @@ namespace ClassUi.Views
         public ViewContatoJuridico()
         {
             InitializeComponent();
+
+            Pages.PageSlideContatoPJuridica PaginaSlidePessoJuridica = new Pages.PageSlideContatoPJuridica();
+            AbrirDeUmaPagina(PaginaSlidePessoJuridica);
         }
 
         private void BtnListar_Click(object sender, RoutedEventArgs e)

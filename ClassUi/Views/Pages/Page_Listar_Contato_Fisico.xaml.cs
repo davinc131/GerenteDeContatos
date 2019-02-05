@@ -80,7 +80,11 @@ namespace ClassUi.Views.Pages
         {
             try
             {
+                Contato c = (Contato)DgContato.SelectedItem;
 
+                ViewDetalhes view = new ViewDetalhes();
+                view.DetalhesContatoFisico(c);
+                view.Show();
             }
             catch (Exception ex)
             {

@@ -150,6 +150,15 @@
     <Compile Include="Views\Pages\PageSlideContatoPFisica.xaml.cs">
       <DependentUpon>PageSlideContatoPFisica.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\PageSlideContatoPJuridica.xaml.cs">
+      <DependentUpon>PageSlideContatoPJuridica.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\PageSlideEmail.xaml.cs">
+      <DependentUpon>PageSlideEmail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\PageSlideWhatsapp.xaml.cs">
+      <DependentUpon>PageSlideWhatsapp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\Page_Contato_Fisica.xaml.cs">
       <DependentUpon>Page_Contato_Fisica.xaml</DependentUpon>
     </Compile>
@@ -167,6 +176,9 @@
     </Compile>
     <Compile Include="Views\ViewContatoJuridico.xaml.cs">
       <DependentUpon>ViewContatoJuridico.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewDetalhes.xaml.cs">
+      <DependentUpon>ViewDetalhes.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewEmail.xaml.cs">
       <DependentUpon>ViewEmail.xaml</DependentUpon>
@@ -193,6 +205,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Pages\PageSlideContatoPJuridica.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\PageSlideEmail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\PageSlideWhatsapp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\Page_Contato_Fisica.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -214,6 +238,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ViewContatoJuridico.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewDetalhes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -315,6 +343,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagens\icone-telefone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagens\Close_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

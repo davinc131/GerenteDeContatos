@@ -12,6 +12,7 @@ namespace ClassModel
         Organização_Social = 2,
         Unidade_de_Saúde = 3,
         Fornecedor_de_Serviços = 4,
-        Fornecedor_Comercial = 5
+        Fornecedor_Comercial = 5,
+        Instituíção_Financeira = 6
     }
 }

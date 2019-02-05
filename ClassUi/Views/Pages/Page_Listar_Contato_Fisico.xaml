@@ -31,10 +31,10 @@
                     </DataGridComboBoxColumn.EditingElementStyle>
                 </DataGridComboBoxColumn>
 
-                <DataGridTemplateColumn Header="PDF">
+                <DataGridTemplateColumn Header="View">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="btnCriarDemo" Content="PDF" Click="BtnCriarDemo_Click"/>
+                            <Button Name="btnCriarDemo" Content="View" Click="BtnCriarDemo_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

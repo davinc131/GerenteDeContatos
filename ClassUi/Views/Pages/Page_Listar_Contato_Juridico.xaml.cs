@@ -30,13 +30,13 @@ namespace ClassUi.Views.Pages
             InitializeComponent();
             DgContato.ItemsSource = controleContato.ListarContatoJuridico();
 
-            ICollectionView view = CollectionViewSource.GetDefaultView(DgContato.ItemsSource);
+            //ICollectionView view = CollectionViewSource.GetDefaultView(DgContato.ItemsSource);
 
-            view.SortDescriptions.Add(new SortDescription("Categoria", ListSortDirection.Ascending));
+            //view.SortDescriptions.Add(new SortDescription("Categoria", ListSortDirection.Ascending));
 
-            view.SortDescriptions.Add(new SortDescription("Categoria", ListSortDirection.Ascending));
+            //view.SortDescriptions.Add(new SortDescription("Categoria", ListSortDirection.Ascending));
 
-            view.GroupDescriptions.Add(new PropertyGroupDescription("Categoria"));
+            //view.GroupDescriptions.Add(new PropertyGroupDescription("Categoria"));
         }
 
         private void BtnEditarContato_Click(object sender, RoutedEventArgs e)
@@ -88,7 +88,10 @@ namespace ClassUi.Views.Pages
         {
             try
             {
-
+                ContatoJuridico c = (ContatoJuridico)DgContato.SelectedItem;
+                ViewDetalhes view = new ViewDetalhes();
+                view.DetalheContatoJuridico(c);
+                view.Show();
             }
             catch (Exception ex)
             {

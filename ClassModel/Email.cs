@@ -20,5 +20,10 @@ namespace ClassModel
         {
             return EndEmail;
         }
+
+        public string ToDetalhes()
+        {
+            return EndEmail + " - " + Departamento;
+        }
     }
 }

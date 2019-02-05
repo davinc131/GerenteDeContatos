@@ -7,6 +7,35 @@
         mc:Ignorable="d"
         Title="Send Whatsapp" Height="450" Width="800" WindowState="Maximized">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="25"/>
+        </Grid.ColumnDefinitions>
+
+        <Frame x:Name="FrameContatoFisico" Grid.ColumnSpan="7" Content="" Grid.Column="1" Margin="0" Grid.RowSpan="9"/>
+        <StackPanel Grid.ColumnSpan="7" Grid.Column="1" Margin="0" Grid.Row="9" Orientation="Horizontal">
+            <Button x:Name="btnNovo" Content="Novo" Margin="5,15" FontWeight="Bold" FontSize="14" Click="BtnNovo_Click"/>
+        </StackPanel>
+
     </Grid>
 </Window>

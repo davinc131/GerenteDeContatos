@@ -23,7 +23,7 @@ namespace ClassUi.Views
         {
             InitializeComponent();
             Pages.PageSlideContatoPFisica pageSlide = new Pages.PageSlideContatoPFisica();
-            FrameContatoFisico.Content = pageSlide;
+            AbrirDeUmaPagina(pageSlide);
         }
 
         private void BtnListar_Click(object sender, RoutedEventArgs e)
