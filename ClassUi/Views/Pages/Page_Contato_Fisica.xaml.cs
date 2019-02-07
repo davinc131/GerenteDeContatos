@@ -80,8 +80,19 @@ namespace ClassUi.Views.Pages
         {
             try
             {
+                bool bnome = false;
+                bool bemail = false;
+                bool btelefone = false;
+              
                 contato = new Contato();
-                contato.Nome = txtNome.Text;
+
+                if(txtNome.Text != null || txtNome.Text != "")
+                {
+                    bnome = true;
+                    contato.Nome = txtNome.Text;
+                }
+
+                
                 contato.Descricao = txtDescricao.Text;
 
                 if(cbDepartamento.SelectedItem != null)
@@ -94,17 +105,42 @@ namespace ClassUi.Views.Pages
                 }
                 
                 contato.Tipo = Tipo.Fisica;
-                contato.Emails = listEmail;
-                contato.Telefones = listTelefone;
+
+                if(listEmail != null || listEmail.Count != 0)
+                {
+                    bemail = true;
+                    contato.Emails = listEmail;
+                }
+
+                if (listTelefone != null || listTelefone.Count != 0)
+                {
+                    btelefone = true;
+                    contato.Telefones = listTelefone;
+                }
+                
 
                 if(cbVinculado.SelectedItem != null)
                 {
                     contato.ContatoJuridico = (ContatoJuridico)cbVinculado.SelectedItem;
                 }
                 
-                controleContato.salvarContato(contato);
-
-                MessageBox.Show("Novo contato pessoa fisica cadasatrado com sucesso!", "Sucesso");
+                if(bemail.Equals(false) && btelefone.Equals(false))
+                {
+                    MessageBox.Show("Informe um endereço de email ou número de telefone para este contato.");
+                }
+                else
+                {
+                    if (bnome.Equals(false))
+                    {
+                        MessageBox.Show("Por favor, informe um nome para este contato.");
+                    }
+                    else
+                    {
+                        controleContato.salvarContato(contato);
+                        MessageBox.Show("Novo contato pessoa fisica cadasatrado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
+                }
+                
         }
             catch (Exception ex)
             {
@@ -116,17 +152,66 @@ namespace ClassUi.Views.Pages
         {
             try
             {
-                contato.Nome = txtNome.Text;
+                bool bnome = false;
+                bool bemail = false;
+                bool btelefone = false;
+
+                contato = new Contato();
+
+                if (txtNome.Text != null || txtNome.Text != "")
+                {
+                    bnome = true;
+                    contato.Nome = txtNome.Text;
+                }
+
+
                 contato.Descricao = txtDescricao.Text;
-                contato.Departamento = (Departamento)cbDepartamento.SelectedItem;
+
+                if (cbDepartamento.SelectedItem != null)
+                {
+                    contato.Departamento = (Departamento)cbDepartamento.SelectedItem;
+                }
+                else
+                {
+                    contato.Departamento = 0;
+                }
+
                 contato.Tipo = Tipo.Fisica;
-                contato.Emails = listEmail;
-                contato.Telefones = listTelefone;
-                contato.ContatoJuridico = (ContatoJuridico)cbVinculado.SelectedItem;
 
-                controleContato.Modificar(contato);
+                if (listEmail != null || listEmail.Count != 0)
+                {
+                    bemail = true;
+                    contato.Emails = listEmail;
+                }
 
-                MessageBox.Show("Novo contato pessoa fisica cadasatrado com sucesso!", "Sucesso");
+                if (listTelefone != null || listTelefone.Count != 0)
+                {
+                    btelefone = true;
+                    contato.Telefones = listTelefone;
+                }
+
+
+                if (cbVinculado.SelectedItem != null)
+                {
+                    contato.ContatoJuridico = (ContatoJuridico)cbVinculado.SelectedItem;
+                }
+
+                if (bemail.Equals(false) && btelefone.Equals(false))
+                {
+                    MessageBox.Show("Informe um endereço de email ou número de telefone para este contato.");
+                }
+                else
+                {
+                    if (bnome.Equals(false))
+                    {
+                        MessageBox.Show("Por favor, informe um nome para este contato.");
+                    }
+                    else
+                    {
+                        controleContato.Modificar(contato);
+                        MessageBox.Show("Novo contato pessoa fisica alterado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
+                }
             }
             catch (Exception ex)
             {

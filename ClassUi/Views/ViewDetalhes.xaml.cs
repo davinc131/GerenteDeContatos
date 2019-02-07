@@ -433,8 +433,8 @@ namespace ClassUi.Views
                 lbRotuloEmail.Width = 100;
                 lbRotuloEmail.FontWeight = FontWeights.UltraBold;
                 lbRotuloEmail.FontSize = 16;
-                lbRotuloEmail.HorizontalContentAlignment = HorizontalAlignment.Center;
-                lbRotuloEmail.HorizontalAlignment = HorizontalAlignment.Center;
+                lbRotuloEmail.HorizontalContentAlignment = HorizontalAlignment.Left;
+                lbRotuloEmail.HorizontalAlignment = HorizontalAlignment.Left;
                 Grid.SetColumn(lbRotuloEmail, 0);
                 Grid.SetRow(lbRotuloEmail, 6);
                 Grid.SetRowSpan(lbRotuloEmail, 1);
@@ -467,8 +467,8 @@ namespace ClassUi.Views
                 lbRotuloContatos.Width = 100;
                 lbRotuloContatos.FontWeight = FontWeights.UltraBold;
                 lbRotuloContatos.FontSize = 16;
-                lbRotuloContatos.HorizontalContentAlignment = HorizontalAlignment.Center;
-                lbRotuloContatos.HorizontalAlignment = HorizontalAlignment.Center;
+                lbRotuloContatos.HorizontalContentAlignment = HorizontalAlignment.Left;
+                lbRotuloContatos.HorizontalAlignment = HorizontalAlignment.Left;
                 Grid.SetColumn(lbRotuloContatos, 0);
                 Grid.SetRow(lbRotuloContatos, 7);
                 Grid.SetRowSpan(lbRotuloContatos, 1);
@@ -505,8 +505,8 @@ namespace ClassUi.Views
                     lbRotuloJuridicos.Width = 100;
                     lbRotuloJuridicos.FontWeight = FontWeights.UltraBold;
                     lbRotuloJuridicos.FontSize = 16;
-                    lbRotuloJuridicos.HorizontalContentAlignment = HorizontalAlignment.Center;
-                    lbRotuloJuridicos.HorizontalAlignment = HorizontalAlignment.Center;
+                    lbRotuloJuridicos.HorizontalContentAlignment = HorizontalAlignment.Left;
+                    lbRotuloJuridicos.HorizontalAlignment = HorizontalAlignment.Left;
                     Grid.SetColumn(lbRotuloJuridicos, 0);
                     Grid.SetRow(lbRotuloJuridicos, 8);
                     Grid.SetRowSpan(lbRotuloJuridicos, 1);
