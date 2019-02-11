@@ -13,8 +13,6 @@ namespace ClassControle
     public class ControleContatoJuridico
     {
         protected PersistContatoJuridico contato = new PersistContatoJuridico();
-        protected ValidarTelefone validarTelefone = new ValidarTelefone();
-        protected ValidarEmail validarEmail = new ValidarEmail();
 
         public void salvarContatoJuridico(ContatoJuridico c)
         {
@@ -38,12 +36,12 @@ namespace ClassControle
 
         public bool ValidarTelefone(string f)
         {
-            return validarTelefone.validarTelefone(f);
+            return Validation.validarTelefone(f);
         }
 
         public bool validaEmail(string email)
         {
-            return validarEmail.validarEmail(email);
+            return Validation.validarEmail(email);
         }
     }
 }

@@ -46,6 +46,7 @@ namespace ClassData
         {
             using (var context = new ContatoDbContext())
             {
+
                 //Faz uma consulta no banco de dados e traz os dados relacionados a este registro
                 var result = context.Contatos.Include(t => t.Telefones).Include(e => e.Emails).Single(c => c.Id == contato.Id);
                 //Altera o valor do resultado trazido pelo banco de dados pelo que foi editado

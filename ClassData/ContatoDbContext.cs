@@ -15,6 +15,8 @@ namespace ClassData
         public DbSet<ContatoJuridico> ContatoJuridicos { get; set; }
         public DbSet<Email> Emails { get; set; }
         public DbSet<Telefone> Telefones { get; set; }
+        //public DbSet<Usuario> Usuarios { get; set; }
+        //public DbSet<Atendimento> Atendimentos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

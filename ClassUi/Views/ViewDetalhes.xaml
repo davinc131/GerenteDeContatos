@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="View Detalhes" Height="Auto" Width="450" WindowStyle="None">
 
-    <Grid x:Name="GridContent" ShowGridLines="True">
+    <Grid x:Name="GridContent" ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="45"/>
@@ -39,7 +39,7 @@
         </StackPanel>
         
         <ScrollViewer Grid.Row="3" Grid.RowSpan="7" Grid.ColumnSpan="8">
-            <Grid x:Name="GridConteudo" ShowGridLines="True">
+            <Grid x:Name="GridConteudo" ShowGridLines="False">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>

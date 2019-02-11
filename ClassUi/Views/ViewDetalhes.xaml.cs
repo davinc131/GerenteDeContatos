@@ -242,7 +242,7 @@ namespace ClassUi.Views
             try
             {
                 #region Nome
-
+                
                 Label lbRotuloNome = new Label();
                 lbRotuloNome.Content = "Nome:";
                 lbRotuloNome.Width = 100;
@@ -259,10 +259,14 @@ namespace ClassUi.Views
                 lbNome.Content = b.Nome;
                 lbNome.Width = 300;
                 lbNome.HorizontalContentAlignment = HorizontalAlignment.Left;
-                Grid.SetColumn(lbNome, 2);
-                Grid.SetRow(lbNome, 0);
-                Grid.SetRowSpan(lbNome, 1);
-                Grid.SetColumnSpan(lbNome, 5);
+                Border borderNome = new Border();
+                borderNome.BorderThickness = new Thickness(1);
+                borderNome.BorderBrush = Brushes.Black;
+                borderNome.Child = lbNome;
+                Grid.SetColumn(borderNome, 2);
+                Grid.SetRow(borderNome, 0);
+                Grid.SetRowSpan(borderNome, 1);
+                Grid.SetColumnSpan(borderNome, 5);
 
                 #endregion
 
@@ -285,10 +289,14 @@ namespace ClassUi.Views
                 txtbDescricao.Width = 300;
                 txtbDescricao.IsEnabled = false;
                 txtbDescricao.TextWrapping = TextWrapping.Wrap;
-                Grid.SetColumn(txtbDescricao, 2);
-                Grid.SetRow(txtbDescricao, 1);
-                Grid.SetRowSpan(txtbDescricao, 1);
-                Grid.SetColumnSpan(txtbDescricao, 5);
+                Border borderDescricao = new Border();
+                borderDescricao.BorderThickness = new Thickness(1);
+                borderDescricao.BorderBrush = Brushes.Black;
+                borderDescricao.Child = txtbDescricao;
+                Grid.SetColumn(borderDescricao, 2);
+                Grid.SetRow(borderDescricao, 1);
+                Grid.SetRowSpan(borderDescricao, 1);
+                Grid.SetColumnSpan(borderDescricao, 5);
 
                 #endregion
 
@@ -311,10 +319,14 @@ namespace ClassUi.Views
                 txtbCategoria.Width = 300;
                 txtbCategoria.IsEnabled = false;
                 txtbCategoria.TextWrapping = TextWrapping.Wrap;
-                Grid.SetColumn(txtbCategoria, 2);
-                Grid.SetRow(txtbCategoria, 2);
-                Grid.SetRowSpan(txtbCategoria, 1);
-                Grid.SetColumnSpan(txtbCategoria, 5);
+                Border borderCategoria = new Border();
+                borderCategoria.BorderThickness = new Thickness(1);
+                borderCategoria.BorderBrush = Brushes.Black;
+                borderCategoria.Child = txtbCategoria;
+                Grid.SetColumn(borderCategoria, 2);
+                Grid.SetRow(borderCategoria, 2);
+                Grid.SetRowSpan(borderCategoria, 1);
+                Grid.SetColumnSpan(borderCategoria, 5);
 
                 #endregion
 
@@ -469,6 +481,8 @@ namespace ClassUi.Views
                 lbRotuloContatos.FontSize = 16;
                 lbRotuloContatos.HorizontalContentAlignment = HorizontalAlignment.Left;
                 lbRotuloContatos.HorizontalAlignment = HorizontalAlignment.Left;
+                lbRotuloContatos.VerticalAlignment = VerticalAlignment.Center;
+                lbRotuloContatos.VerticalContentAlignment = VerticalAlignment.Center;
                 Grid.SetColumn(lbRotuloContatos, 0);
                 Grid.SetRow(lbRotuloContatos, 7);
                 Grid.SetRowSpan(lbRotuloContatos, 1);
@@ -533,9 +547,9 @@ namespace ClassUi.Views
                 #endregion
 
                 GridConteudo.Children.Add(lbRotuloNome);
-                GridConteudo.Children.Add(lbNome);
+                GridConteudo.Children.Add(borderNome);
                 GridConteudo.Children.Add(lbRotuloDecricao);
-                GridConteudo.Children.Add(txtbDescricao);
+                GridConteudo.Children.Add(borderDescricao);
                 GridConteudo.Children.Add(lbRotuloAuditoria);
                 GridConteudo.Children.Add(lbAuditoria);
                 GridConteudo.Children.Add(lbRotuloOrgSocial);
@@ -545,7 +559,7 @@ namespace ClassUi.Views
                 GridConteudo.Children.Add(lbRotuloEmail);
                 GridConteudo.Children.Add(stackEmail);
                 GridConteudo.Children.Add(lbRotuloCategoria);
-                GridConteudo.Children.Add(txtbCategoria);
+                GridConteudo.Children.Add(borderCategoria);
                 GridConteudo.Children.Add(lbRotuloContatos);
                 GridConteudo.Children.Add(stackContato);
                 GridConteudo.Children.Add(lbRotuloJuridicos);

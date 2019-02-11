@@ -12,17 +12,15 @@ namespace ClassControle
     public class ControleContato
     {
         protected PersistContato contato = new PersistContato();
-        protected ValidarTelefone validarTelefone = new ValidarTelefone();
-        protected ValidarEmail validarEmail = new ValidarEmail();
 
         public bool ValidarTelefone(string f)
         {
-            return validarTelefone.validarTelefone(f);
+            return Validation.validarTelefone(f);
         }
 
         public bool validaEmail(string email)
         {
-            return validarEmail.validarEmail(email);
+            return Validation.validarEmail(email);
         }
 
         public void salvarContato(Contato c)

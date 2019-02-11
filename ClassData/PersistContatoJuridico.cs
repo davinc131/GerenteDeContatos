@@ -63,11 +63,8 @@ namespace ClassData
                 {
                     var dbTel = result.Telefones.SingleOrDefault(s => s.Id == newtel.Id);
                     if (dbTel != null)
-                        // Update subFoos that are in the newFoo.SubFoo collection
                         context.Entry(dbTel).CurrentValues.SetValues(newtel);
                     else
-                        // Insert subFoos into the database that are not
-                        // in the dbFoo.subFoo collection
                         result.Telefones.Add(newtel);
                 }
                 //Altera registros de emails existentes e acrescenta novos endeços, caso haja
@@ -75,11 +72,8 @@ namespace ClassData
                 {
                     var dbEmail = result.Emails.SingleOrDefault(s => s.Id == newemail.Id);
                     if (dbEmail != null)
-                        // Update subFoos that are in the newFoo.SubFoo collection
                         context.Entry(dbEmail).CurrentValues.SetValues(newemail);
                     else
-                        // Insert subFoos into the database that are not
-                        // in the dbFoo.subFoo collection
                         result.Emails.Add(newemail);
                 }
 

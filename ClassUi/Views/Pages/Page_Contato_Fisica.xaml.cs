@@ -36,13 +36,24 @@ namespace ClassUi.Views.Pages
         public Page_Contato_Fisica(bool editar, Contato c)
         {
             InitializeComponent();
-
-            cbDepartamento.ItemsSource = Enum.GetValues(typeof(Departamento)).Cast<Departamento>();
-            cbVinculado.ItemsSource = controleJuridico.ListarContatoJuridico();
+            Init();
 
             this.contato = c;
-
             ControlePagina(editar, contato);
+            
+        }
+
+        private void Init()
+        {
+            try
+            {
+                cbDepartamento.ItemsSource = Enum.GetValues(typeof(Departamento)).Cast<Departamento>();
+                cbVinculado.ItemsSource = controleJuridico.ListarContatoJuridico();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ControlePagina(bool editar, Contato c)
@@ -155,8 +166,6 @@ namespace ClassUi.Views.Pages
                 bool bnome = false;
                 bool bemail = false;
                 bool btelefone = false;
-
-                contato = new Contato();
 
                 if (txtNome.Text != null || txtNome.Text != "")
                 {

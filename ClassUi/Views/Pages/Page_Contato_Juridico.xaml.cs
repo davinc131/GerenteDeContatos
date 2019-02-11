@@ -23,6 +23,7 @@ namespace ClassUi.Views.Pages
     public partial class Page_Contato_Juridico : Page
     {
         #region Variaveis
+
         private ControleContatoJuridico controleContato = new ControleContatoJuridico();
         private ICollection<Telefone> listTelefone = new List<Telefone>();
         private ICollection<Email> listEmail = new List<Email>();
@@ -44,6 +45,7 @@ namespace ClassUi.Views.Pages
             cbDepEmail.ItemsSource = Enum.GetValues(typeof(Departamento)).Cast<Departamento>();
             cbDepTelefone.ItemsSource = Enum.GetValues(typeof(Departamento)).Cast<Departamento>();
             auditoria = controleContato.ListarContatoJuridico();
+            organizacaoSocial = controleContato.ListarContatoJuridico();
 
             contatoJuridico = c;
 
@@ -197,6 +199,8 @@ namespace ClassUi.Views.Pages
         {
             try
             {
+                contatoJuridico = new ContatoJuridico();
+
                 bool bnome = false;
                 bool bcategoria = false;
                 bool bemail = false;
@@ -254,9 +258,14 @@ namespace ClassUi.Views.Pages
                 {
                     contatoJuridico.Auditoria = (ContatoJuridico)cbVinculado.SelectedItem;
                 }
-                
 
-                if(bnome.Equals(false)|| bcategoria.Equals(false) || bemail.Equals(false) && btelefone.Equals(false))
+                if (cbOrganizacaoSocial.SelectedItem != null)
+                {
+                    contatoJuridico.OrganizacaoSocial = (ContatoJuridico)cbOrganizacaoSocial.SelectedItem;
+                }
+
+
+                if (bnome.Equals(false)|| bcategoria.Equals(false) || bemail.Equals(false) && btelefone.Equals(false))
                 {
                     MessageBox.Show("Um ou mais dados obrigatórios estão ausentes (Nome, Categoria, Email ou Telefone).");
                 }
@@ -332,6 +341,11 @@ namespace ClassUi.Views.Pages
                 if (cbVinculado.SelectedItem != null)
                 {
                     contatoJuridico.Auditoria = (ContatoJuridico)cbVinculado.SelectedItem;
+                }
+
+                if (cbOrganizacaoSocial.SelectedItem != null)
+                {
+                    contatoJuridico.OrganizacaoSocial = (ContatoJuridico)cbOrganizacaoSocial.SelectedItem;
                 }
 
 
