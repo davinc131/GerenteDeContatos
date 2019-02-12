@@ -10,45 +10,38 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClassModel;
 using ClassControle;
 
-namespace ClassUi.Views
+namespace ClassUi.Views.Pages
 {
     /// <summary>
-    /// Lógica interna para ViewEmail.xaml
+    /// Interação lógica para Pagina_Envio_Email.xam
     /// </summary>
-    public partial class ViewEmail : Window
+    public partial class Pagina_Envio_Email : Page
     {
+
         private ControleContatoJuridico contatoJuridico = new ControleContatoJuridico();
 
-        public ViewEmail()
+        public Pagina_Envio_Email()
         {
             InitializeComponent();
-
-            Pages.PageSlideEmail PageSlideEmail = new Pages.PageSlideEmail();
-            AbrirDeUmaPagina(PageSlideEmail);
+            GerarLista();
         }
 
-        private void BtnNovo_Click(object sender, RoutedEventArgs e)
+        private void GerarLista()
         {
             try
             {
-                Pages.Pagina_Envio_Email email = new Pages.Pagina_Envio_Email();
-                AbrirDeUmaPagina(email);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+                List<ContatoJuridico> listaContatos = new List<ContatoJuridico>();
+                listaContatos = contatoJuridico.ListarContatoJuridico();
 
-        private void AbrirDeUmaPagina(Page p)
-        {
-            try
-            {
-                this.FrameContatoFisico.Content = p;
+                foreach(ContatoJuridico c in listaContatos)
+                {
+                    trViewContatos.Items.Add(c);
+                }
             }
             catch (Exception ex)
             {

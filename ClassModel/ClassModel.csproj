@@ -123,6 +123,7 @@
     <Compile Include="Telefone.cs" />
     <Compile Include="Tipo.cs" />
     <Compile Include="Usuario.cs" />
+    <Compile Include="UsuarioTipo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

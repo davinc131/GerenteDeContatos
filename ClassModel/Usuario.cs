@@ -12,5 +12,7 @@ namespace ClassModel
         public string Nome { get; set; }
         public string Login { get; set; }
         public string senha { get; set; }
+        public bool superUsuario { get; set; }
+        public UsuarioTipo Tipo { get; set; }
     }
 }

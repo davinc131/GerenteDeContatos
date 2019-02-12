@@ -19,14 +19,17 @@ namespace ClassData
                     int i = contatoJuridico.Auditoria.Id;
                     contatoJuridico.Auditoria = null;
                     contatoJuridico.Auditoria = con.ContatoJuridicos.Find(i);
-                    con.ContatoJuridicos.Add(contatoJuridico);
-                    con.SaveChanges();
                 }
-                else
+                
+                if(contatoJuridico.OrganizacaoSocial != null)
                 {
-                    con.ContatoJuridicos.Add(contatoJuridico);
-                    con.SaveChanges();
+                    int i = contatoJuridico.OrganizacaoSocial.Id;
+                    contatoJuridico.OrganizacaoSocial = null;
+                    contatoJuridico.OrganizacaoSocial = con.ContatoJuridicos.Find(i);
                 }
+
+                con.ContatoJuridicos.Add(contatoJuridico);
+                con.SaveChanges();
             }
         }
 

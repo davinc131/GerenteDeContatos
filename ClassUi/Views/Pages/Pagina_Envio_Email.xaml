@@ -1,0 +1,41 @@
+﻿<Page x:Class="ClassUi.Views.Pages.Pagina_Envio_Email"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClassUi.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Pagina Envio Email">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <RichTextBox x:Name="rchTexBox" Grid.Column="1" Grid.Row="0"></RichTextBox>
+        
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+            <Button x:Name="btnEnviarEmail" Content="Enviar" Margin="0,10,0,0"></Button>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+            <Button x:Name="btnModeloRodape" Content="Modelo" Margin="0,10,0,0"></Button>
+        </StackPanel>
+
+        <ScrollViewer Grid.Column="0" Grid.Row="0">
+            <TreeView x:Name="trViewContatos">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type MenuItem}" ItemsSource="{Binding ContatoJuridico}">
+                        <TextBlock Text="{Binding Nome}" />
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+        </ScrollViewer>
+    </Grid>
+</Page>
