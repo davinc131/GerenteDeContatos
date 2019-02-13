@@ -38,6 +38,7 @@ namespace ClassUi.Views.Pages
                 List<ContatoJuridico> listaContatos = new List<ContatoJuridico>();
                 listaContatos = contatoJuridico.ListarContatoJuridico();
 
+
                 trViewContatos.ItemsSource = listaContatos;
             }
             catch (Exception ex)
