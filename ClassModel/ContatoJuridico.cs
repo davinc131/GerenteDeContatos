@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,8 @@ namespace ClassModel
 
         public ContatoJuridico()
         {
-            Contatos = new List<Contato>();
+            //Contatos = new List<Contato>();
+            Contatos = new ObservableCollection<Contato>();
             Juridicos = new List<ContatoJuridico>();
         }
     }

@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ClassUi.Views.Pages"
+      xmlns:self="clr-namespace:ClassModel"
+      xmlns:self1="clr-namespace:ClassModel;assembly=ClassModel"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Pagina Envio Email">
@@ -32,7 +34,11 @@
             <TreeView x:Name="trViewContatos">
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate DataType="{x:Type MenuItem}" ItemsSource="{Binding ContatoJuridico}">
-                        <TextBlock Text="{Binding Nome}" />
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Imagens/Corporativo.png" Width="20" Height="20"></Image>
+                            <CheckBox x:Name="check" Margin="2,0"></CheckBox>
+                            <TextBlock Text="{Binding Nome}" />
+                        </StackPanel>
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
             </TreeView>

@@ -357,5 +357,11 @@
   <ItemGroup>
     <Resource Include="Imagens\Close_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagens\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagens\Corporativo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
