@@ -11,6 +11,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
             <RowDefinition/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
@@ -19,33 +20,37 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
-        <RichTextBox x:Name="rchTexBox" Grid.Column="1" Grid.Row="0"></RichTextBox>
+        <RichTextBox x:Name="rchTexBox" Grid.Column="1" Grid.Row="1"></RichTextBox>
+        <TextBox x:Name="txtAssunto" Grid.Column="1" Grid.Row="0" Margin="0,5"></TextBox>
         
-        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
-            <Button x:Name="btnEnviarEmail" Content="Enviar" Margin="0,10,0,0"></Button>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="2" Grid.Row="2">
+            <Button x:Name="btnEnviarEmail" Content="Enviar" Margin="0,10,0,0" Click="BtnEnviarEmail_Click"></Button>
         </StackPanel>
 
-        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
-            <Button x:Name="btnModeloRodape" Content="Modelo" Margin="0,10,0,0"></Button>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="2">
+            <Button x:Name="btnModeloRodape" Content="Modelo" Margin="0,10,0,0" Click="BtnModeloRodape_Click"></Button>
         </StackPanel>
 
-        <ScrollViewer Grid.Column="0" Grid.Row="0">
+        <ScrollViewer Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
             <TreeView x:Name="trViewContatos">
                 <TreeView.Resources>
                     <HierarchicalDataTemplate DataType="{x:Type fild:ContatoJuridico}" ItemsSource="{Binding Contatos}">
+                        
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Imagens/pessoaJuridica1.png" Height="15" Width="15" Margin="0,0,5,0" />
-                            <CheckBox x:Name="chMaster"></CheckBox>
+                            <CheckBox x:Name="chMaster" Checked="ChMaster_Checked"></CheckBox>
                             <TextBlock Text="{Binding Nome}" IsEnabled="False"/>
                         </StackPanel>
+                        
                     </HierarchicalDataTemplate>
                     <DataTemplate DataType="{x:Type fild:Contato}">
+                        
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Imagens/usuário-png-8.png" Height="15" Width="15" Margin="0,0,5,0" />
-                            
-                            <CheckBox x:Name="chItem"></CheckBox>
+                            <CheckBox x:Name="chItem" Checked="ChItem_Checked"></CheckBox>
                             <TextBlock Text="{Binding Nome}" IsEnabled="False"/>
                         </StackPanel>
+                        
                     </DataTemplate>
                 </TreeView.Resources>
             </TreeView>

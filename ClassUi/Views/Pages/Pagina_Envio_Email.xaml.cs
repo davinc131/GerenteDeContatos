@@ -25,6 +25,7 @@ namespace ClassUi.Views.Pages
     {
 
         private ControleContatoJuridico contatoJuridico = new ControleContatoJuridico();
+        private static List<Email> emails = new List<Email>();
 
         public Pagina_Envio_Email()
         {
@@ -39,8 +40,67 @@ namespace ClassUi.Views.Pages
                 List<ContatoJuridico> listaContatos = new List<ContatoJuridico>();
                 listaContatos = contatoJuridico.ListarContatoJuridico();
 
-
                 trViewContatos.ItemsSource = listaContatos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BtnEnviarEmail_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BtnModeloRodape_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ChMaster_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var itens = trViewContatos.Items;
+                ContatoJuridico cc = (ContatoJuridico)itens.CurrentItem;
+
+                foreach(Email em in cc.Emails)
+                {
+                    emails.Add(em);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ChItem_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var itens = trViewContatos.Items;
+                Contato cc = (Contato)itens.CurrentItem;
+
+                foreach (Email em in cc.Emails)
+                {
+                    emails.Add(em);
+                }
             }
             catch (Exception ex)
             {
