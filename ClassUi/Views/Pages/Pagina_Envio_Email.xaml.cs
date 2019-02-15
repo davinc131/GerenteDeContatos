@@ -76,13 +76,7 @@ namespace ClassUi.Views.Pages
         {
             try
             {
-                var itens = trViewContatos.Items;
-                ContatoJuridico cc = (ContatoJuridico)itens.CurrentItem;
-
-                foreach(Email em in cc.Emails)
-                {
-                    emails.Add(em);
-                }
+                
             }
             catch (Exception ex)
             {
@@ -94,13 +88,40 @@ namespace ClassUi.Views.Pages
         {
             try
             {
-                var itens = trViewContatos.Items;
-                Contato cc = (Contato)itens.CurrentItem;
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
-                foreach (Email em in cc.Emails)
+        private void TrViewContatos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                if (trViewContatos.SelectedItem is ContatoJuridico)
                 {
-                    emails.Add(em);
+                    ContatoJuridico cc = trViewContatos.SelectedItem as ContatoJuridico;
+
+                    foreach (Email em in cc.Emails)
+                    {
+                        emails.Add(em);
+                    }
+
+                    MessageBox.Show($"Você selecionou o item {cc.ToString()}");
                 }
+                else
+                {
+                    Contato cc = trViewContatos.SelectedItem as Contato;
+
+                    foreach (Email em in cc.Emails)
+                    {
+                        emails.Add(em);
+                    }
+
+                    MessageBox.Show($"Você selecionou o item {cc.ToString()}");
+                }            
             }
             catch (Exception ex)
             {
