@@ -13,12 +13,22 @@ namespace ClassControle
 {
     public class SendEmail
     {
-        public void EnviaEmail(List<Email> emails)
+        public string EnviaEmail(List<Email> emails, List<string> anexos)
         {
-            foreach(Email e in emails)
+            try
             {
-                ClassUtil.SendEmail.EnviaMensagemEmail(e.EndEmail, "davinc10831@gmail.com", "Teste Envio Email", "Teste simples de envio de email");
+                foreach (Email e in emails)
+                {
+                    //ClassUtil.SendEmail.EnviaMensagemEmail(e.EndEmail, "davinc10831@gmail.com", "Teste Envio Email", "Teste simples de envio de email");
+                    ClassUtil.SendEmail.EnviaMensagemComAnexos(e.EndEmail, "davinc10831@gmail.com", "Teste Envio Email", "Teste simples de envio de email", anexos);
+                }
+                return "OK";
             }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            
         }
     }
 }

@@ -112,6 +112,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Anexos.cs" />
     <Compile Include="Base.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="Contato.cs" />

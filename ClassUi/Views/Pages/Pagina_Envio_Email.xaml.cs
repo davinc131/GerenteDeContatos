@@ -15,6 +15,9 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using ClassModel;
 using ClassControle;
+using System.Windows;
+using System.IO;
+using Microsoft.Win32;
 
 namespace ClassUi.Views.Pages
 {
@@ -62,7 +65,13 @@ namespace ClassUi.Views.Pages
                 email.EndEmail = "davinc131@hotmail.com";
                 emails.Add(email);
 
-                Send.EnviaEmail(emails);
+                List<string> anexos = new List<string>();
+                anexos.Add(@"C:\Users\BRGAAP\Documents\Certificado Presença 1.pdf");
+                anexos.Add(@"C:\Users\BRGAAP\Documents\Recibo de Aluguel.pdf");
+
+                //Send.EnviaEmail(emails);
+                Send.EnviaEmail(emails, anexos);
+                MessageBox.Show("Mensagens enviadas com sucesso!");
             }
             catch (Exception ex)
             {
@@ -138,6 +147,19 @@ namespace ClassUi.Views.Pages
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        public string SelecionarAnexo()
+        {
+            string caminho = "";
+            System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
+
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                caminho = File.ReadAllText(openFileDialog.FileName);
+            }
+
+            return caminho;
         }
     }
 }
