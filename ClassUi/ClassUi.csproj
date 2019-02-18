@@ -360,5 +360,28 @@
   <ItemGroup>
     <Resource Include="Imagens\usuário-png-8.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagens\EditCopy.png" />
+    <Resource Include="Imagens\EditCut.png" />
+    <Resource Include="Imagens\EditPaste.png" />
+    <Resource Include="Imagens\EditRedo.png" />
+    <Resource Include="Imagens\EditUndo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagens\CharacterGrowFont.png" />
+    <Resource Include="Imagens\CharacterShrinkFont.png" />
+    <Resource Include="Imagens\ListBullets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagens\ListNumbering.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagens\ParagraphCenterJustify.png" />
+    <Resource Include="Imagens\ParagraphDecreaseIndentation.png" />
+    <Resource Include="Imagens\ParagraphFullJustify.png" />
+    <Resource Include="Imagens\ParagraphIncreaseIndentation.png" />
+    <Resource Include="Imagens\ParagraphLeftJustify.png" />
+    <Resource Include="Imagens\ParagraphRightJustify.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

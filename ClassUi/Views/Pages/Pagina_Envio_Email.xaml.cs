@@ -26,6 +26,7 @@ namespace ClassUi.Views.Pages
 
         private ControleContatoJuridico contatoJuridico = new ControleContatoJuridico();
         private static List<Email> emails = new List<Email>();
+        private SendEmail Send = new SendEmail();
 
         public Pagina_Envio_Email()
         {
@@ -38,6 +39,8 @@ namespace ClassUi.Views.Pages
             try
             {
                 List<ContatoJuridico> listaContatos = new List<ContatoJuridico>();
+                //List<ContatoJuridicoChecked> listaContatosChecked = new List<ContatoJuridicoChecked>();
+
                 listaContatos = contatoJuridico.ListarContatoJuridico();
 
                 trViewContatos.ItemsSource = listaContatos;
@@ -52,7 +55,14 @@ namespace ClassUi.Views.Pages
         {
             try
             {
-               
+                TextRange range;
+                range = new TextRange(mainRTB.Document.ContentStart, mainRTB.Document.ContentEnd);
+
+                Email email = new Email();
+                email.EndEmail = "davinc131@hotmail.com";
+                emails.Add(email);
+
+                Send.EnviaEmail(emails);
             }
             catch (Exception ex)
             {
@@ -76,7 +86,8 @@ namespace ClassUi.Views.Pages
         {
             try
             {
-                
+                HierarchicalDataTemplate h = new HierarchicalDataTemplate();
+                TreeViewItem t = new TreeViewItem();
             }
             catch (Exception ex)
             {

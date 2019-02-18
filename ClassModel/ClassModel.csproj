@@ -115,7 +115,9 @@
     <Compile Include="Base.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="Contato.cs" />
+    <Compile Include="ContatoChecked.cs" />
     <Compile Include="ContatoJuridico.cs" />
+    <Compile Include="ContatoJuridicoChecked.cs" />
     <Compile Include="Departamento.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
