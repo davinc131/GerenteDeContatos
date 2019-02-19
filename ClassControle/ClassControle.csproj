@@ -115,6 +115,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControleAnexos.cs" />
     <Compile Include="ControleContato.cs" />
     <Compile Include="ControleContatoJuridico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

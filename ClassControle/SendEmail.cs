@@ -19,8 +19,14 @@ namespace ClassControle
             {
                 foreach (Email e in emails)
                 {
-                    //ClassUtil.SendEmail.EnviaMensagemEmail(e.EndEmail, "davinc10831@gmail.com", "Teste Envio Email", "Teste simples de envio de email");
-                    ClassUtil.SendEmail.EnviaMensagemComAnexos(e.EndEmail, "davinc10831@gmail.com", "Teste Envio Email", "Teste simples de envio de email", anexos);
+                    if (anexos.Count.Equals(0))
+                    {
+                        ClassUtil.SendEmail.EnviaMensagemEmail(e.EndEmail, "davinc10831@gmail.com", "Teste Envio Email", "Teste simples de envio de email");
+                    }
+                    else
+                    {
+                        ClassUtil.SendEmail.EnviaMensagemComAnexos(e.EndEmail, "davinc10831@gmail.com", "Teste Envio Email", "Teste simples de envio de email", anexos);
+                    }
                 }
                 return "OK";
             }

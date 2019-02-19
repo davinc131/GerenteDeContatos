@@ -29,7 +29,9 @@ namespace ClassUi.Views.Pages
 
         private ControleContatoJuridico contatoJuridico = new ControleContatoJuridico();
         private static List<Email> emails = new List<Email>();
+        private static List<Anexos> listAnexos = new List<Anexos>();
         private SendEmail Send = new SendEmail();
+        private ControleAnexos controleAnexos = new ControleAnexos();
 
         public Pagina_Envio_Email()
         {
@@ -83,7 +85,7 @@ namespace ClassUi.Views.Pages
         {
             try
             {
-
+                
             }
             catch (Exception ex)
             {
@@ -156,10 +158,25 @@ namespace ClassUi.Views.Pages
 
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                caminho = File.ReadAllText(openFileDialog.FileName);
+                //caminho = File.ReadAllText(openFileDialog.FileName);
+                caminho = openFileDialog.FileName;
             }
 
             return caminho;
+        }
+
+        private void BtnAnexos_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Anexos a = controleAnexos.anexo(SelecionarAnexo());
+                listAnexos.Add(a);
+                cbAnexos.Items.Add(a.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

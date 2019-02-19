@@ -14,6 +14,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220"/>
@@ -115,9 +116,19 @@
         
         <!--#endregion-->
         
+        <!--#region Anexos-->
+
+        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
+            <Label Background="White" Content="Anexos:" HorizontalAlignment="Center" Margin="0,2,10,2"></Label>
+            <ComboBox x:Name="cbAnexos" MinWidth="250" MinHeight="20" HorizontalAlignment="Center" Margin="10,2"/>
+            <Button x:Name="btnAnexos" Content="Adicionar Anexo" HorizontalAlignment="Center" Margin="10,2,0,2" Click="BtnAnexos_Click"></Button>
+        </StackPanel>
+        
+        <!--#endregion-->
+        
         <!--#region Botão a direita-->
         
-        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="2" Grid.Row="2">
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="2" Grid.Row="3">
             <Button x:Name="btnEnviarEmail" Content="Enviar" Margin="0,10,0,0" Click="BtnEnviarEmail_Click"></Button>
         </StackPanel>
         
@@ -125,7 +136,7 @@
 
         <!--#region Botão a esquerda-->
         
-        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="2">
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="3">
             <Button x:Name="btnModeloRodape" Content="Modelo" Margin="0,10,0,0" Click="BtnModeloRodape_Click"></Button>
         </StackPanel>
         
@@ -133,7 +144,7 @@
 
         <!--#region Lista Contatos-->
         
-        <ScrollViewer Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+        <ScrollViewer Grid.Column="0" Grid.Row="0" Grid.RowSpan="3">
             <TreeView x:Name="trViewContatos" MouseDoubleClick="TrViewContatos_MouseDoubleClick">
                 <TreeView.Resources>
                     <HierarchicalDataTemplate x:Name="data" DataType="{x:Type fild:ContatoJuridico}" ItemsSource="{Binding Contatos}">
