@@ -13,7 +13,7 @@ namespace ClassControle
 {
     public class SendEmail
     {
-        public string EnviaEmail(List<Email> emails, List<string> anexos)
+        public string EnviaEmail(List<Email> emails, List<string> anexos, string assunto, string mensagem)
         {
             try
             {
@@ -21,11 +21,11 @@ namespace ClassControle
                 {
                     if (anexos.Count.Equals(0))
                     {
-                        ClassUtil.SendEmail.EnviaMensagemEmail(e.EndEmail, "davinc10831@gmail.com", "Teste Envio Email", "Teste simples de envio de email");
+                        ClassUtil.SendEmail.EnviaMensagemEmail(e.EndEmail, "davinc10831@gmail.com", assunto, mensagem);
                     }
                     else
                     {
-                        ClassUtil.SendEmail.EnviaMensagemComAnexos(e.EndEmail, "davinc10831@gmail.com", "Teste Envio Email", "Teste simples de envio de email", anexos);
+                        ClassUtil.SendEmail.EnviaMensagemComAnexos(e.EndEmail, "davinc10831@gmail.com", assunto, mensagem, anexos);
                     }
                 }
                 return "OK";

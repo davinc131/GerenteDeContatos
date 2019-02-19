@@ -83,6 +83,5 @@ namespace ClassUtil
                 return erro + " Error -  " + ex.Message;
             }
         }
-
     }
 }

@@ -28,6 +28,11 @@ namespace ClassControle
             contato.SalvarContato(c);
         }
 
+        public Contato consultar(int id)
+        {
+            return contato.ListarPorId(id);
+        }
+
         public List<Contato> ListarContatos()
         {
             return contato.ListarContatos();

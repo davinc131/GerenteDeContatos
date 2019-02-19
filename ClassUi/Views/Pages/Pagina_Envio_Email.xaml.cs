@@ -27,7 +27,8 @@ namespace ClassUi.Views.Pages
     public partial class Pagina_Envio_Email : Page
     {
 
-        private ControleContatoJuridico contatoJuridico = new ControleContatoJuridico();
+        private ControleContatoJuridico controleContatoJuridico = new ControleContatoJuridico();
+        private ControleContato controleContato = new ControleContato();
         private static List<Email> emails = new List<Email>();
         private static List<Anexos> listAnexos = new List<Anexos>();
         private SendEmail Send = new SendEmail();
@@ -46,7 +47,7 @@ namespace ClassUi.Views.Pages
                 List<ContatoJuridico> listaContatos = new List<ContatoJuridico>();
                 //List<ContatoJuridicoChecked> listaContatosChecked = new List<ContatoJuridicoChecked>();
 
-                listaContatos = contatoJuridico.ListarContatoJuridico();
+                listaContatos = controleContatoJuridico.ListarContatoJuridico();
 
                 trViewContatos.ItemsSource = listaContatos;
             }
@@ -63,17 +64,37 @@ namespace ClassUi.Views.Pages
                 TextRange range;
                 range = new TextRange(mainRTB.Document.ContentStart, mainRTB.Document.ContentEnd);
 
-                Email email = new Email();
-                email.EndEmail = "davinc131@hotmail.com";
-                emails.Add(email);
+                if (emails.Count > 0)
+                {
+                    if (txtAssunto.Text != "" || txtAssunto.Text != null)
+                    {
+                        if(range.Text != "" || range.Text != null)
+                        {
+                            List<string> anexos = new List<string>();
 
-                List<string> anexos = new List<string>();
-                anexos.Add(@"C:\Users\BRGAAP\Documents\Certificado Presença 1.pdf");
-                anexos.Add(@"C:\Users\BRGAAP\Documents\Recibo de Aluguel.pdf");
+                            foreach (Anexos s in listAnexos)
+                            {
+                                anexos.Add(s.Caminho);
+                            }
 
-                //Send.EnviaEmail(emails);
-                Send.EnviaEmail(emails, anexos);
-                MessageBox.Show("Mensagens enviadas com sucesso!");
+                            Send.EnviaEmail(emails, anexos, txtAssunto.Text, range.Text);
+                            MessageBox.Show("Mensagens enviadas com sucesso!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Informe uma mensagem para ser enviada no email!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Informe um assunto para o email!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Não há emails selecionados para envio de mensagens!");
+                }
+                
             }
             catch (Exception ex)
             {
@@ -126,6 +147,8 @@ namespace ClassUi.Views.Pages
                 {
                     ContatoJuridico cc = trViewContatos.SelectedItem as ContatoJuridico;
 
+                    cc = controleContatoJuridico.consultar(cc.Id);
+
                     foreach (Email em in cc.Emails)
                     {
                         emails.Add(em);
@@ -136,6 +159,8 @@ namespace ClassUi.Views.Pages
                 else
                 {
                     Contato cc = trViewContatos.SelectedItem as Contato;
+
+                    cc = controleContato.consultar(cc.Id);
 
                     foreach (Email em in cc.Emails)
                     {
@@ -172,6 +197,37 @@ namespace ClassUi.Views.Pages
                 Anexos a = controleAnexos.anexo(SelecionarAnexo());
                 listAnexos.Add(a);
                 cbAnexos.Items.Add(a.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BtnRemover_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if(cbAnexos.SelectedItem != null)
+                {
+                    Anexos a = new Anexos();
+
+                    foreach(Anexos an in listAnexos)
+                    {
+                        if (an.NomeDoArquivo.Equals(cbAnexos.SelectedItem))
+                        {
+                            a = an;
+                        }
+                    }
+
+                    cbAnexos.Items.Remove(cbAnexos.SelectedItem);
+                    listAnexos.Remove(a);
+                    MessageBox.Show("Removido com sucesso!");
+                }
+                else
+                {
+                    MessageBox.Show("Selecione um anexo para remover da lista");
+                }
             }
             catch (Exception ex)
             {

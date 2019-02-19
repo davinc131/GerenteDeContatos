@@ -31,6 +31,15 @@ namespace ClassData
             }
         }
 
+        public Contato ListarPorId(int id)
+        {
+            using (ContatoDbContext con = new ContatoDbContext())
+            {
+                var Consulta = con.Contatos.Include(e => e.Emails).First(x => x.Id == id);
+                return Consulta;
+            }
+        }
+
         public List<Contato> ListarContatos()
         {
             using (var context = new ContatoDbContext())

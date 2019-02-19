@@ -112,7 +112,10 @@
 
         <!--#region Texto assunto-->
         
-        <TextBox x:Name="txtAssunto" Grid.Column="1" Grid.Row="0" Margin="0,5"></TextBox>
+        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label x:Name="lbAssunto" Content="Assunto:" Background="White"></Label>
+            <TextBox x:Name="txtAssunto" Margin="0,5" MinWidth="450"></TextBox>
+        </StackPanel>
         
         <!--#endregion-->
         
@@ -122,6 +125,7 @@
             <Label Background="White" Content="Anexos:" HorizontalAlignment="Center" Margin="0,2,10,2"></Label>
             <ComboBox x:Name="cbAnexos" MinWidth="250" MinHeight="20" HorizontalAlignment="Center" Margin="10,2"/>
             <Button x:Name="btnAnexos" Content="Adicionar Anexo" HorizontalAlignment="Center" Margin="10,2,0,2" Click="BtnAnexos_Click"></Button>
+            <Button x:Name="btnRemover" Content="Remover Anexo" HorizontalAlignment="Center" Margin="10,2,0,2" Click="BtnRemover_Click"></Button>
         </StackPanel>
         
         <!--#endregion-->
