@@ -149,6 +149,7 @@ namespace ClassUi.Views.Pages
                     {
                         controleContato.salvarContato(contato);
                         MessageBox.Show("Novo contato pessoa fisica cadasatrado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        limparCampos();
                     }
                 }
                 
@@ -218,7 +219,8 @@ namespace ClassUi.Views.Pages
                     else
                     {
                         controleContato.Modificar(contato);
-                        MessageBox.Show("Novo contato pessoa fisica alterado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        MessageBox.Show("Contato pessoa fisica alterado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        limparCampos();
                     }
                 }
             }
@@ -241,7 +243,7 @@ namespace ClassUi.Views.Pages
                     DGEmail.ItemsSource = null;
 
                     DGEmail.ItemsSource = listEmail;
-                    limparCampos();
+                    limparCamposEmail();
                 }
                 else
                 {
@@ -271,7 +273,7 @@ namespace ClassUi.Views.Pages
 
                     DGTelefone.ItemsSource = listTelefone;
 
-                    limparCampos();
+                    limparCamposTelefone();
                 }
                 else
                 {
@@ -326,12 +328,32 @@ namespace ClassUi.Views.Pages
             }
         }
 
-        private void limparCampos()
+        private void limparCamposEmail()
         {
             txtEmail.Text = "";
+        }
+
+        private void limparCamposTelefone()
+        {
             txtTelefone.Text = "";
             chCelular.IsChecked = false;
             chWhatsapp.IsChecked = false;
+        }
+
+        private void limparCampos()
+        {
+            txtNome.Text = "";
+            txtDescricao.Text = "";
+            txtEmail.Text = "";
+            txtTelefone.Text = "";
+            cbDepartamento.SelectedItem = null;
+            cbVinculado.SelectedItem = null;
+            DGEmail.ItemsSource = null;
+            DGTelefone.ItemsSource = null;
+            listEmail = null;
+            listTelefone = null;
+            chWhatsapp.IsChecked = false;
+            chCelular.IsChecked = false;
         }
     }
 }

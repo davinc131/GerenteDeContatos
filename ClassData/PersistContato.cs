@@ -31,12 +31,23 @@ namespace ClassData
             }
         }
 
-        public Contato ListarPorId(int id)
+        public Contato ConsultarPorId(int id)
         {
             using (ContatoDbContext con = new ContatoDbContext())
             {
                 var Consulta = con.Contatos.Include(e => e.Emails).First(x => x.Id == id);
                 return Consulta;
+            }
+        }
+
+        public List<Contato> ListarPorParamentro(string c)
+        {
+            using(ContatoDbContext context = new ContatoDbContext())
+            {
+                var Contatos = context.Contatos.Include(e => e.Emails).Include(t => t.Telefones).Include(j => j.ContatoJuridico).Where(n => n.Nome.Contains(c));
+                List<Contato> listaContatos = Contatos.ToList<Contato>();
+
+                return listaContatos;
             }
         }
 

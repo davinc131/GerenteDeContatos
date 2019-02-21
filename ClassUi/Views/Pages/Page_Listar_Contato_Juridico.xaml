@@ -11,8 +11,17 @@
       Title="Page_Listar_Contato_Juridico">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-        <DataGrid x:Name="DgContato" Margin="0" AutoGenerateColumns="False" RowBackground="Silver" AlternatingRowBackground="WhiteSmoke">
+        <StackPanel HorizontalAlignment="Center" Grid.Row="0" Orientation="Horizontal">
+            <Label Background="White" Content="Nome:" Margin="0,2,10,2"></Label>
+            <TextBox x:Name="txtConsultaNome" MinWidth="500" Margin="10,5" TextChanged="TxtConsultaNome_TextChanged"></TextBox>
+        </StackPanel>
+        
+        <DataGrid x:Name="DgContato" Grid.Row="1" Margin="0" AutoGenerateColumns="False" RowBackground="Silver" AlternatingRowBackground="WhiteSmoke">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="Id" Header="Id" Binding="{Binding Path=Id}" Width="5"/>
                 <DataGridTextColumn x:Name="Nome" Header="Nome" Binding="{Binding Path=Nome}" Width="*"/>

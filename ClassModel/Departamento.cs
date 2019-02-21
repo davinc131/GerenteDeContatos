@@ -13,6 +13,9 @@ namespace ClassModel
         Contábil = 3,
         Jurídico = 4,
         Recursos_Humanos = 5,
-        Comercial = 6
+        Comercial = 6,
+        Desenvolvimento = 7,
+        Suporte = 8,
+        Recepção = 9
     }
 }

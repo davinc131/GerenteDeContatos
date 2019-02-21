@@ -28,7 +28,14 @@ namespace ClassUi.Views.Pages
         public Page_Listar_Contato_Juridico()
         {
             InitializeComponent();
-            DgContato.ItemsSource = controleContato.ListarContatoJuridico();
+
+            CarregarGrid(controleContato.ListarContatoJuridico());
+        }
+
+        private void CarregarGrid(List<ContatoJuridico> listaContatos)
+        {
+            DgContato.ItemsSource = null;
+            DgContato.ItemsSource = listaContatos;
         }
 
         private void BtnEditarContato_Click(object sender, RoutedEventArgs e)
@@ -84,6 +91,26 @@ namespace ClassUi.Views.Pages
                 ViewDetalhes view = new ViewDetalhes();
                 view.DetalheContatoJuridico(c);
                 view.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void TxtConsultaNome_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if(txtConsultaNome.Text != "")
+                {
+                    CarregarGrid(controleContato.ListarPorParametro(txtConsultaNome.Text));
+                }
+                else
+                {
+                    CarregarGrid(controleContato.ListarContatoJuridico());
+                }
+                
             }
             catch (Exception ex)
             {

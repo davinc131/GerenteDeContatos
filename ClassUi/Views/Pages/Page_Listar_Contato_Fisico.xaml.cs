@@ -27,7 +27,14 @@ namespace ClassUi.Views.Pages
         public Page_Listar_Contato_Fisico()
         {
             InitializeComponent();
-            DgContato.ItemsSource = controle.ListarContatos();
+            
+            CarregarGrid(controle.ListarContatos());
+        }
+
+        private void CarregarGrid(List<Contato> listaContatos)
+        {
+            DgContato.ItemsSource = null;
+            DgContato.ItemsSource = listaContatos;
         }
 
         private void BtnExcluirContato_Click(object sender, RoutedEventArgs e)
@@ -85,6 +92,25 @@ namespace ClassUi.Views.Pages
                 ViewDetalhes view = new ViewDetalhes();
                 view.DetalhesContatoFisico(c);
                 view.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (txtConsultaNome.Text != "")
+                {
+                    CarregarGrid(controle.ListarPorParametro(txtConsultaNome.Text));
+                }
+                else
+                {
+                    CarregarGrid(controle.ListarContatos());
+                }
             }
             catch (Exception ex)
             {

@@ -85,17 +85,23 @@ namespace ClassUi.Views.Pages
 
                     for (int i = 0; i < auditoria.Count; i++)
                     {
-                        if (auditoria.ToList()[i].ToString().Equals(c.Auditoria.ToString()))
+                        if(c.Auditoria!= null)
                         {
-                            cbVinculado.SelectedIndex = i;
+                            if (auditoria.ToList()[i].ToString().Equals(c.Auditoria.ToString()))
+                            {
+                                cbVinculado.SelectedIndex = i;
+                            }
                         }
                     }
 
                     for (int i = 0; i < organizacaoSocial.Count; i++)
                     {
-                        if (organizacaoSocial.ToList()[i].ToString().Equals(c.OrganizacaoSocial.ToString()))
+                        if(c.OrganizacaoSocial!= null)
                         {
-                            cbOrganizacaoSocial.SelectedIndex = i;
+                            if (organizacaoSocial.ToList()[i].ToString().Equals(c.OrganizacaoSocial.ToString()))
+                            {
+                                cbOrganizacaoSocial.SelectedIndex = i;
+                            }
                         }
                     }
                 }
@@ -131,7 +137,7 @@ namespace ClassUi.Views.Pages
             {
                 if (controleContato.validaEmail(txtEmail.Text))
                 {
-                    if(cbDepEmail.SelectedItem != null || cbDepEmail.SelectedItem.ToString() != "")
+                    if(cbDepEmail.SelectedItem != null)
                     {
                         Email email = new Email();
                         email.EndEmail = txtEmail.Text;
@@ -140,7 +146,7 @@ namespace ClassUi.Views.Pages
                         DGEmail.ItemsSource = null;
 
                         DGEmail.ItemsSource = listEmail;
-                        limparCampos();
+                        limparCamposEmail();
                     }
                     else
                     {
@@ -164,7 +170,7 @@ namespace ClassUi.Views.Pages
             {
                 if (controleContato.ValidarTelefone(txtTelefone.Text))
                 {
-                    if(cbDepTelefone.SelectedItem != null || cbDepTelefone.SelectedItem.ToString() != "")
+                    if(cbDepTelefone.SelectedItem != null)
                     {
                         Telefone telefone = new Telefone();
                         telefone.NumTelefone = txtTelefone.Text;
@@ -177,11 +183,11 @@ namespace ClassUi.Views.Pages
 
                         DGTelefone.ItemsSource = listTelefone;
 
-                        limparCampos();
+                        limparCamposTelefone();
                     }
                     else
                     {
-                        MessageBox.Show("Selecione uma departamento");
+                        MessageBox.Show("Selecione uma departamento para o telefone");
                     }
                 }
                 else
@@ -258,10 +264,18 @@ namespace ClassUi.Views.Pages
                 {
                     contatoJuridico.Auditoria = (ContatoJuridico)cbVinculado.SelectedItem;
                 }
+                else
+                {
+                    contatoJuridico.Auditoria = null;
+                }
 
                 if (cbOrganizacaoSocial.SelectedItem != null)
                 {
                     contatoJuridico.OrganizacaoSocial = (ContatoJuridico)cbOrganizacaoSocial.SelectedItem;
+                }
+                else
+                {
+                    contatoJuridico.OrganizacaoSocial = null;
                 }
 
 
@@ -273,6 +287,7 @@ namespace ClassUi.Views.Pages
                 {
                     controleContato.salvarContatoJuridico(contatoJuridico);
                     MessageBox.Show("Novo contato jurídico gravado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    limparCampos();
                 }
             }
             catch (Exception ex)
@@ -356,7 +371,8 @@ namespace ClassUi.Views.Pages
                 else
                 {
                     controleContato.Modificar(contatoJuridico);
-                    MessageBox.Show("Novo contato jurídico modificado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    MessageBox.Show("Contato jurídico modificado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    limparCampos();
                 }
             }
             catch (Exception ex)
@@ -365,14 +381,34 @@ namespace ClassUi.Views.Pages
             }
         }
 
-        private void limparCampos()
+        private void limparCamposEmail()
         {
             txtEmail.Text = "";
-            txtTelefone.Text = "";
             cbDepEmail.SelectedItem = null;
+        }
+
+        private void limparCamposTelefone()
+        {
+            txtTelefone.Text = "";
             cbDepTelefone.SelectedItem = null;
             chCelular.IsChecked = false;
             chWhatsapp.IsChecked = false;
+        }
+
+        private void limparCampos()
+        {
+            DGEmail.ItemsSource = null;
+            DGTelefone.ItemsSource = null;
+            txtNome.Text = "";
+            txtDescricao.Text = "";
+            txtEmail.Text = "";
+            txtNome.Text = "";
+            cbCategoria.SelectedItem = null;
+            cbDepEmail.SelectedItem = null;
+            cbDepTelefone.SelectedItem = null;
+            cbVinculado.SelectedItem = null;
+            cbVinculado.SelectedItem = null;
+            cbOrganizacaoSocial.SelectedItem = null;
         }
 
         private void BtnExcluirEmail_Click(object sender, RoutedEventArgs e)

@@ -66,9 +66,9 @@ namespace ClassUi.Views.Pages
 
                 if (emails.Count > 0)
                 {
-                    if (txtAssunto.Text != "" || txtAssunto.Text != null)
+                    if (txtAssunto.Text != "")
                     {
-                        if(range.Text != "" || range.Text != null)
+                        if(range.Text != "\r\n")
                         {
                             List<string> anexos = new List<string>();
 

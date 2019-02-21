@@ -21,12 +21,17 @@ namespace ClassControle
 
         public ContatoJuridico consultar(int id)
         {
-            return contato.ListarPorId(id);
+            return contato.ConsultarPorId(id);
         }
 
         public List<ContatoJuridico> ListarContatoJuridico()
         {
             return contato.ListarContatos();
+        }
+
+        public List<ContatoJuridico> ListarPorParametro(string c)
+        {
+            return contato.ListarPorParamentro(c);
         }
 
         public void Excluir(int id)

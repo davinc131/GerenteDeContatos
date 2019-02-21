@@ -30,12 +30,17 @@ namespace ClassControle
 
         public Contato consultar(int id)
         {
-            return contato.ListarPorId(id);
+            return contato.ConsultarPorId(id);
         }
 
         public List<Contato> ListarContatos()
         {
             return contato.ListarContatos();
+        }
+
+        public List<Contato> ListarPorParametro(string c)
+        {
+            return contato.ListarPorParamentro(c);
         }
 
         public void Modificar(Contato c)
