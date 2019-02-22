@@ -346,10 +346,24 @@ namespace ClassUi.Views.Pages
             txtDescricao.Text = "";
             txtEmail.Text = "";
             txtTelefone.Text = "";
-            cbDepartamento.SelectedItem = null;
-            cbVinculado.SelectedItem = null;
-            DGEmail.ItemsSource = null;
-            DGTelefone.ItemsSource = null;
+
+            if(cbDepartamento.SelectedItem != null)
+            {
+                cbDepartamento.SelectedItem = null;
+            }
+            if(cbVinculado.SelectedItem != null)
+            {
+                cbVinculado.SelectedItem = null;
+            }
+            if(DGEmail.ItemsSource != null)
+            {
+                DGEmail.ItemsSource = null;
+            }
+            if(DGTelefone.ItemsSource != null)
+            {
+                DGTelefone.ItemsSource = null;
+            }
+            
             listEmail = null;
             listTelefone = null;
             chWhatsapp.IsChecked = false;

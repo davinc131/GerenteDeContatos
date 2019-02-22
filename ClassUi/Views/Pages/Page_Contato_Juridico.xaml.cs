@@ -397,18 +397,39 @@ namespace ClassUi.Views.Pages
 
         private void limparCampos()
         {
-            DGEmail.ItemsSource = null;
-            DGTelefone.ItemsSource = null;
             txtNome.Text = "";
             txtDescricao.Text = "";
             txtEmail.Text = "";
             txtNome.Text = "";
-            cbCategoria.SelectedItem = null;
-            cbDepEmail.SelectedItem = null;
-            cbDepTelefone.SelectedItem = null;
-            cbVinculado.SelectedItem = null;
-            cbVinculado.SelectedItem = null;
-            cbOrganizacaoSocial.SelectedItem = null;
+
+            if(DGEmail.ItemsSource != null)
+            {
+                DGEmail.ItemsSource = null;
+            }
+            if(DGTelefone.ItemsSource != null)
+            {
+                DGTelefone.ItemsSource = null;
+            }
+            if(cbCategoria.SelectedItem != null)
+            {
+                cbCategoria.SelectedItem = null;
+            }
+            if(cbDepEmail.SelectedItem != null)
+            {
+                cbDepEmail.SelectedItem = null;
+            }
+            if(cbDepTelefone.SelectedItem != null)
+            {
+                cbDepTelefone.SelectedItem = null;
+            }
+            if(cbVinculado.SelectedItem != null)
+            {
+                cbVinculado.SelectedItem = null;
+            }
+            if(cbOrganizacaoSocial.SelectedItem != null)
+            {
+                cbOrganizacaoSocial.SelectedItem = null;
+            }
         }
 
         private void BtnExcluirEmail_Click(object sender, RoutedEventArgs e)
