@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using ClassControle;
 using ClassModel;
 
@@ -30,7 +31,8 @@ namespace ClassUi.Views.Pages
         private ICollection<Telefone> listTelefone = new List<Telefone>();
         private ICollection<Email> listEmail = new List<Email>();
         private Contato contato = new Contato();
-        
+        private DispatcherTimer timer;
+
         #endregion
 
         public Page_Contato_Fisica(bool editar, Contato c)
@@ -40,7 +42,6 @@ namespace ClassUi.Views.Pages
 
             this.contato = c;
             ControlePagina(editar, contato);
-            
         }
 
         private void Init()
@@ -49,10 +50,28 @@ namespace ClassUi.Views.Pages
             {
                 cbDepartamento.ItemsSource = Enum.GetValues(typeof(Departamento)).Cast<Departamento>();
                 cbVinculado.ItemsSource = controleJuridico.ListarContatoJuridico();
+
+                timer = new DispatcherTimer();
+                timer.Interval = new TimeSpan(0, 0, 1);
+                timer.IsEnabled = true;
+
+                timer.Tick += new EventHandler(timer_Tick);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            if (chCelular.IsChecked.Equals(true))
+            {
+                chWhatsapp.IsEnabled = true;
+            }
+            else
+            {
+                chWhatsapp.IsEnabled = false;
             }
         }
 
@@ -62,6 +81,7 @@ namespace ClassUi.Views.Pages
             {
                 btnGravar.IsEnabled = false;
                 btnEditar.IsEnabled = true;
+                chWhatsapp.IsEnabled = false;
 
                 listEmail = c.Emails;
                 listTelefone = c.Telefones;
@@ -84,6 +104,7 @@ namespace ClassUi.Views.Pages
             {
                 btnGravar.IsEnabled = true;
                 btnEditar.IsEnabled = false;
+                chWhatsapp.IsEnabled = false;
             }
         }
 
@@ -368,6 +389,25 @@ namespace ClassUi.Views.Pages
             listTelefone = null;
             chWhatsapp.IsChecked = false;
             chCelular.IsChecked = false;
+        }
+
+        private void ChCelular_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (chCelular.IsChecked.Equals(true))
+                {
+                    chWhatsapp.IsEnabled = true;
+                }
+                else
+                {
+                    chWhatsapp.IsEnabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

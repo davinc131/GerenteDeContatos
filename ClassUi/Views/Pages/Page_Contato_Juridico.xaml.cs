@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClassModel;
 using ClassControle;
+using System.Windows.Threading;
 
 namespace ClassUi.Views.Pages
 {
@@ -34,6 +35,7 @@ namespace ClassUi.Views.Pages
         private List<ContatoJuridico> listOrganizacaoSocial = new List<ContatoJuridico>();
 
         private ContatoJuridico contatoJuridico = new ContatoJuridico();
+        private DispatcherTimer timer;
 
         #endregion
 
@@ -41,21 +43,52 @@ namespace ClassUi.Views.Pages
         {
             InitializeComponent();
 
-            cbCategoria.ItemsSource = Enum.GetValues(typeof(Categoria)).Cast<Categoria>();
-            cbDepEmail.ItemsSource = Enum.GetValues(typeof(Departamento)).Cast<Departamento>();
-            cbDepTelefone.ItemsSource = Enum.GetValues(typeof(Departamento)).Cast<Departamento>();
-            auditoria = controleContato.ListarContatoJuridico();
-            organizacaoSocial = controleContato.ListarContatoJuridico();
+            Init();
 
             contatoJuridico = c;
 
             ControlePagina(editar, contatoJuridico);
         }
 
+        private void Init()
+        {
+            try
+            {
+                cbCategoria.ItemsSource = Enum.GetValues(typeof(Categoria)).Cast<Categoria>();
+                cbDepEmail.ItemsSource = Enum.GetValues(typeof(Departamento)).Cast<Departamento>();
+                cbDepTelefone.ItemsSource = Enum.GetValues(typeof(Departamento)).Cast<Departamento>();
+                auditoria = controleContato.ListarContatoJuridico();
+                organizacaoSocial = controleContato.ListarContatoJuridico();
+
+                timer = new DispatcherTimer();
+                timer.Interval = new TimeSpan(0, 0, 1);
+                timer.IsEnabled = true;
+
+                timer.Tick += new EventHandler(timer_Tick);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            if (chCelular.IsChecked.Equals(true))
+            {
+                chWhatsapp.IsEnabled = true;
+            }
+            else
+            {
+                chWhatsapp.IsEnabled = false;
+            }
+        }
+
         private void ControlePagina(bool editar, ContatoJuridico c)
         {
             cbVinculado.IsEnabled = false;
             cbOrganizacaoSocial.IsEnabled = false;
+            chWhatsapp.IsEnabled = false;
 
             if (editar.Equals(true))
             {
@@ -489,6 +522,25 @@ namespace ClassUi.Views.Pages
                     cbOrganizacaoSocial.SelectedItem = null;
                     cbVinculado.IsEnabled = false;
                     cbOrganizacaoSocial.IsEnabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ChCelular_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (chCelular.IsChecked.Equals(true))
+                {
+                    chWhatsapp.IsEnabled = true;
+                }
+                else
+                {
+                    chWhatsapp.IsEnabled = false;
                 }
             }
             catch (Exception ex)

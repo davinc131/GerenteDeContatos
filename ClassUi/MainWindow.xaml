@@ -68,7 +68,7 @@
 
         </Grid>
 
-        <Grid Name="ImgWhatsapp" Grid.ColumnSpan="2" Margin="75,25" Grid.Column="1" Grid.Row="1">
+        <Grid Visibility="Hidden" Name="ImgWhatsapp" Grid.ColumnSpan="2" Margin="75,25" Grid.Column="1" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>

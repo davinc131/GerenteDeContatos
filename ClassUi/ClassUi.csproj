@@ -390,5 +390,34 @@
     <Resource Include="Imagens\ParagraphLeftJustify.png" />
     <Resource Include="Imagens\ParagraphRightJustify.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="RecursosImagens\Juridico\imgContatoPessoaJurídcia01.png" />
+    <Resource Include="RecursosImagens\Juridico\imgContatoPessoaJurídcia02-1.png" />
+    <Resource Include="RecursosImagens\Juridico\imgContatoPessoaJurídcia02-2.png" />
+    <Resource Include="RecursosImagens\Juridico\imgContatoPessoaJurídcia02-3.png" />
+    <Resource Include="RecursosImagens\Juridico\imgContatoPessoaJurídcia02-4.png" />
+    <Resource Include="RecursosImagens\Juridico\imgContatoPessoaJurídcia02.png" />
+    <Resource Include="RecursosImagens\Juridico\imgContatoPessoaJurídcia03.png" />
+    <Resource Include="RecursosImagens\Juridico\imgContatoPessoaJurídcia04.png" />
+    <Resource Include="RecursosImagens\Juridico\imgContatoPessoaJurídcia05.png" />
+    <Resource Include="RecursosImagens\Juridico\imgContatoPessoaJurídcia06.png" />
+    <Resource Include="RecursosImagens\Juridico\imgContatoPessoaJurídcia07.png" />
+    <Resource Include="RecursosImagens\Juridico\imgContatoPessoaJurídcia08.png" />
+    <Resource Include="RecursosImagens\Juridico\imgContatoPessoaJurídcia09.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="RecursosImagens\Fisico\imgContatoPessoaFisica01_0.png" />
+    <Resource Include="RecursosImagens\Fisico\imgContatoPessoaFisica01_1.png" />
+    <Resource Include="RecursosImagens\Fisico\imgContatoPessoaFisica01_2.png" />
+    <Resource Include="RecursosImagens\Fisico\imgContatoPessoaFisica01_3.png" />
+    <Resource Include="RecursosImagens\Fisico\imgContatoPessoaFisica01_4.png" />
+    <Resource Include="RecursosImagens\Fisico\imgContatoPessoaFisica01_5.png" />
+    <Resource Include="RecursosImagens\Fisico\imgContatoPessoaFisica02_0.png" />
+    <Resource Include="RecursosImagens\Fisico\imgContatoPessoaFisica02_1.png" />
+    <Resource Include="RecursosImagens\Fisico\imgContatoPessoaFisica02_2.png" />
+    <Resource Include="RecursosImagens\Fisico\imgContatoPessoaFisica02_3.png" />
+    <Resource Include="RecursosImagens\Fisico\imgContatoPessoaFisica02_4.png" />
+    <Resource Include="RecursosImagens\Fisico\imgContatoPessoaFisica02_5.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

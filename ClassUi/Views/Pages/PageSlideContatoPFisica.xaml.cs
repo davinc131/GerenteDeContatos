@@ -38,10 +38,19 @@ namespace ClassUi.Views.Pages
         {
             try
             {
-                uris.Add(new Uri("\\RecursosImagens\\backgroundRecurso1.jpg", UriKind.Relative));
-                uris.Add(new Uri("\\RecursosImagens\\backgroundRecurso2.jpg", UriKind.Relative));
-                uris.Add(new Uri("\\RecursosImagens\\backgroundRecurso3.jpg", UriKind.Relative));
-                uris.Add(new Uri("\\RecursosImagens\\backgroundRecurso4.jpg", UriKind.Relative));
+                uris.Add(new Uri("\\RecursosImagens\\Fisico\\imgContatoPessoaFisica01_0.png", UriKind.Relative));
+                uris.Add(new Uri("\\RecursosImagens\\Fisico\\imgContatoPessoaFisica01_1.png", UriKind.Relative));
+                uris.Add(new Uri("\\RecursosImagens\\Fisico\\imgContatoPessoaFisica01_2.png", UriKind.Relative));
+                uris.Add(new Uri("\\RecursosImagens\\Fisico\\imgContatoPessoaFisica01_3.png", UriKind.Relative));
+                uris.Add(new Uri("\\RecursosImagens\\Fisico\\imgContatoPessoaFisica01_4.png", UriKind.Relative));
+                uris.Add(new Uri("\\RecursosImagens\\Fisico\\imgContatoPessoaFisica01_5.png", UriKind.Relative));
+
+                uris.Add(new Uri("\\RecursosImagens\\Fisico\\imgContatoPessoaFisica02_0.png", UriKind.Relative));
+                uris.Add(new Uri("\\RecursosImagens\\Fisico\\imgContatoPessoaFisica02_1.png", UriKind.Relative));
+                uris.Add(new Uri("\\RecursosImagens\\Fisico\\imgContatoPessoaFisica02_2.png", UriKind.Relative));
+                uris.Add(new Uri("\\RecursosImagens\\Fisico\\imgContatoPessoaFisica02_3.png", UriKind.Relative));
+                uris.Add(new Uri("\\RecursosImagens\\Fisico\\imgContatoPessoaFisica02_4.png", UriKind.Relative));
+                uris.Add(new Uri("\\RecursosImagens\\Fisico\\imgContatoPessoaFisica02_5.png", UriKind.Relative));
 
                 timer = new DispatcherTimer();
                 timer.Interval = new TimeSpan(0, 0, 1);
@@ -57,7 +66,7 @@ namespace ClassUi.Views.Pages
 
         void timer_Tick(object sender, EventArgs e)
         {
-            if (cont > 3)
+            if (cont > uris.Count - 1)
             {
                 cont = 0;
             }
@@ -92,13 +101,13 @@ namespace ClassUi.Views.Pages
                 controleProgressBar();
                 cont++;
 
-                if (cont > 3)
+                if (cont > uris.Count - 1)
                 {
                     cont = 0;
                 }
                 else if (cont < 0)
                 {
-                    cont = 3;
+                    cont = uris.Count - 1;
                 }
 
                 Image1.Source = new BitmapImage(uris[cont] as Uri);
@@ -116,13 +125,13 @@ namespace ClassUi.Views.Pages
                 controleProgressBar();
                 cont--;
 
-                if (cont > 3)
+                if (cont > uris.Count - 1)
                 {
                     cont = 0;
                 }
                 else if (cont < 0)
                 {
-                    cont = 3;
+                    cont = uris.Count - 1;
                 }
 
                 Image1.Source = new BitmapImage(uris[cont] as Uri);
