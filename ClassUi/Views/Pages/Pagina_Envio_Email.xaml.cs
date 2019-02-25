@@ -94,7 +94,6 @@ namespace ClassUi.Views.Pages
                 {
                     MessageBox.Show("Não há emails selecionados para envio de mensagens!");
                 }
-                
             }
             catch (Exception ex)
             {

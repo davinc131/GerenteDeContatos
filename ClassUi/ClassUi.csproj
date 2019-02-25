@@ -419,5 +419,13 @@
     <Resource Include="RecursosImagens\Fisico\imgContatoPessoaFisica02_4.png" />
     <Resource Include="RecursosImagens\Fisico\imgContatoPessoaFisica02_5.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="RecursosImagens\Email\imgContatoEnvioEmail01.png" />
+    <Resource Include="RecursosImagens\Email\imgContatoEnvioEmail02.png" />
+    <Resource Include="RecursosImagens\Email\imgContatoEnvioEmail03.png" />
+    <Resource Include="RecursosImagens\Email\imgContatoEnvioEmail04.png" />
+    <Resource Include="RecursosImagens\Email\imgContatoEnvioEmail05.png" />
+    <Resource Include="RecursosImagens\Email\imgContatoEnvioEmail06.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
