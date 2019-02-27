@@ -11,6 +11,11 @@ namespace ClassData
 {
     public class ContatoDbContext:DbContext
     {
+        public ContatoDbContext() : base(@"data source=192.168.25.118\sqlexpress; Initial Catalog=ContatoDb; User Id=sa; Password=sipef@adm; integrated security=false;")
+        {
+
+        }
+
         public DbSet<Contato> Contatos { get; set; }
         public DbSet<ContatoJuridico> ContatoJuridicos { get; set; }
         public DbSet<Email> Emails { get; set; }
