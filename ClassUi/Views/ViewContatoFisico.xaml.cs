@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ClassModel;
 
 namespace ClassUi.Views
 {
@@ -22,8 +23,10 @@ namespace ClassUi.Views
         public ViewContatoFisico()
         {
             InitializeComponent();
-            Pages.PageSlideContatoPFisica pageSlide = new Pages.PageSlideContatoPFisica();
-            AbrirDeUmaPagina(pageSlide);
+            Pages.Page_Contato_Fisica pageContatoFisico = new Pages.Page_Contato_Fisica(false, new Contato());
+            AbrirDeUmaPagina(pageContatoFisico);
+            btnNovo.IsEnabled = false;
+            btnListar.IsEnabled = true;
         }
 
         private void BtnListar_Click(object sender, RoutedEventArgs e)
@@ -32,6 +35,8 @@ namespace ClassUi.Views
             {
                 Pages.Page_Listar_Contato_Fisico PaginaListarContatoFisico = new Pages.Page_Listar_Contato_Fisico();
                 FrameContatoFisico.Content = PaginaListarContatoFisico;
+                btnNovo.IsEnabled = true;
+                btnListar.IsEnabled = false;
             }
             catch (Exception ex)
             {
@@ -47,6 +52,8 @@ namespace ClassUi.Views
                 c = null;
                 Pages.Page_Contato_Fisica PaginaContatoFisico = new Pages.Page_Contato_Fisica(false, c);
                 AbrirDeUmaPagina(PaginaContatoFisico);
+                btnNovo.IsEnabled = false;
+                btnListar.IsEnabled = true;
             }
             catch (Exception ex)
             {
