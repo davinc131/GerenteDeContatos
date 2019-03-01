@@ -147,7 +147,7 @@ namespace ClassUi.Views.Pages
                     ContatoJuridico cc = trViewContatos.SelectedItem as ContatoJuridico;
 
                     cc = controleContatoJuridico.consultar(cc.Id);
-
+     
                     foreach (Email em in cc.Emails)
                     {
                         emails.Add(em);

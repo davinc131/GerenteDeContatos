@@ -27,8 +27,8 @@ namespace ClassUi.Views
         {
             InitializeComponent();
 
-            Pages.PageSlideEmail PageSlideEmail = new Pages.PageSlideEmail();
-            AbrirDeUmaPagina(PageSlideEmail);
+            Pages.Pagina_Envio_Email PageEmail = new Pages.Pagina_Envio_Email();
+            AbrirDeUmaPagina(PageEmail);
         }
 
         private void BtnNovo_Click(object sender, RoutedEventArgs e)

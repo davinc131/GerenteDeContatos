@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ClassModel;
 
 namespace ClassUi.Views
 {
@@ -23,8 +24,10 @@ namespace ClassUi.Views
         {
             InitializeComponent();
 
-            Pages.PageSlideContatoPJuridica PaginaSlidePessoJuridica = new Pages.PageSlideContatoPJuridica();
-            AbrirDeUmaPagina(PaginaSlidePessoJuridica);
+            Pages.Page_Contato_Juridico PaginaJuridica = new Pages.Page_Contato_Juridico(false, new ContatoJuridico());
+            AbrirDeUmaPagina(PaginaJuridica);
+            btnListar.IsEnabled = true;
+            btnNovo.IsEnabled = false;
         }
 
         private void BtnListar_Click(object sender, RoutedEventArgs e)
@@ -33,6 +36,8 @@ namespace ClassUi.Views
             {
                 Pages.Page_Listar_Contato_Juridico PaginaListarContatoFisico = new Pages.Page_Listar_Contato_Juridico();
                 AbrirDeUmaPagina(PaginaListarContatoFisico);
+                btnListar.IsEnabled = false;
+                btnNovo.IsEnabled = true;
             }
             catch (Exception ex)
             {
@@ -48,6 +53,8 @@ namespace ClassUi.Views
                 c = null;
                 Pages.Page_Contato_Juridico PaginaContatoJuridico = new Pages.Page_Contato_Juridico(false, c);
                 AbrirDeUmaPagina(PaginaContatoJuridico);
+                btnListar.IsEnabled = true;
+                btnNovo.IsEnabled = false;
             }
             catch (Exception ex)
             {
