@@ -32,11 +32,7 @@
             <ColumnDefinition Width="25"/>
         </Grid.ColumnDefinitions>
 
-        <Frame x:Name="FrameContatoFisico" Grid.ColumnSpan="7" Content="" Grid.Column="1" Margin="0" Grid.RowSpan="9"/>
-        <StackPanel Grid.ColumnSpan="7" Grid.Column="1" Margin="0" Grid.Row="9" Orientation="Horizontal">
-            <Button x:Name="btnListar" Content="Listar" Margin="5,15" FontWeight="Bold" FontSize="14" Click="BtnListar_Click"/>
-            <Button x:Name="btnNovo" Content="Novo" Margin="5,15" FontWeight="Bold" FontSize="14" Click="BtnNovo_Click"/>
-        </StackPanel>
+        <Frame x:Name="FrameContatoFisico" Grid.ColumnSpan="7" Content="" Grid.Column="1" Margin="0" Grid.RowSpan="10"/>
 
     </Grid>
 </Window>

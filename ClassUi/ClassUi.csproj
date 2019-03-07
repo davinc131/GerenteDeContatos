@@ -166,11 +166,17 @@
     <Compile Include="Views\Pages\PageSlideWhatsapp.xaml.cs">
       <DependentUpon>PageSlideWhatsapp.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\Page_Contatos.xaml.cs">
+      <DependentUpon>Page_Contatos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\Page_Contato_Fisica.xaml.cs">
       <DependentUpon>Page_Contato_Fisica.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\Page_Contato_Juridico.xaml.cs">
       <DependentUpon>Page_Contato_Juridico.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\Page_Listar_Contatos.xaml.cs">
+      <DependentUpon>Page_Listar_Contatos.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\Page_Listar_Contato_Fisico.xaml.cs">
       <DependentUpon>Page_Listar_Contato_Fisico.xaml</DependentUpon>
@@ -227,11 +233,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Pages\Page_Contatos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\Page_Contato_Fisica.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\Page_Contato_Juridico.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\Page_Listar_Contatos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

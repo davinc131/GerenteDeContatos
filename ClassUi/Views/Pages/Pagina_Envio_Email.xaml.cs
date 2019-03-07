@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using ClassModel;
 using ClassControle;
-using System.Windows;
 using System.IO;
 using Microsoft.Win32;
 

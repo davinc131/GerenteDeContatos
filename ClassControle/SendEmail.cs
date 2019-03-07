@@ -7,7 +7,6 @@ using ClassModel;
 using ClassUtil;
 using System.Windows;
 using System.Windows.Controls;
-using ClassUtil;
 
 namespace ClassControle
 {

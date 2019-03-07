@@ -36,7 +36,7 @@
 
         </Grid>
 
-        <Grid Name="ImgContatoFisico" Grid.ColumnSpan="2" Margin="75,25" Grid.Column="1">
+        <!--<Grid Name="ImgContatoFisico" Grid.ColumnSpan="2" Margin="75,25" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
@@ -50,7 +50,7 @@
             </Button>
             <Label Content="Contato Físico" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Margin="0" Grid.Row="1" FontSize="18" FontWeight="Bold" FontFamily="Comic Sans MS"/>
 
-        </Grid>
+        </Grid>-->
 
         <Grid Name="ImgEmail" Grid.ColumnSpan="2" Margin="75,25" Grid.Row="1">
             <Grid.ColumnDefinitions>

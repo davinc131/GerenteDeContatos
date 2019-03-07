@@ -24,44 +24,10 @@ namespace ClassUi.Views
         {
             InitializeComponent();
 
-            Pages.Page_Contato_Juridico PaginaJuridica = new Pages.Page_Contato_Juridico(false, new ContatoJuridico());
-            AbrirDeUmaPagina(PaginaJuridica);
-            btnListar.IsEnabled = true;
-            btnNovo.IsEnabled = false;
+            Pages.Page_Contatos PaginaContatos = new Pages.Page_Contatos();
+            AbrirDeUmaPagina(PaginaContatos);
         }
-
-        private void BtnListar_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Pages.Page_Listar_Contato_Juridico PaginaListarContatoFisico = new Pages.Page_Listar_Contato_Juridico();
-                AbrirDeUmaPagina(PaginaListarContatoFisico);
-                btnListar.IsEnabled = false;
-                btnNovo.IsEnabled = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void BtnNovo_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                ClassModel.ContatoJuridico c = new ClassModel.ContatoJuridico();
-                c = null;
-                Pages.Page_Contato_Juridico PaginaContatoJuridico = new Pages.Page_Contato_Juridico(false, c);
-                AbrirDeUmaPagina(PaginaContatoJuridico);
-                btnListar.IsEnabled = true;
-                btnNovo.IsEnabled = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
+        
         public void AbrirDeUmaPagina(Page p)
         {
             try

@@ -1,0 +1,226 @@
+﻿<Page x:Class="ClassUi.Views.Pages.Page_Listar_Contatos"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClassUi.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page_Listar_Contatos">
+
+    <Grid x:Name="gridContent">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <!--<RadioButton x:Name="radioJuridico" GroupName="Contatos" Content="Pessoa Jurídica" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Checked="RadioManager"/>
+        <RadioButton x:Name="radioFisico" GroupName="Contatos" Content="Pessoa Física" Grid.Column="3" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Checked="RadioManager"/>-->
+        <!--#region Cabeçalho-->
+        <Label Content="Listagem de Contatos" Margin="0" Grid.ColumnSpan="8" FontSize="24" FontFamily="Comic Sans MS" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="Aquamarine"/>
+        <!--#endregion-->
+        <TabControl Margin="0" Grid.Row="1">
+            <TabItem x:Name="tabPJuridica" Header="Pessoa Jurídica">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel HorizontalAlignment="Center" Grid.Row="0" Orientation="Horizontal">
+                        <Label Background="White" Content="Nome:" Margin="0,2,10,2"></Label>
+                        <TextBox x:Name="txtConsultaNomePJuridica" MinWidth="500" Margin="10,5" TextChanged="TxtConsultaNomePJuridica_TextChanged"></TextBox>
+                    </StackPanel>
+
+                    <DataGrid x:Name="DgContatoPJuridica" Grid.Row="1" Margin="0" AutoGenerateColumns="False" RowBackground="Silver" AlternatingRowBackground="WhiteSmoke">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="Id" Header="Id" Binding="{Binding Path=Id}" Width="5"/>
+                            <DataGridTextColumn x:Name="Nome" Header="Nome" Binding="{Binding Path=Nome}" Width="*"/>
+                            <DataGridTextColumn x:Name="Descricao" Header="Descrição" Binding="{Binding Path=Descricao}" Width="*"/>
+                            <DataGridTextColumn x:Name="Categoria" Header="Categoria" Binding="{Binding Path=Categoria}" Width="*"/>
+
+                            <DataGridComboBoxColumn x:Name="ContatosPJuridica" Header="Contatos" Width="*">
+                                <DataGridComboBoxColumn.EditingElementStyle>
+                                    <Style TargetType="ComboBox">
+                                        <Setter Property="ItemsSource" Value="{Binding Path=Contatos}" />
+                                    </Style>
+                                </DataGridComboBoxColumn.EditingElementStyle>
+                            </DataGridComboBoxColumn>
+
+                            <DataGridComboBoxColumn x:Name="JuridicosPJuridica" Header="Juridicos" Width="*">
+                                <DataGridComboBoxColumn.EditingElementStyle>
+                                    <Style TargetType="ComboBox">
+                                        <Setter Property="ItemsSource" Value="{Binding Path=Juridicos}" />
+                                    </Style>
+                                </DataGridComboBoxColumn.EditingElementStyle>
+                            </DataGridComboBoxColumn>
+
+                            <DataGridComboBoxColumn x:Name="TelefonePJuridica" Header="Telefone" Width="*">
+                                <DataGridComboBoxColumn.EditingElementStyle>
+                                    <Style TargetType="ComboBox">
+                                        <Setter Property="ItemsSource" Value="{Binding Path=Telefones}" />
+                                    </Style>
+                                </DataGridComboBoxColumn.EditingElementStyle>
+                            </DataGridComboBoxColumn>
+
+                            <DataGridComboBoxColumn x:Name="EmailPJuridica" Header="Email" Width="*">
+                                <DataGridComboBoxColumn.EditingElementStyle>
+                                    <Style TargetType="ComboBox">
+                                        <Setter Property="ItemsSource" Value="{Binding Path=Emails}" />
+                                    </Style>
+                                </DataGridComboBoxColumn.EditingElementStyle>
+                            </DataGridComboBoxColumn>
+
+                            <DataGridTemplateColumn Header="View">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnCriarDemoPJuridica" Content="View" Click="BtnCriarDemoPJuridica_Click"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="Editar">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnEditarContatoPJuridica" Content="Editar" Click="BtnEditarContatoPJuridica_Click"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <DockPanel Background="GhostWhite">
+                                    <Grid Margin="0,10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Text="Nome: " FontWeight="Bold" />
+                                        <TextBlock Text="{Binding Nome}" Grid.Column="1" />
+                                        <TextBlock Text="Descrição: " FontWeight="Bold" Grid.Row="1" />
+                                        <TextBlock Text="{Binding Descricao}" Grid.Column="1" Grid.Row="1" />
+                                        <TextBlock Text="Categoria: " FontWeight="Bold" Grid.Row="2" />
+                                        <TextBlock Text="{Binding Categoria}" Grid.Column="1" Grid.Row="2" />
+                                        <TextBlock Text="Emails: " FontWeight="Bold" Grid.Row="3" />
+                                        <ComboBox  ItemsSource="{Binding Path=Emails}" Grid.Column="1" Grid.Row="3" />
+                                        <TextBlock Text="Telefones: " FontWeight="Bold" Grid.Row="4" />
+                                        <ComboBox  ItemsSource="{Binding Path=Telefones}" Grid.Column="1" Grid.Row="4" />
+                                        <TextBlock Text="Contatos: " FontWeight="Bold" Grid.Row="5" />
+                                        <ComboBox  ItemsSource="{Binding Path=Contatos}" Grid.Column="1" Grid.Row="5" />
+                                        <TextBlock Text="Unidades de Saúde: " FontWeight="Bold" Grid.Row="6" />
+                                        <ComboBox  ItemsSource="{Binding Path=Juridicos}" Grid.Column="1" Grid.Row="6" />
+                                    </Grid>
+                                </DockPanel>
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabFisica" Header="Pessoa Física">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel HorizontalAlignment="Center" Grid.Row="0" Orientation="Horizontal">
+                        <Label Background="White" Content="Nome:" Margin="0,2,10,2"></Label>
+                        <TextBox x:Name="txtConsultaNomePFisica" MinWidth="500" Margin="10,5" TextChanged="TxtConsultaNomePFisica_TextChanged"></TextBox>
+                    </StackPanel>
+
+                    <DataGrid x:Name="DgContatoPFisica" Grid.Row="1" Margin="0" AutoGenerateColumns="False" RowBackground="Silver" AlternatingRowBackground="WhiteSmoke">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="IdPF" Header="Id" Binding="{Binding Path=Id}" Width="5"/>
+                            <DataGridTextColumn x:Name="NomePF" Header="Nome" Binding="{Binding Path=Nome}" Width="*"/>
+                            <DataGridTextColumn x:Name="DescricaoPF" Header="Descrição" Binding="{Binding Path=Descricao}" Width="*"/>
+
+                            <DataGridComboBoxColumn x:Name="Telefone" Header="Telefone" Width="*">
+                                <DataGridComboBoxColumn.EditingElementStyle>
+                                    <Style TargetType="ComboBox">
+                                        <Setter Property="ItemsSource" Value="{Binding Path=Telefones}" />
+                                    </Style>
+                                </DataGridComboBoxColumn.EditingElementStyle>
+                            </DataGridComboBoxColumn>
+
+                            <DataGridComboBoxColumn x:Name="Email" Header="Email" Width="*">
+                                <DataGridComboBoxColumn.EditingElementStyle>
+                                    <Style TargetType="ComboBox">
+                                        <Setter Property="ItemsSource" Value="{Binding Path=Emails}" />
+                                    </Style>
+                                </DataGridComboBoxColumn.EditingElementStyle>
+                            </DataGridComboBoxColumn>
+
+                            <DataGridTemplateColumn Header="View">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnCriarDemoPFisica" Content="View" Click="BtnCriarDemoPFisica_Click"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="Editar">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnEditarContatoPFiisica" Content="Editar" Click="BtnEditarContatoPFiisica_Click"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="Excluir">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnExcluirContatoPFisica" Content="Excluir" Click="BtnExcluirContatoPFisica_Click"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <DockPanel Background="GhostWhite">
+                                    <Grid Margin="0,10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Text="Nome: " FontWeight="Bold" />
+                                        <TextBlock Text="{Binding Nome}" Grid.Column="1" />
+                                        <TextBlock Text="Descrição: " FontWeight="Bold" Grid.Row="1" />
+                                        <TextBlock Text="{Binding Descricao}" Grid.Column="1" Grid.Row="1" />
+                                        <TextBlock Text="Vinculado: " FontWeight="Bold" Grid.Row="2" />
+                                        <TextBlock Text="{Binding ContatoJuridico}" Grid.Column="1" Grid.Row="2" />
+                                        <TextBlock Text="Departamento: " FontWeight="Bold" Grid.Row="3" />
+                                        <TextBlock Text="{Binding Departamento}" Grid.Column="1" Grid.Row="3" />
+                                        <TextBlock Text="Emails: " FontWeight="Bold" Grid.Row="4" />
+                                        <ComboBox  ItemsSource="{Binding Path=Emails}" Grid.Column="1" Grid.Row="4" />
+                                        <TextBlock Text="Telefones: " FontWeight="Bold" Grid.Row="5" />
+                                        <ComboBox  ItemsSource="{Binding Path=Telefones}" Grid.Column="1" Grid.Row="5" />
+                                    </Grid>
+                                </DockPanel>
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Page>

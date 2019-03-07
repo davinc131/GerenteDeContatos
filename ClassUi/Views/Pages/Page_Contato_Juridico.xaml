@@ -39,8 +39,7 @@
         <Label Content="Contato Pessoa Jurídica" Margin="0" Grid.ColumnSpan="8" FontSize="24" FontFamily="Comic Sans MS" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="DarkKhaki"/>
         <!--#endregion-->
 
-        <!--#region Categoria
- -->
+        <!--#region Categoria-->
         <Label Content="Categoria:" Margin="50,0,0,0" Grid.Row="1" FontSize="16" FontFamily="Comic Sans MS" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <ComboBox x:Name="cbCategoria" Grid.Column="1" Margin="0,15" Grid.Row="1" FontSize="14" VerticalAlignment="Bottom" Grid.ColumnSpan="6" MinHeight="35" SelectionChanged="CbCategoria_SelectionChanged"/>
         <!--#endregion-->
