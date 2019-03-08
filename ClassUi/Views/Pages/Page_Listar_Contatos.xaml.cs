@@ -31,15 +31,35 @@ namespace ClassUi.Views.Pages
 
         #region Construtor
 
-        public Page_Listar_Contatos()
+        public Page_Listar_Contatos(bool contatoJuridico)
         {
             InitializeComponent();
 
+            ControlePagina(contatoJuridico);
             CarregarGridPJuridico(controleContato.ListarContatoJuridico());
             CarregarGridPFisica(controle.ListarContatos());
         }
 
         #endregion
+
+        private void ControlePagina(bool b)
+        {
+            try
+            {
+                if (b.Equals(true))
+                {
+                    tcContatos.SelectedItem = tabPJuridica;
+                }
+                else
+                {
+                    tcContatos.SelectedItem = tabPFisica;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
         #region Pessoa Física
 

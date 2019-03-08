@@ -20,7 +20,7 @@
         <!--#region Cabeçalho-->
         <Label Content="Listagem de Contatos" Margin="0" Grid.ColumnSpan="8" FontSize="24" FontFamily="Comic Sans MS" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="Aquamarine"/>
         <!--#endregion-->
-        <TabControl Margin="0" Grid.Row="1">
+        <TabControl x:Name="tcContatos" Margin="0" Grid.Row="1">
             <TabItem x:Name="tabPJuridica" Header="Pessoa Jurídica">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -127,7 +127,7 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabFisica" Header="Pessoa Física">
+            <TabItem x:Name="tabPFisica" Header="Pessoa Física">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>

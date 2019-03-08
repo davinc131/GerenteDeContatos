@@ -108,6 +108,9 @@ namespace ClassUi.Views.Pages
                 btnGravarPFisico.IsEnabled = false;
                 btnEditarPFisico.IsEnabled = true;
                 chWhatsappPFisico.IsEnabled = false;
+                tcContatos.SelectedItem = tabFisica;
+
+                tabPJuridica.IsEnabled = false;
 
                 listEmailPFisico = c.Emails;
                 listTelefonePFisico = c.Telefones;
@@ -378,7 +381,7 @@ namespace ClassUi.Views.Pages
         {
             try
             {
-                Page_Listar_Contatos p = new Page_Listar_Contatos();
+                Page_Listar_Contatos p = new Page_Listar_Contatos(false);
 
                 ViewContatoJuridico v = new ViewContatoJuridico();
 
@@ -485,11 +488,13 @@ namespace ClassUi.Views.Pages
             cbVinculadoPJuridica.IsEnabled = false;
             cbOrganizacaoSocialPJuridica.IsEnabled = false;
             chWhatsappPJuridica.IsEnabled = false;
+            tcContatos.SelectedItem = tabPJuridica;
 
             if (editar.Equals(true))
             {
                 btnGravarPJuridica.IsEnabled = false;
                 btnEditarPJuridica.IsEnabled = true;
+                tabFisica.IsEnabled = false;
 
                 foreach (ContatoJuridico cj in auditoriaPJuridica)
                 {
@@ -659,7 +664,8 @@ namespace ClassUi.Views.Pages
         {
             try
             {
-                Page_Listar_Contatos p = new Page_Listar_Contatos();
+                Page_Listar_Contatos p = new Page_Listar_Contatos(true
+);
 
                 ViewContatoJuridico v = new ViewContatoJuridico();
 
@@ -969,7 +975,9 @@ namespace ClassUi.Views.Pages
         private void ControlePagina()
         {
             btnGravarPFisico.IsEnabled = true;
+            btnGravarPJuridica.IsEnabled = true;
             btnEditarPFisico.IsEnabled = false;
+            btnEditarPJuridica.IsEnabled = false;
             chWhatsappPFisico.IsEnabled = false;
             cbVinculadoPJuridica.IsEnabled = false;
             cbOrganizacaoSocialPJuridica.IsEnabled = false;
