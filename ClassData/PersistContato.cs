@@ -35,7 +35,7 @@ namespace ClassData
         {
             using (ContatoDbContext con = new ContatoDbContext())
             {
-                var Consulta = con.Contatos.Include(e => e.Emails).First(x => x.Id == id);
+                var Consulta = con.Contatos.Include(e => e.Emails).Include(t => t.Telefones).First(x => x.Id == id);
                 return Consulta;
             }
         }

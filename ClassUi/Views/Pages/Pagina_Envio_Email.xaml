@@ -5,6 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ClassUi.Views.Pages"
       xmlns:fild="clr-namespace:ClassModel;assembly=ClassModel"
+      xmlns:dw="clr-namespace:ClassUtil;assembly=ClassUtil"
+      xmlns:model="clr-namespace:ClassModel;assembly=ClassModel"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Pagina Envio Email">
@@ -22,7 +24,7 @@
         </Grid.ColumnDefinitions>
 
         <!--#region Caixa de texto-->
-        
+
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.Resources>
                 <Style TargetType="{x:Type Button}" x:Key="formatTextStyle">
@@ -41,23 +43,23 @@
             <DockPanel Name="mainPanel">
 
                 <!-- This tool bar contains all the editing buttons. -->
-                <ToolBar Name="mainToolBar" Height="30" DockPanel.Dock="Top">
+                <ToolBar Name="mainToolBar" Height="30" DockPanel.Dock="Top" Background="DarkCyan">
 
-                    <!--<Button Style="{StaticResource formatImageStyle}" Command="ApplicationCommands.Cut" ToolTip="Cut">
-                        <Image Source="Imagens/EditCut.png"></Image>
+                    <Button Style="{StaticResource formatImageStyle}" Command="ApplicationCommands.Cut" ToolTip="Cut">
+                        <Image Source="/Imagens/EditCut.png"></Image>
                     </Button>
                     <Button Style="{StaticResource formatImageStyle}" Command="ApplicationCommands.Copy" ToolTip="Copy">
-                        <Image Source="Imagens/EditCopy.png"></Image>
+                        <Image Source="/Imagens/EditCopy.png"></Image>
                     </Button>
                     <Button Style="{StaticResource formatImageStyle}" Command="ApplicationCommands.Paste" ToolTip="Paste">
-                        <Image Source="Imagens/EditPaste.png"></Image>
+                        <Image Source="/Imagens/EditPaste.png"></Image>
                     </Button>
                     <Button Style="{StaticResource formatImageStyle}" Command="ApplicationCommands.Undo" ToolTip="Undo">
-                        <Image Source="Imagens/EditUndo.png"></Image>
+                        <Image Source="/Imagens/EditUndo.png"></Image>
                     </Button>
                     <Button Style="{StaticResource formatImageStyle}" Command="ApplicationCommands.Redo" ToolTip="Redo">
-                        <Image Source="Imagens/EditRedo.png"></Image>
-                    </Button>-->
+                        <Image Source="/Imagens/EditRedo.png"></Image>
+                    </Button>
 
                     <Button Style="{StaticResource formatTextStyle}" Command="EditingCommands.ToggleBold" ToolTip="Bold">
                         <TextBlock FontWeight="Bold">B</TextBlock>
@@ -68,37 +70,37 @@
                     <Button Style="{StaticResource formatTextStyle}" Command="EditingCommands.ToggleUnderline" ToolTip="Underline">
                         <TextBlock TextDecorations="Underline" FontWeight="Bold">U</TextBlock>
                     </Button>
-                    <!--<Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.IncreaseFontSize" ToolTip="Grow Font">
-                        <Image Source="Images/CharacterGrowFont.png"></Image>
+                    <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.IncreaseFontSize" ToolTip="Grow Font">
+                        <Image Source="/Imagens/CharacterGrowFont.png"></Image>
                     </Button>
                     <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.DecreaseFontSize" ToolTip="Shrink Font">
-                        <Image Source="Images/CharacterShrinkFont.png"></Image>
+                        <Image Source="/Imagens/CharacterShrinkFont.png"></Image>
                     </Button>
 
                     <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.ToggleBullets" ToolTip="Bullets">
-                        <Image Source="Images/ListBullets.png"></Image>
+                        <Image Source="/Imagens/ListBullets.png"></Image>
                     </Button>
                     <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.ToggleNumbering" ToolTip="Numbering">
-                        <Image Source="Images/ListNumbering.png"></Image>
+                        <Image Source="/Imagens/ListNumbering.png"></Image>
                     </Button>
                     <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.AlignLeft" ToolTip="Align Left">
-                        <Image Source="Images/ParagraphLeftJustify.png"></Image>
+                        <Image Source="/Imagens/ParagraphLeftJustify.png"></Image>
                     </Button>
                     <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.AlignCenter" ToolTip="Align Center">
-                        <Image Source="Images/ParagraphCenterJustify.png"></Image>
+                        <Image Source="/Imagens/ParagraphCenterJustify.png"></Image>
                     </Button>
                     <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.AlignRight" ToolTip="Align Right">
-                        <Image Source="Images/ParagraphRightJustify.png"></Image>
+                        <Image Source="/Imagens/ParagraphRightJustify.png"></Image>
                     </Button>
                     <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.AlignJustify" ToolTip="Align Justify">
-                        <Image Source="Images/ParagraphFullJustify.png"></Image>
+                        <Image Source="/Imagens/ParagraphFullJustify.png"></Image>
                     </Button>
                     <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.IncreaseIndentation" ToolTip="Increase Indent">
-                        <Image Source="Images/ParagraphIncreaseIndentation.png"></Image>
+                        <Image Source="/Imagens/ParagraphIncreaseIndentation.png"></Image>
                     </Button>
                     <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.DecreaseIndentation" ToolTip="Decrease Indent">
-                        <Image Source="Images/ParagraphDecreaseIndentation.png"></Image>
-                    </Button>-->
+                        <Image Source="/Imagens/ParagraphDecreaseIndentation.png"></Image>
+                    </Button>
 
                 </ToolBar>
 
@@ -107,18 +109,18 @@
                 <RichTextBox Name="mainRTB" AcceptsTab="True"></RichTextBox>
             </DockPanel>
         </Grid>
-        
+
         <!--#endregion-->
 
         <!--#region Texto assunto-->
-        
+
         <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
             <Label x:Name="lbAssunto" Content="Assunto:" Background="White"></Label>
             <TextBox x:Name="txtAssunto" Margin="0,5" MinWidth="450"></TextBox>
         </StackPanel>
-        
+
         <!--#endregion-->
-        
+
         <!--#region Anexos-->
 
         <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
@@ -127,54 +129,56 @@
             <Button x:Name="btnAnexos" Content="Adicionar Anexo" HorizontalAlignment="Center" Margin="10,2,0,2" Click="BtnAnexos_Click"></Button>
             <Button x:Name="btnRemover" Content="Remover Anexo" HorizontalAlignment="Center" Margin="10,2,0,2" Click="BtnRemover_Click"></Button>
         </StackPanel>
-        
+
         <!--#endregion-->
-        
+
         <!--#region Botão a direita-->
-        
+
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="2" Grid.Row="3">
-            <Button x:Name="btnEnviarEmail" Content="Enviar" Margin="0,10,0,0" Click="BtnEnviarEmail_Click"></Button>
+            <Button x:Name="btnEnviarEmail" Content="Enviar" Margin="0,2" Click="BtnEnviarEmail_Click"/>
         </StackPanel>
-        
+
         <!--#endregion-->
 
         <!--#region Botão a esquerda-->
-        
+
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="3">
-            <Button x:Name="btnModeloRodape" Content="Modelo" Margin="0,10,0,0" Click="BtnModeloRodape_Click"></Button>
+            <Button x:Name="btnModeloRodape" Content="Modelo" Margin="0,2,0,2" Click="BtnModeloRodape_Click"></Button>
         </StackPanel>
-        
+
         <!--#endregion-->
 
+
+
         <!--#region Lista Contatos-->
-        
+
         <ScrollViewer Grid.Column="0" Grid.Row="0" Grid.RowSpan="3">
             <TreeView x:Name="trViewContatos" MouseDoubleClick="TrViewContatos_MouseDoubleClick">
                 <TreeView.Resources>
-                    <HierarchicalDataTemplate x:Name="data" DataType="{x:Type fild:ContatoJuridico}" ItemsSource="{Binding Contatos}">
-                        
+                    <HierarchicalDataTemplate x:Name="data" DataType="{x:Type fild:IsCheckedPessoaJuridica}" ItemsSource="{Binding IsCheckedPessoas}">
+
                         <StackPanel x:Name="stack" Orientation="Horizontal">
                             <Image Source="/Imagens/pessoaJuridica1.png" Height="15" Width="15" Margin="0,0,5,0" />
-                            <CheckBox x:Name="chMaster" Checked="ChMaster_Checked"></CheckBox>
-                            <TextBlock Text="{Binding Nome}" IsEnabled="False"/>
+                            <CheckBox x:Name="chMaster" IsChecked="{Binding Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Checked="ChMaster_Checked"></CheckBox>
+                            <TextBlock Text="{Binding ContatoJuridico.Nome}" IsEnabled="False"/>
                         </StackPanel>
-                        
+
                     </HierarchicalDataTemplate>
-                    <HierarchicalDataTemplate x:Name="hdtContato" DataType="{x:Type fild:Contato}" ItemsSource="{Binding Emails}">
+                    <HierarchicalDataTemplate x:Name="hdtContato" DataType="{x:Type fild:IsCheckedPessoaFisica}" ItemsSource="{Binding Emails}">
 
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Imagens/usuário-png-8.png" Height="15" Width="15" Margin="0,0,5,0" />
-                            <CheckBox x:Name="chItem" Checked="ChItem_Checked"></CheckBox>
-                            <TextBlock Text="{Binding Nome}" IsEnabled="False"/>
+                            <CheckBox x:Name="chItem" IsChecked="{Binding Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Checked="ChItem_Checked"></CheckBox>
+                            <TextBlock Text="{Binding ContatoFisico.Nome}" IsEnabled="False"/>
                         </StackPanel>
 
                     </HierarchicalDataTemplate>
-                    
+
                 </TreeView.Resources>
             </TreeView>
         </ScrollViewer>
-        
+
         <!--#endregion-->
-        
+
     </Grid>
 </Page>

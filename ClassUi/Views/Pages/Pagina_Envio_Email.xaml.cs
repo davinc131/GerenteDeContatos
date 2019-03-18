@@ -32,11 +32,13 @@ namespace ClassUi.Views.Pages
         private static List<Anexos> listAnexos = new List<Anexos>();
         private SendEmail Send = new SendEmail();
         private ControleAnexos controleAnexos = new ControleAnexos();
+        List<IsCheckedPessoaJuridica> listCheckedContatoJuridico = new List<IsCheckedPessoaJuridica>();
 
         public Pagina_Envio_Email()
         {
             InitializeComponent();
-            GerarLista();
+
+            GerarLista();   
         }
 
         private void GerarLista()
@@ -44,11 +46,19 @@ namespace ClassUi.Views.Pages
             try
             {
                 List<ContatoJuridico> listaContatos = new List<ContatoJuridico>();
-                //List<ContatoJuridicoChecked> listaContatosChecked = new List<ContatoJuridicoChecked>();
 
                 listaContatos = controleContatoJuridico.ListarContatoJuridico();
 
-                trViewContatos.ItemsSource = listaContatos;
+                for(int i = 0; i < listaContatos.Count; i++)
+                {
+                    for(int j = 0; j < listaContatos[i].Contatos.Count; j++)
+                    {
+                        listaContatos[i].Contatos[j] = controleContato.consultar(listaContatos[i].Contatos[j].Id);
+                    }
+                }
+
+                listCheckedContatoJuridico = controleContatoJuridico.ConverterEmIsChecked(listaContatos);
+                trViewContatos.ItemsSource = listCheckedContatoJuridico;
             }
             catch (Exception ex)
             {
@@ -62,6 +72,7 @@ namespace ClassUi.Views.Pages
             {
                 TextRange range;
                 range = new TextRange(mainRTB.Document.ContentStart, mainRTB.Document.ContentEnd);
+                CarregarListaEmails();
 
                 if (emails.Count > 0)
                 {
@@ -97,6 +108,34 @@ namespace ClassUi.Views.Pages
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void CarregarListaEmails()
+        {
+            foreach(IsCheckedPessoaJuridica i in listCheckedContatoJuridico)
+            {
+                if (i.IsChecked.Equals(true))
+                {
+                    foreach(Email e in i.ContatoJuridico.Emails)
+                    {
+                        emails.Add(e);
+                    }
+                }
+
+                if(i.IsCheckedPessoas.Count > 0)
+                {
+                    foreach(IsCheckedPessoaFisica f in i.IsCheckedPessoas)
+                    {
+                        if (f.IsChecked.Equals(true))
+                        {
+                            foreach(Email e in f.ContatoFisico.Emails)
+                            {
+                                emails.Add(e);
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -141,32 +180,32 @@ namespace ClassUi.Views.Pages
         {
             try
             {
-                if (trViewContatos.SelectedItem is ContatoJuridico)
-                {
-                    ContatoJuridico cc = trViewContatos.SelectedItem as ContatoJuridico;
+                //if (trViewContatos.SelectedItem is ContatoJuridico)
+                //{
+                //    ContatoJuridico cc = trViewContatos.SelectedItem as ContatoJuridico;
 
-                    cc = controleContatoJuridico.consultar(cc.Id);
+                //    cc = controleContatoJuridico.consultar(cc.Id);
      
-                    foreach (Email em in cc.Emails)
-                    {
-                        emails.Add(em);
-                    }
+                //    foreach (Email em in cc.Emails)
+                //    {
+                //        emails.Add(em);
+                //    }
 
-                    MessageBox.Show($"Você selecionou o item {cc.ToString()}");
-                }
-                else
-                {
-                    Contato cc = trViewContatos.SelectedItem as Contato;
+                //    MessageBox.Show($"Você selecionou o item {cc.ToString()}");
+                //}
+                //else
+                //{
+                //    Contato cc = trViewContatos.SelectedItem as Contato;
 
-                    cc = controleContato.consultar(cc.Id);
+                //    cc = controleContato.consultar(cc.Id);
 
-                    foreach (Email em in cc.Emails)
-                    {
-                        emails.Add(em);
-                    }
+                //    foreach (Email em in cc.Emails)
+                //    {
+                //        emails.Add(em);
+                //    }
 
-                    MessageBox.Show($"Você selecionou o item {cc.ToString()}");
-                }            
+                //    MessageBox.Show($"Você selecionou o item {cc.ToString()}");
+                //}            
             }
             catch (Exception ex)
             {

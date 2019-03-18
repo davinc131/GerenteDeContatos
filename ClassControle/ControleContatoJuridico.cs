@@ -53,5 +53,31 @@ namespace ClassControle
         {
             return Validation.validarEmail(email);
         }
+
+        public List<IsCheckedPessoaJuridica> ConverterEmIsChecked(List<ContatoJuridico> contatoJuridicos)
+        {
+            List<IsCheckedPessoaJuridica> listIsChecked = new List<IsCheckedPessoaJuridica>();
+
+            foreach(ContatoJuridico cj in contatoJuridicos)
+            {
+                IsCheckedPessoaJuridica isCheckedPessoaJuridica = new IsCheckedPessoaJuridica();
+
+                isCheckedPessoaJuridica.ContatoJuridico = cj;
+
+                if(isCheckedPessoaJuridica.ContatoJuridico.Contatos.Count != 0)
+                {
+                    foreach(Contato cf in isCheckedPessoaJuridica.ContatoJuridico.Contatos)
+                    {
+                        IsCheckedPessoaFisica isCheckedPessoaFisica = new IsCheckedPessoaFisica();
+                        isCheckedPessoaFisica.ContatoFisico = cf;
+                        isCheckedPessoaJuridica.IsCheckedPessoas.Add(isCheckedPessoaFisica);
+                    }
+                }
+
+                listIsChecked.Add(isCheckedPessoaJuridica);
+            }
+
+            return listIsChecked;
+        }
     }
 }

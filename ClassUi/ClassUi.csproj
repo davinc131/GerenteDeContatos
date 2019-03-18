@@ -322,6 +322,10 @@
       <Project>{96c272ec-4328-4dd0-bc9e-0762aa88696c}</Project>
       <Name>ClassModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ClassUtil\ClassUtil.csproj">
+      <Project>{906c3a6f-cfab-4208-bddd-3d0162304cca}</Project>
+      <Name>ClassUtil</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagens\pessoaFisica.png" />
