@@ -52,7 +52,7 @@ namespace ClassUi.Views.Pages
         {
             InitializeComponent();
 
-
+            CarregarComboVinculadoOS();
             InitPF();
             InitPJ();
             this.contatoJ = c;
@@ -63,6 +63,7 @@ namespace ClassUi.Views.Pages
         {
             InitializeComponent();
 
+            CarregarComboVinculadoOS();
             InitPF();
             InitPJ();
             this.contato = c;
@@ -73,9 +74,42 @@ namespace ClassUi.Views.Pages
         {
             InitializeComponent();
 
+            CarregarComboVinculadoOS();
             InitPF();
             InitPJ();
             ControlePagina();
+        }
+
+        #endregion
+
+        #region Carregar ComboBox
+
+        private void CarregarComboVinculadoOS()
+        {
+            try
+            {
+                List<ContatoJuridico> j = new List<ContatoJuridico>();
+                j = controleJuridico.ListarContatoJuridico();
+
+                foreach(ContatoJuridico c in j)
+                {
+                    if (c.Categoria.Equals(Categoria.Auditoria)){
+                        listAuditoria.Add(c);
+                    }
+
+                    if (c.Categoria.Equals(Categoria.Organização_Social))
+                    {
+                        listOrganizacaoSocial.Add(c);
+                    }
+                }
+
+                cbVinculadoPJuridica.ItemsSource = listAuditoria;
+                cbOrganizacaoSocialPJuridica.ItemsSource = listOrganizacaoSocial;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         #endregion
@@ -105,6 +139,8 @@ namespace ClassUi.Views.Pages
         {
             if (editar.Equals(true))
             {
+                contato = controleContato.ListarPorParametro(c.Nome)[0];
+
                 btnGravarPFisico.IsEnabled = false;
                 btnEditarPFisico.IsEnabled = true;
                 chWhatsappPFisico.IsEnabled = false;
@@ -492,6 +528,8 @@ namespace ClassUi.Views.Pages
 
             if (editar.Equals(true))
             {
+                contatoJuridico = controleJuridico.ListarPorParametro(c.Nome)[0];
+
                 btnGravarPJuridica.IsEnabled = false;
                 btnEditarPJuridica.IsEnabled = true;
                 tabFisica.IsEnabled = false;

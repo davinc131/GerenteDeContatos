@@ -11,9 +11,9 @@ namespace ClassData
 {
     public class ContatoDbContext:DbContext
     {
-        public ContatoDbContext() : base(@"data source=localhost\sqlexpress; Initial Catalog=ContatoDb; User Id=sa; Password=sipef@adm; integrated security=true;")
+        public ContatoDbContext() : base(@"data source=192.168.25.248; Initial Catalog=ContatoDb; User Id=sa; Password=Sipefadm1; integrated security=false;")
         {
-
+            //sqlservr  || @"data source=192.168.25.248\sqlexpress; Initial Catalog=ContatoDb; User Id=sa; Password=Sipefadm1; integrated security=true;"
         }
 
         public DbSet<Contato> Contatos { get; set; }

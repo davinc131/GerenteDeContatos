@@ -186,6 +186,8 @@ namespace ClassUi.Views.Pages
                 ContatoJuridico c = new ContatoJuridico();
                 c = (ContatoJuridico)DgContatoPJuridica.SelectedItem;
 
+                c = controleContato.ListarPorParametro(c.Nome)[0];
+
                 Page_Contatos p = new Page_Contatos(true, c);
 
                 ViewContatoJuridico v = new ViewContatoJuridico();

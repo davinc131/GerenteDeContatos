@@ -20,11 +20,11 @@ namespace ClassControle
                 {
                     if (anexos.Count.Equals(0))
                     {
-                        ClassUtil.SendEmail.EnviaMensagemEmail(e.EndEmail, "davinc10831@gmail.com", assunto, mensagem);
+                        ClassUtil.SendEmail.EnviaMensagemEmail(e.EndEmail, "tibrgaap@gmail.com", assunto, mensagem);
                     }
                     else
                     {
-                        ClassUtil.SendEmail.EnviaMensagemComAnexos(e.EndEmail, "davinc10831@gmail.com", assunto, mensagem, anexos);
+                        ClassUtil.SendEmail.EnviaMensagemComAnexos(e.EndEmail, "tibrgaap@gmail.com", assunto, mensagem, anexos);
                     }
                 }
                 return "OK";

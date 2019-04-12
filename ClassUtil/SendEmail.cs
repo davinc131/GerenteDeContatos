@@ -26,7 +26,7 @@ namespace ClassUtil
                 SmtpClient client = new SmtpClient();
                 client.Host = "smtp.gmail.com";
                 client.EnableSsl = true;
-                client.Credentials = new System.Net.NetworkCredential(Remetente, "u@3r5v8k9cwporw");
+                client.Credentials = new System.Net.NetworkCredential(Remetente, "ti@brgaap2970");
                 MailMessage mail = new MailMessage();
                 mail.Sender = new System.Net.Mail.MailAddress(Remetente, "BRGAAP");
                 mail.From = new MailAddress(Remetente, "BRGAAP");
@@ -55,7 +55,7 @@ namespace ClassUtil
                 SmtpClient client = new SmtpClient();
                 client.Host = "smtp.gmail.com";
                 client.EnableSsl = true;
-                client.Credentials = new System.Net.NetworkCredential(Remetente, "u@3r5v8k9cwporw");
+                client.Credentials = new System.Net.NetworkCredential(Remetente, "ti@brgaap2970");
                 MailMessage mail = new MailMessage();
                 mail.Sender = new System.Net.Mail.MailAddress(Remetente, "BRGAAP");
                 mail.From = new MailAddress(Remetente, "BRGAAP");
