@@ -19,6 +19,11 @@ namespace ClassControle
             contato.SalvarContatoJuridico(c);
         }
 
+        public ContatoJuridico ConsultarPorNome(string n)
+        {
+            return contato.ConsultarPorNome(n);
+        }
+
         public ContatoJuridico consultar(int id)
         {
             return contato.ConsultarPorId(id);

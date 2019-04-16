@@ -42,6 +42,22 @@ namespace ClassData
             }
         }
 
+        public ContatoJuridico ConsultarPorNome(string nome)
+        {
+            using (ContatoDbContext con = new ContatoDbContext())
+            {
+                try
+                {
+                    var Consulta = con.ContatoJuridicos.Include(e => e.Emails).First(n => n.Nome == nome);
+                    return Consulta;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+
         public List<ContatoJuridico> ListarPorParamentro(string c)
         {
             using (ContatoDbContext context = new ContatoDbContext())

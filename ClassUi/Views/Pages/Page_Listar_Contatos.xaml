@@ -23,24 +23,28 @@
         <TabControl x:Name="tcContatos" Margin="0" Grid.Row="1">
             <TabItem x:Name="tabPJuridica" Header="Pessoa Jurídica">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="63*"/>
+                        <ColumnDefinition Width="334*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <StackPanel HorizontalAlignment="Center" Grid.Row="0" Orientation="Horizontal">
+                    <StackPanel HorizontalAlignment="Center" Grid.Row="0" Orientation="Horizontal" Grid.ColumnSpan="2" Margin="110,0">
                         <Label Background="White" Content="Nome:" Margin="0,2,10,2"></Label>
                         <TextBox x:Name="txtConsultaNomePJuridica" MinWidth="500" Margin="10,5" TextChanged="TxtConsultaNomePJuridica_TextChanged"></TextBox>
                     </StackPanel>
 
-                    <DataGrid x:Name="DgContatoPJuridica" Grid.Row="1" Margin="0" AutoGenerateColumns="False" RowBackground="Silver" AlternatingRowBackground="WhiteSmoke">
+                    <DataGrid x:Name="DgContatoPJuridica" Grid.Row="1" Margin="0" AutoGenerateColumns="False" RowBackground="Silver" AlternatingRowBackground="WhiteSmoke" Grid.ColumnSpan="2">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="Id" Header="Id" Binding="{Binding Path=Id}" Width="5"/>
                             <DataGridTextColumn x:Name="Nome" Header="Nome" Binding="{Binding Path=Nome}" Width="*"/>
                             <DataGridTextColumn x:Name="Descricao" Header="Descrição" Binding="{Binding Path=Descricao}" Width="*"/>
                             <DataGridTextColumn x:Name="Categoria" Header="Categoria" Binding="{Binding Path=Categoria}" Width="*"/>
 
-                            <DataGridComboBoxColumn x:Name="ContatosPJuridica" Header="Contatos" Width="*">
+                            <!--<DataGridComboBoxColumn x:Name="ContatosPJuridica" Header="Contatos" Width="*">
                                 <DataGridComboBoxColumn.EditingElementStyle>
                                     <Style TargetType="ComboBox">
                                         <Setter Property="ItemsSource" Value="{Binding Path=Contatos}" />
@@ -70,7 +74,7 @@
                                         <Setter Property="ItemsSource" Value="{Binding Path=Emails}" />
                                     </Style>
                                 </DataGridComboBoxColumn.EditingElementStyle>
-                            </DataGridComboBoxColumn>
+                            </DataGridComboBoxColumn>-->
 
                             <DataGridTemplateColumn Header="View">
                                 <DataGridTemplateColumn.CellTemplate>
@@ -145,7 +149,7 @@
                             <DataGridTextColumn x:Name="NomePF" Header="Nome" Binding="{Binding Path=Nome}" Width="*"/>
                             <DataGridTextColumn x:Name="DescricaoPF" Header="Descrição" Binding="{Binding Path=Descricao}" Width="*"/>
 
-                            <DataGridComboBoxColumn x:Name="Telefone" Header="Telefone" Width="*">
+                            <!--<DataGridComboBoxColumn x:Name="Telefone" Header="Telefone" Width="*">
                                 <DataGridComboBoxColumn.EditingElementStyle>
                                     <Style TargetType="ComboBox">
                                         <Setter Property="ItemsSource" Value="{Binding Path=Telefones}" />
@@ -159,7 +163,7 @@
                                         <Setter Property="ItemsSource" Value="{Binding Path=Emails}" />
                                     </Style>
                                 </DataGridComboBoxColumn.EditingElementStyle>
-                            </DataGridComboBoxColumn>
+                            </DataGridComboBoxColumn>-->
 
                             <DataGridTemplateColumn Header="View">
                                 <DataGridTemplateColumn.CellTemplate>

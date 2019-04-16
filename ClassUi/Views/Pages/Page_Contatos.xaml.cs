@@ -274,68 +274,74 @@ namespace ClassUi.Views.Pages
         {
             try
             {
-                bool bnome = false;
-                bool bemail = false;
-                bool btelefone = false;
-
-                contato = new Contato();
-
-                if (txtNomePFisico.Text != "")
+                if (controleContato.ConsultarPorNome(txtNomePFisico.Text) != null)
                 {
-                    bnome = true;
-                    contato.Nome = txtNomePFisico.Text;
-                }
-
-
-                contato.Descricao = txtDescricaoPFisico.Text;
-
-                if (cbDepartamentoPFisico.SelectedItem != null)
-                {
-                    contato.Departamento = (Departamento)cbDepartamentoPFisico.SelectedItem;
+                    MessageBox.Show("Este nome de contato já existe no banco de dados. Por favor, verifique a listagem.");
                 }
                 else
                 {
-                    contato.Departamento = 0;
-                }
+                    bool bnome = false;
+                    bool bemail = false;
+                    bool btelefone = false;
 
-                contato.Tipo = Tipo.Fisica;
+                    contato = new Contato();
 
-                if (listEmailPFisico.Count != 0)
-                {
-                    bemail = true;
-                    contato.Emails = listEmailPFisico;
-                }
-
-                if (listTelefonePFisico.Count != 0)
-                {
-                    btelefone = true;
-                    contato.Telefones = listTelefonePFisico;
-                }
-
-
-                if (cbVinculadoPFisico.SelectedItem != null)
-                {
-                    contato.ContatoJuridico = (ContatoJuridico)cbVinculadoPFisico.SelectedItem;
-                }
-
-                if (bemail.Equals(false) && btelefone.Equals(false))
-                {
-                    MessageBox.Show("Informe um endereço de email ou número de telefone para este contato.");
-                }
-                else
-                {
-                    if (bnome.Equals(false))
+                    if (txtNomePFisico.Text != "")
                     {
-                        MessageBox.Show("Por favor, informe um nome para este contato.");
+                        bnome = true;
+                        contato.Nome = txtNomePFisico.Text;
+                    }
+
+
+                    contato.Descricao = txtDescricaoPFisico.Text;
+
+                    if (cbDepartamentoPFisico.SelectedItem != null)
+                    {
+                        contato.Departamento = (Departamento)cbDepartamentoPFisico.SelectedItem;
                     }
                     else
                     {
-                        controleContato.salvarContato(contato);
-                        MessageBox.Show("Novo contato pessoa fisica cadasatrado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                        limparCamposPFisica();
+                        contato.Departamento = 0;
+                    }
+
+                    contato.Tipo = Tipo.Fisica;
+
+                    if (listEmailPFisico.Count != 0)
+                    {
+                        bemail = true;
+                        contato.Emails = listEmailPFisico;
+                    }
+
+                    if (listTelefonePFisico.Count != 0)
+                    {
+                        btelefone = true;
+                        contato.Telefones = listTelefonePFisico;
+                    }
+
+
+                    if (cbVinculadoPFisico.SelectedItem != null)
+                    {
+                        contato.ContatoJuridico = (ContatoJuridico)cbVinculadoPFisico.SelectedItem;
+                    }
+
+                    if (bemail.Equals(false) && btelefone.Equals(false))
+                    {
+                        MessageBox.Show("Informe um endereço de email ou número de telefone para este contato.");
+                    }
+                    else
+                    {
+                        if (bnome.Equals(false))
+                        {
+                            MessageBox.Show("Por favor, informe um nome para este contato.");
+                        }
+                        else
+                        {
+                            controleContato.salvarContato(contato);
+                            MessageBox.Show("Novo contato pessoa fisica cadasatrado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                            limparCamposPFisica();
+                        }
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -534,17 +540,17 @@ namespace ClassUi.Views.Pages
                 btnEditarPJuridica.IsEnabled = true;
                 tabFisica.IsEnabled = false;
 
-                foreach (ContatoJuridico cj in auditoriaPJuridica)
-                {
-                    if (cj.Categoria.Equals(Categoria.Auditoria))
-                    {
-                        cbVinculadoPJuridica.Items.Add(cj);
-                    }
-                    else if (cj.Categoria.Equals(Categoria.Organização_Social))
-                    {
-                        cbOrganizacaoSocialPJuridica.Items.Add(cj);
-                    }
-                }
+                //foreach (ContatoJuridico cj in auditoriaPJuridica)
+                //{
+                //    if (cj.Categoria.Equals(Categoria.Auditoria))
+                //    {
+                //        cbVinculadoPJuridica.Items.Add(cj);
+                //    }
+                //    else if (cj.Categoria.Equals(Categoria.Organização_Social))
+                //    {
+                //        cbOrganizacaoSocialPJuridica.Items.Add(cj);
+                //    }
+                //}
 
                 cbCategoriaPJuridica.SelectedItem = c.Categoria;
                 txtNomePJuridica.Text = c.Nome;
@@ -589,17 +595,17 @@ namespace ClassUi.Views.Pages
                 btnGravarPJuridica.IsEnabled = true;
                 btnEditarPJuridica.IsEnabled = false;
 
-                foreach (ContatoJuridico cj in auditoriaPJuridica)
-                {
-                    if (cj.Categoria.Equals(Categoria.Auditoria))
-                    {
-                        cbVinculadoPJuridica.Items.Add(cj);
-                    }
-                    else if (cj.Categoria.Equals(Categoria.Organização_Social))
-                    {
-                        cbOrganizacaoSocialPJuridica.Items.Add(cj);
-                    }
-                }
+                //foreach (ContatoJuridico cj in auditoriaPJuridica)
+                //{
+                //    if (cj.Categoria.Equals(Categoria.Auditoria))
+                //    {
+                //        cbVinculadoPJuridica.Items.Add(cj);
+                //    }
+                //    else if (cj.Categoria.Equals(Categoria.Organização_Social))
+                //    {
+                //        cbOrganizacaoSocialPJuridica.Items.Add(cj);
+                //    }
+                //}
             }
         }
 
@@ -607,89 +613,96 @@ namespace ClassUi.Views.Pages
         {
             try
             {
-                contatoJuridico = new ContatoJuridico();
-
-                bool bnome = false;
-                bool bcategoria = false;
-                bool bemail = false;
-                bool btelefone = false;
-
-                if (txtNomePJuridica.Text != "")
+                if (controleJuridico.ConsultarPorNome(txtNomePJuridica.Text) != null)
                 {
-                    bnome = true;
-                    contatoJuridico.Nome = txtNomePJuridica.Text;
+                    MessageBox.Show("Este nome de contato já existe no banco de dados. Por favor, verifique a listagem.");
                 }
                 else
                 {
-                    MessageBox.Show("Informe um nome!");
-                }
+                    contatoJuridico = new ContatoJuridico();
 
-                if (txtDescricaoPJuridica.Text != "")
-                {
-                    contatoJuridico.Descricao = txtDescricaoPJuridica.Text;
-                }
-                else
-                {
-                    MessageBox.Show("Informe uma descrição!");
-                }
+                    bool bnome = false;
+                    bool bcategoria = false;
+                    bool bemail = false;
+                    bool btelefone = false;
 
-                if (cbCategoriaPJuridica.SelectedItem != null)
-                {
-                    bcategoria = true;
-                    contatoJuridico.Categoria = (Categoria)cbCategoriaPJuridica.SelectedItem;
-                }
-                else
-                {
-                    contatoJuridico.Categoria = 0;
-                }
+                    if (txtNomePJuridica.Text != "")
+                    {
+                        bnome = true;
+                        contatoJuridico.Nome = txtNomePJuridica.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Informe um nome!");
+                    }
 
-                contatoJuridico.Tipo = Tipo.Juridica;
+                    if (txtDescricaoPJuridica.Text != "")
+                    {
+                        contatoJuridico.Descricao = txtDescricaoPJuridica.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Informe uma descrição!");
+                    }
 
-                if (listEmailPJuridica.Count == 0 && listTelefonePJuridica.Count == 0)
-                {
-                    MessageBox.Show("Informe um endereço de email ou um número de telefone para continuar com o processo de cadastro");
-                }
+                    if (cbCategoriaPJuridica.SelectedItem != null)
+                    {
+                        bcategoria = true;
+                        contatoJuridico.Categoria = (Categoria)cbCategoriaPJuridica.SelectedItem;
+                    }
+                    else
+                    {
+                        contatoJuridico.Categoria = 0;
+                    }
 
-                if (listEmailPJuridica.Count != 0)
-                {
-                    bemail = true;
-                    contatoJuridico.Emails = listEmailPJuridica;
-                }
+                    contatoJuridico.Tipo = Tipo.Juridica;
 
-                if (listTelefonePJuridica.Count != 0)
-                {
-                    btelefone = true;
-                    contatoJuridico.Telefones = listTelefonePJuridica;
-                }
+                    if (listEmailPJuridica.Count == 0 && listTelefonePJuridica.Count == 0)
+                    {
+                        MessageBox.Show("Informe um endereço de email ou um número de telefone para continuar com o processo de cadastro");
+                    }
 
-                if (cbVinculadoPJuridica.SelectedItem != null)
-                {
-                    contatoJuridico.Auditoria = (ContatoJuridico)cbVinculadoPJuridica.SelectedItem;
-                }
-                else
-                {
-                    contatoJuridico.Auditoria = null;
-                }
+                    if (listEmailPJuridica.Count != 0)
+                    {
+                        bemail = true;
+                        contatoJuridico.Emails = listEmailPJuridica;
+                    }
 
-                if (cbOrganizacaoSocialPJuridica.SelectedItem != null)
-                {
-                    contatoJuridico.OrganizacaoSocial = (ContatoJuridico)cbOrganizacaoSocialPJuridica.SelectedItem;
-                }
-                else
-                {
-                    contatoJuridico.OrganizacaoSocial = null;
-                }
+                    if (listTelefonePJuridica.Count != 0)
+                    {
+                        btelefone = true;
+                        contatoJuridico.Telefones = listTelefonePJuridica;
+                    }
+
+                    if (cbVinculadoPJuridica.SelectedItem != null)
+                    {
+                        contatoJuridico.Auditoria = (ContatoJuridico)cbVinculadoPJuridica.SelectedItem;
+                    }
+                    else
+                    {
+                        contatoJuridico.Auditoria = null;
+                    }
+
+                    if (cbOrganizacaoSocialPJuridica.SelectedItem != null)
+                    {
+                        contatoJuridico.OrganizacaoSocial = (ContatoJuridico)cbOrganizacaoSocialPJuridica.SelectedItem;
+                    }
+                    else
+                    {
+                        contatoJuridico.OrganizacaoSocial = null;
+                    }
 
 
-                if (bnome.Equals(false) || bcategoria.Equals(false) || bemail.Equals(false) && btelefone.Equals(false))
-                {
-                    MessageBox.Show("Um ou mais dados obrigatórios estão ausentes (Nome, Categoria, Email ou Telefone).");
-                }
-                else
-                {
-                    controleJuridico.salvarContatoJuridico(contatoJuridico);
-                    MessageBox.Show("Novo contato jurídico gravado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    limparCamposPJuridica();
+                    if (bnome.Equals(false) || bcategoria.Equals(false) || bemail.Equals(false) && btelefone.Equals(false))
+                    {
+                        MessageBox.Show("Um ou mais dados obrigatórios estão ausentes (Nome, Categoria, Email ou Telefone).");
+                    }
+                    else
+                    {
+                        controleJuridico.salvarContatoJuridico(contatoJuridico);
+                        MessageBox.Show("Novo contato jurídico gravado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        limparCamposPJuridica();
+                    }
                 }
             }
             catch (Exception ex)

@@ -192,12 +192,39 @@ namespace ClassUi.Views.Pages
 
                 ViewContatoJuridico v = new ViewContatoJuridico();
 
+                //GetWindowInstance(typeof(ViewContatoJuridico));
                 v.AbrirDeUmaPagina(p);
                 v.Show();
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        //private Window GetWindowInstance(Type winType)
+        //{
+        //    Window win;
+        //    win = Application.Current.Windows
+        //           .OfType<Window>()
+        //           .SingleOrDefault(w => w.GetType() == winType);
+        //    if (win == null)
+        //    {
+        //        win = (Window)Activator.CreateInstance(winType);
+        //    }
+        //    return win;
+        //}
+
+        private void GetWindowInstance(Type winType)
+        {
+            Window win;
+            win = Application.Current.Windows
+                   .OfType<Window>()
+                   .SingleOrDefault(w => w.GetType() == winType);
+            if (win != null)
+            {
+                win.Close();
             }
         }
 

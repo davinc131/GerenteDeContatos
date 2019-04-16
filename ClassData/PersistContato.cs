@@ -40,6 +40,23 @@ namespace ClassData
             }
         }
 
+        public Contato ConsultarPorNome(string nome)
+        {
+            using (ContatoDbContext con = new ContatoDbContext())
+            {
+                try
+                {
+                    var Consulta = con.Contatos.Include(e => e.Emails).Include(t => t.Telefones).First(n => n.Nome == nome);
+                    return Consulta;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+                
+            }
+        }
+
         public List<Contato> ListarPorParamentro(string c)
         {
             using(ContatoDbContext context = new ContatoDbContext())

@@ -23,6 +23,11 @@ namespace ClassControle
             return Validation.validarEmail(email);
         }
 
+        public Contato ConsultarPorNome(string n)
+        {
+            return contato.ConsultarPorNome(n);
+        }
+
         public void salvarContato(Contato c)
         {
             contato.SalvarContato(c);
