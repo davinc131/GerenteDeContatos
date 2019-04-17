@@ -21,7 +21,7 @@ namespace ClassUi.Views.Pages
     /// <summary>
     /// Interação lógica para Page_Contatos.xam
     /// </summary>
-    public partial class Page_Contatos : Page
+    public sealed partial class Page_Contatos : Page
     {
         #region Variaveis
 
@@ -46,6 +46,20 @@ namespace ClassUi.Views.Pages
 
         #endregion
 
+        #region Singleton
+
+        private static Page_Contatos instance;
+
+        public static Page_Contatos Instance()
+        {
+            lock (typeof(Page_Contatos))
+                if (instance == null) instance = new Page_Contatos();
+
+            return instance;
+        }
+
+        #endregion
+
         #region Construtores
 
         public Page_Contatos(bool editar, ContatoJuridico c)
@@ -56,7 +70,7 @@ namespace ClassUi.Views.Pages
             InitPF();
             InitPJ();
             this.contatoJ = c;
-            ControleAbaPJuridico(editar, c);
+            
         }
 
         public Page_Contatos(bool editar, Contato c)
@@ -78,6 +92,30 @@ namespace ClassUi.Views.Pages
             InitPF();
             InitPJ();
             ControlePagina();
+        }
+
+        public void CarregarFisico(bool editar, Contato c)
+        {
+            try
+            {
+                ControleAbaPFisica(editar, c);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message);
+            }
+        }
+
+        public void CarregarJuridico(bool editar, ContatoJuridico ct)
+        {
+            try
+            {
+                ControleAbaPJuridico(editar, ct);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message);
+            }
         }
 
         #endregion
@@ -423,8 +461,8 @@ namespace ClassUi.Views.Pages
         {
             try
             {
-                Page_Listar_Contatos p = new Page_Listar_Contatos(false);
-
+                Page_Listar_Contatos p = Page_Listar_Contatos.Instance();
+                p.ControlePagina(false);
                 ViewContatoJuridico v = new ViewContatoJuridico();
 
                 v.AbrirDeUmaPagina(p);
@@ -715,11 +753,9 @@ namespace ClassUi.Views.Pages
         {
             try
             {
-                Page_Listar_Contatos p = new Page_Listar_Contatos(true
-);
-
-                ViewContatoJuridico v = new ViewContatoJuridico();
-
+                Page_Listar_Contatos p = Page_Listar_Contatos.Instance();
+                p.ControlePagina(true);
+                ViewContatoJuridico v = ViewContatoJuridico.Instance();
                 v.AbrirDeUmaPagina(p);
                 v.Show();
             }

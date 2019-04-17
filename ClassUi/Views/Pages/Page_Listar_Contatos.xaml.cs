@@ -29,20 +29,33 @@ namespace ClassUi.Views.Pages
 
         #endregion
 
+        #region Singleton
+
+        private static Page_Listar_Contatos instance;
+
+        public static Page_Listar_Contatos Instance()
+        {
+            lock (typeof(Page_Listar_Contatos))
+                if (instance == null) instance = new Page_Listar_Contatos();
+
+            return instance;
+        }
+
+        #endregion
+
         #region Construtor
 
-        public Page_Listar_Contatos(bool contatoJuridico)
+        public Page_Listar_Contatos()
         {
             InitializeComponent();
 
-            ControlePagina(contatoJuridico);
             CarregarGridPJuridico(controleContato.ListarContatoJuridico());
             CarregarGridPFisica(controle.ListarContatos());
         }
 
         #endregion
 
-        private void ControlePagina(bool b)
+        public void ControlePagina(bool b)
         {
             try
             {
@@ -111,7 +124,8 @@ namespace ClassUi.Views.Pages
                 Contato c = new Contato();
                 c = (Contato)DgContatoPFisica.SelectedItem;
 
-                Page_Contatos p = new Page_Contatos(true, c);
+                Page_Contatos p = Page_Contatos.Instance();
+                p.CarregarFisico(true, c);
 
                 ViewContatoFisico v = new ViewContatoFisico();
 
@@ -188,11 +202,12 @@ namespace ClassUi.Views.Pages
 
                 c = controleContato.ListarPorParametro(c.Nome)[0];
 
-                Page_Contatos p = new Page_Contatos(true, c);
+                Page_Contatos p = Page_Contatos.Instance();
+
+                p.CarregarJuridico(true, c);
 
                 ViewContatoJuridico v = new ViewContatoJuridico();
 
-                //GetWindowInstance(typeof(ViewContatoJuridico));
                 v.AbrirDeUmaPagina(p);
                 v.Show();
                 

@@ -24,10 +24,25 @@ namespace ClassUi.Views
         {
             InitializeComponent();
 
-            Pages.Page_Contatos PaginaContatos = new Pages.Page_Contatos();
+            Pages.Page_Contatos PaginaContatos = Pages.Page_Contatos.Instance();
+            PaginaContatos.CarregarJuridico(false, null);
             AbrirDeUmaPagina(PaginaContatos);
         }
-        
+
+        #region Singleton
+
+        private static ViewContatoJuridico instance;
+
+        public static ViewContatoJuridico Instance()
+        {
+            lock (typeof(ViewContatoJuridico))
+                if (instance == null) instance = new ViewContatoJuridico();
+
+            return instance;
+        }
+
+        #endregion
+
         public void AbrirDeUmaPagina(Page p)
         {
             try
