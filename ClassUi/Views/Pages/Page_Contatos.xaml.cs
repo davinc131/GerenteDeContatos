@@ -53,7 +53,32 @@ namespace ClassUi.Views.Pages
         public static Page_Contatos Instance()
         {
             lock (typeof(Page_Contatos))
-                if (instance == null) instance = new Page_Contatos();
+                if (instance == null)
+                {
+                    instance = new Page_Contatos();
+                }
+
+            return instance;
+        }
+
+        public static Page_Contatos Instance(bool editar, ContatoJuridico c)
+        {
+            lock (typeof(Page_Contatos))
+                if (instance == null)
+                {
+                    instance = new Page_Contatos(editar, c);
+                }
+
+            return instance;
+        }
+
+        public static Page_Contatos Instance(bool editar, Contato c)
+        {
+            lock (typeof(Page_Contatos))
+                if (instance == null)
+                {
+                    instance = new Page_Contatos(editar, c);
+                }
 
             return instance;
         }
@@ -70,7 +95,7 @@ namespace ClassUi.Views.Pages
             InitPF();
             InitPJ();
             this.contatoJ = c;
-            
+            ControleAbaPJuridico(editar, c);
         }
 
         public Page_Contatos(bool editar, Contato c)
@@ -375,7 +400,7 @@ namespace ClassUi.Views.Pages
                         else
                         {
                             controleContato.salvarContato(contato);
-                            MessageBox.Show("Novo contato pessoa fisica cadasatrado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                            MessageBox.Show("Novo contato pessoa fisica cadasatrado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
                             limparCamposPFisica();
                         }
                     }
@@ -572,7 +597,8 @@ namespace ClassUi.Views.Pages
 
             if (editar.Equals(true))
             {
-                contatoJuridico = controleJuridico.ListarPorParametro(c.Nome)[0];
+                //contatoJuridico = controleJuridico.ListarPorParametro(c.Nome)[0];
+                contatoJuridico = controleJuridico.ConsultarPorNome(c.Nome);
 
                 btnGravarPJuridica.IsEnabled = false;
                 btnEditarPJuridica.IsEnabled = true;
@@ -738,7 +764,7 @@ namespace ClassUi.Views.Pages
                     else
                     {
                         controleJuridico.salvarContatoJuridico(contatoJuridico);
-                        MessageBox.Show("Novo contato jurídico gravado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        MessageBox.Show("Novo contato jurídico gravado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
                         limparCamposPJuridica();
                     }
                 }

@@ -200,7 +200,8 @@ namespace ClassUi.Views.Pages
                 ContatoJuridico c = new ContatoJuridico();
                 c = (ContatoJuridico)DgContatoPJuridica.SelectedItem;
 
-                c = controleContato.ListarPorParametro(c.Nome)[0];
+                //c = controleContato.ListarPorParametro(c.Nome)[0];
+                c = controleContato.ConsultarPorNome(c.Nome);
 
                 Page_Contatos p = Page_Contatos.Instance();
 
@@ -258,6 +259,7 @@ namespace ClassUi.Views.Pages
             }
         }
 
-        #endregion
+       //
+       #endregion
     }
 }
