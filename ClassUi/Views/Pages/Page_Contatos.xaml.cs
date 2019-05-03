@@ -25,28 +25,30 @@ namespace ClassUi.Views.Pages
     {
         #region Variaveis
 
-        private ControleContato controleContato = new ControleContato();
-        private ControleContatoJuridico controleJuridico = new ControleContatoJuridico();
-        private ICollection<Telefone> listTelefonePFisico = new List<Telefone>();
-        private ICollection<Email> listEmailPFisico = new List<Email>();
-        private Contato contato = new Contato();
-        private ContatoJuridico contatoJ = new ContatoJuridico();
+        private static ControleContato controleContato = new ControleContato();
+        private static ControleContatoJuridico controleJuridico = new ControleContatoJuridico();
+        private static ICollection<Telefone> listTelefonePFisico = new List<Telefone>();
+        private static ICollection<Email> listEmailPFisico = new List<Email>();
+        private static Contato contato = new Contato();
+        private static ContatoJuridico contatoJ = new ContatoJuridico();
 
-        private ICollection<Telefone> listTelefonePJuridica = new List<Telefone>();
-        private ICollection<Email> listEmailPJuridica = new List<Email>();
-        private ICollection<ContatoJuridico> auditoriaPJuridica = new List<ContatoJuridico>();
-        private ICollection<ContatoJuridico> organizacaoSocialPJuridica = new List<ContatoJuridico>();
+        private static ICollection<Telefone> listTelefonePJuridica = new List<Telefone>();
+        private static ICollection<Email> listEmailPJuridica = new List<Email>();
+        private static ICollection<ContatoJuridico> auditoriaPJuridica = new List<ContatoJuridico>();
+        private static ICollection<ContatoJuridico> organizacaoSocialPJuridica = new List<ContatoJuridico>();
 
-        private List<ContatoJuridico> listAuditoria = new List<ContatoJuridico>();
-        private List<ContatoJuridico> listOrganizacaoSocial = new List<ContatoJuridico>();
+        private static List<ContatoJuridico> listAuditoria = new List<ContatoJuridico>();
+        private static List<ContatoJuridico> listOrganizacaoSocial = new List<ContatoJuridico>();
 
-        private ContatoJuridico contatoJuridico = new ContatoJuridico();
+        private static ContatoJuridico contatoJuridico = new ContatoJuridico();
 
         private DispatcherTimer timer;
 
         #endregion
 
         #region Singleton
+
+        private delegate void DelegateInstance(bool editar, ContatoJuridico contato);
 
         private static Page_Contatos instance;
 
@@ -94,7 +96,7 @@ namespace ClassUi.Views.Pages
             CarregarComboVinculadoOS();
             InitPF();
             InitPJ();
-            this.contatoJ = c;
+            contatoJ = c;
             ControleAbaPJuridico(editar, c);
         }
 
@@ -105,7 +107,7 @@ namespace ClassUi.Views.Pages
             CarregarComboVinculadoOS();
             InitPF();
             InitPJ();
-            this.contato = c;
+            contato = c;
             ControleAbaPFisica(editar, contato);
         }
 
@@ -198,10 +200,11 @@ namespace ClassUi.Views.Pages
             }
         }
 
-        private void ControleAbaPFisica(bool editar, Contato c)
+        public void ControleAbaPFisica(bool editar, Contato c)
         {
             if (editar.Equals(true))
             {
+                CarregarComboVinculadoOS();
                 contato = controleContato.ListarPorParametro(c.Nome)[0];
 
                 btnGravarPFisico.IsEnabled = false;
@@ -588,8 +591,9 @@ namespace ClassUi.Views.Pages
             }
         }
 
-        private void ControleAbaPJuridico(bool editar, ContatoJuridico c)
+        public void ControleAbaPJuridico(bool editar, ContatoJuridico c)
         {
+            CarregarComboVinculadoOS();
             cbVinculadoPJuridica.IsEnabled = false;
             cbOrganizacaoSocialPJuridica.IsEnabled = false;
             chWhatsappPJuridica.IsEnabled = false;
@@ -597,24 +601,11 @@ namespace ClassUi.Views.Pages
 
             if (editar.Equals(true))
             {
-                //contatoJuridico = controleJuridico.ListarPorParametro(c.Nome)[0];
                 contatoJuridico = controleJuridico.ConsultarPorNome(c.Nome);
 
                 btnGravarPJuridica.IsEnabled = false;
                 btnEditarPJuridica.IsEnabled = true;
                 tabFisica.IsEnabled = false;
-
-                //foreach (ContatoJuridico cj in auditoriaPJuridica)
-                //{
-                //    if (cj.Categoria.Equals(Categoria.Auditoria))
-                //    {
-                //        cbVinculadoPJuridica.Items.Add(cj);
-                //    }
-                //    else if (cj.Categoria.Equals(Categoria.Organização_Social))
-                //    {
-                //        cbOrganizacaoSocialPJuridica.Items.Add(cj);
-                //    }
-                //}
 
                 cbCategoriaPJuridica.SelectedItem = c.Categoria;
                 txtNomePJuridica.Text = c.Nome;
@@ -658,18 +649,6 @@ namespace ClassUi.Views.Pages
             {
                 btnGravarPJuridica.IsEnabled = true;
                 btnEditarPJuridica.IsEnabled = false;
-
-                //foreach (ContatoJuridico cj in auditoriaPJuridica)
-                //{
-                //    if (cj.Categoria.Equals(Categoria.Auditoria))
-                //    {
-                //        cbVinculadoPJuridica.Items.Add(cj);
-                //    }
-                //    else if (cj.Categoria.Equals(Categoria.Organização_Social))
-                //    {
-                //        cbOrganizacaoSocialPJuridica.Items.Add(cj);
-                //    }
-                //}
             }
         }
 

@@ -124,12 +124,13 @@ namespace ClassUi.Views.Pages
                 Contato c = new Contato();
                 c = (Contato)DgContatoPFisica.SelectedItem;
 
-                Page_Contatos p = Page_Contatos.Instance();
-                p.CarregarFisico(true, c);
+                //ViewContatoFisico v = new ViewContatoFisico();
+                ViewContatoJuridico v = ViewContatoJuridico.Instance();
 
-                ViewContatoFisico v = new ViewContatoFisico();
+                Page_Contatos p = Page_Contatos.Instance(true, c);
 
                 v.AbrirDeUmaPagina(p);
+                p.ControleAbaPFisica(true, c);
                 v.Show();
             }
             catch (Exception ex)
@@ -200,16 +201,15 @@ namespace ClassUi.Views.Pages
                 ContatoJuridico c = new ContatoJuridico();
                 c = (ContatoJuridico)DgContatoPJuridica.SelectedItem;
 
-                //c = controleContato.ListarPorParametro(c.Nome)[0];
                 c = controleContato.ConsultarPorNome(c.Nome);
 
-                Page_Contatos p = Page_Contatos.Instance();
+                //ViewContatoJuridico v = new ViewContatoJuridico();
+                ViewContatoJuridico v = ViewContatoJuridico.Instance();
 
-                p.CarregarJuridico(true, c);
-
-                ViewContatoJuridico v = new ViewContatoJuridico();
+                Page_Contatos p = Page_Contatos.Instance(true, c);
 
                 v.AbrirDeUmaPagina(p);
+                p.ControleAbaPJuridico(true, c);
                 v.Show();
                 
             }

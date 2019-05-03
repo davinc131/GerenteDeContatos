@@ -23,30 +23,13 @@ namespace ClassUi
         public MainWindow()
         {
             InitializeComponent();
-            //Application.Current.MainWindow.WindowState = WindowState.Maximized;
-            //ImageBrush myBrush = new ImageBrush();
-            //myBrush.ImageSource = new BitmapImage(new Uri(@"Imagens\\background4.png", UriKind.Absolute));
-            //this.Background = myBrush;
-        }
-
-        private void BtnFisico_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Views.ViewContatoFisico contatoFisico = new Views.ViewContatoFisico();
-                contatoFisico.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void BtnJuridico_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                Views.ViewContatoJuridico contatoJuridico = new Views.ViewContatoJuridico();
+                Views.ViewContatoJuridico contatoJuridico = Views.ViewContatoJuridico.Instance();
                 contatoJuridico.ShowDialog();
             }
             catch (Exception ex)

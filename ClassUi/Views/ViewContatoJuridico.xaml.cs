@@ -54,5 +54,11 @@ namespace ClassUi.Views
                 MessageBox.Show(ex.Message);
             }
         }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            Application.Current.Shutdown();
+        }
     }
 }
